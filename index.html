@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>سایت رزرو خدمات</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>رزرو خدمات آنلاین</h1>
+    </header>
+
+    <main>
+        <section class="booking-form">
+            <h2>فرم رزرو خدمات</h2>
+            <form id="reservationForm">
+                <label for="name">نام و نام خانوادگی:</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="service">نوع خدمات:</label>
+                <select id="service" name="service" required>
+                    <option value="">انتخاب کنید</option>
+                    <option value="cleaning">نظافت</option>
+                    <option value="repair">تعمیرات</option>
+                    <option value="delivery">تحویل کالا</option>
+                </select>
+
+                <label for="date">تاریخ رزرو:</label>
+                <input type="date" id="date" name="date" required />
+
+                <label for="time">زمان:</label>
+                <input type="time" id="time" name="time" required />
+
+                <button type="submit">رزرو کن</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>تمامی حقوق محفوظ است &copy; 2025</p>
+    </footer>
+</body>
+</html>
 
