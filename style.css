@@ -62,4 +62,69 @@ footer {
     margin-top: 40px;
     font-size: 14px;
 }
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  background: #f7f7f7;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  background-color: #003580; /* آبی بوکینگ */
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+main {
+  max-width: 600px;
+  background: white;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.booking-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.booking-form input, 
+.booking-form select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.booking-form button {
+  background-color: #0071c2; /* آبی بوکینگ */
+  color: white;
+  padding: 14px 0;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.booking-form button:hover {
+  background-color: #005b9a;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+}
 
