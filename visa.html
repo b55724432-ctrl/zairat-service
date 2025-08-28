@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ویزا اپلیکیشن</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  button {
+    margin: 10px;
+    padding: 12px 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  #uploadOptions {
+    margin-top: 20px;
+  }
+  #depositSection, #confirmPaymentSection, #contactSection {
+    margin-top: 30px;
+    font-size: 18px;
+  }
+  input[type="file"] {
+    display: none;
+  }
+  a.whatsapp-link {
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+  <h2>اگر اپ نے ایران کا ویزا لینا ہے تو اپنے پاسپورٹ کی تصویر اپلوڈ کریں</h2>
+  
+  <button id="uploadBtn">اپلود عکس</button>
+
+  <div id="uploadOptions" style="display:none;">
+    <button id="galleryBtn">اپلود کردن از گالری</button>
+    <button id="cameraBtn">گرفتن عکس مستقیم از دوربین گوشی</button>
+    <input type="file" id="fileInput" accept="image/*" />
+  </div>
+
+  <div id="depositSection" style="display:none;">
+    <button id="payBtn">واریز کردن پول</button>
+  </div>
+
+  <div id="confirmPaymentSection" style="display:none;">
+    <button id="confirmBtn">تأیید پرداخت انجام شد</button>
+  </div>
+
+  <div id="contactSection" style="display:none;">
+    <p>برای پیگیری به این شماره تماس بگیرید:</p>
+    <p><strong>+989302844084</strong></p>
+
+    <a href="https://wa.me/989302844084" target="_blank" class="whatsapp-link">
+      برای پیگیری از طریق واتساپ اینجا کلیک کنید
+    </a>
+  </div>
+
+<script>
+  const uploadBtn = document.getElementById('uploadBtn');
+  const uploadOptions = document.getElementById('uploadOptions');
+  const galleryBtn = document.getElementById('galleryBtn');
+  const cameraBtn = document.getElementById('cameraBtn');
+  const fileInput = document.getElementById('fileInput');
+  const depositSection = document.getElementById('depositSection');
+  const payBtn = document.getElementById('payBtn');
+  const confirmPaymentSection = document.getElementById('confirmPaymentSection');
+  const confirmBtn = document.getElementById('confirmBtn');
+  const contactSection = document.getElementById('contactSection');
+
+  uploadBtn.addEventListener('click', () => {
+    uploadOptions.style.display = 'block';
+  });
+
+  galleryBtn.addEventListener('click', () => {
+    fileInput.capture = ''; // باز کردن گالری
+    fileInput.click();
+  });
+
+  cameraBtn.addEventListener('click', () => {
+    fileInput.capture = 'environment'; // فعال کردن دوربین عقب گوشی
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', () => {
+    if(fileInput.files.length > 0){
+      alert('عکس با موفقیت اپلود شد!');
+      depositSection.style.display = 'block';
+      uploadOptions.style.display = 'none';
+    }
+  });
+
+  payBtn.addEventListener('click', () => {
+    alert('لطفا پرداخت را انجام دهید.');
+    depositSection.style.display = 'none';
+    confirmPaymentSection.style.display = 'block';
+  });
+
+  confirmBtn.addEventListener('click', () => {
+    confirmPaymentSection.style.display = 'none';
+    contactSection.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
