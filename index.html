@@ -3,46 +3,111 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>سایت رزرو خدمات</title>
-    <!-- لینک به فایل CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- فونت وزیر از CDN -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <title>نام سایت شما</title>
+    <style>
+        /* تنظیمات پایه */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        /* ریسپانسیو کردن تصاویر */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        /* منوی ساده */
+        nav {
+            background-color: #2980b9;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* فوتر */
+        footer {
+            background-color: #ddd;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* تنظیمات ریسپانسیو */
+        @media (max-width: 600px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+                font-size: 18px;
+            }
+
+            main {
+                padding: 0 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>رزرو خدمات آنلاین</h1>
-    </header>
 
-    <main>
-        <section class="booking-form">
-            <h2>فرم رزرو خدمات</h2>
-            <form id="reservationForm">
-                <label for="name">نام و نام خانوادگی:</label>
-                <input type="text" id="name" name="name" required />
+<header>
+    <h1>نام سایت شما</h1>
+</header>
 
-                <label for="service">نوع خدمات:</label>
-                <select id="service" name="service" required>
-                    <option value="">انتخاب کنید</option>
-                    <option value="cleaning">نظافت</option>
-                    <option value="repair">تعمیرات</option>
-                    <option value="delivery">تحویل کالا</option>
-                </select>
+<nav>
+    <a href="#">خانه</a>
+    <a href="#">درباره ما</a>
+    <a href="#">خدمات</a>
+    <a href="#">تماس با ما</a>
+</nav>
 
-                <label for="date">تاریخ رزرو:</label>
-                <input type="date" id="date" name="date" required />
+<main>
+    <h2>خوش آمدید!</h2>
+    <p>این یک قالب ساده و ریسپانسیو است که روی موبایل و دسکتاپ به خوبی نمایش داده می‌شود.</p>
 
-                <label for="time">زمان:</label>
-                <input type="time" id="time" name="time" required />
+    <img src="https://via.placeholder.com/800x400" alt="تصویر نمونه" />
 
-                <button type="submit">رزرو کن</button>
-            </form>
-        </section>
-    </main>
+    <p>می‌توانید محتوای سایت خود را اینجا قرار دهید و به دلخواه استایل‌ها را تغییر دهید.</p>
+</main>
 
-    <footer>
-        <p>تمامی حقوق محفوظ است &copy; 2025</p>
-    </footer>
+<footer>
+    © ۱۴۰۲ - تمام حقوق محفوظ است.
+</footer>
+
 </body>
 </html>
-
