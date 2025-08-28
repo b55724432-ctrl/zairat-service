@@ -1,1 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://b55724432-ctrl.github.io/zairat-service/</loc>
+      <lastmod>2025-08-28</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://b55724432-ctrl.github.io/zairat-service/page1.html</loc>
+      <lastmod>2025-08-27</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <!-- صفحات بیشتر را به همین شکل اضافه کن -->
+</urlset>
 
