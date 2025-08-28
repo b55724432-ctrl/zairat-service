@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>سایت رزرو خدمات</title>
+    <!-- لینک به فایل CSS -->
     <link rel="stylesheet" href="style.css" />
+    <!-- فونت وزیر از CDN -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header>
@@ -22,5 +25,23 @@
                 <select id="service" name="service" required>
                     <option value="">انتخاب کنید</option>
                     <option value="cleaning">نظافت</option>
-                    <option valu
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+                    <option value="repair">تعمیرات</option>
+                    <option value="delivery">تحویل کالا</option>
+                </select>
+
+                <label for="date">تاریخ رزرو:</label>
+                <input type="date" id="date" name="date" required />
+
+                <label for="time">زمان:</label>
+                <input type="time" id="time" name="time" required />
+
+                <button type="submit">رزرو کن</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>تمامی حقوق محفوظ است &copy; 2025</p>
+    </footer>
+</body>
+</html>
