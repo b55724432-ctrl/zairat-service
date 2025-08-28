@@ -69,24 +69,5 @@ footer {
     background-color: #eee;
     margin-top: 40px;
 }
-<style>
-.custom-button {
-  display: inline-block;
-  background: white;
-  border: 2px solid pink;
-  color: black;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 10px 22px;
-  border-radius: 30px;
-  cursor: pointer;
-  text-decoration: none;
-  user-select: none;
-  transition: background-color 0.3s, color 0.3s;
-}
-.custom-button:hover {
-  background-color: pink;
-  color: white;
-}
-</style>
+
 
