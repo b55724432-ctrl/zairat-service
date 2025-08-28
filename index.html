@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="ur" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>زیارت سرویس</title>
+  <title>زیارت سروس</title>
   <style>
-    /* Reset ساده */
+    /* Reset */
     * {
       box-sizing: border-box;
     }
@@ -88,7 +88,7 @@
     button.primary-btn:hover {
       background-color: #0056b3;
     }
-    /* بخش فرم ویزا */
+    /* ویزا فارم */
     #visaForm {
       background: white;
       padding: 30px;
@@ -117,7 +117,6 @@
       border-radius: 10px;
       border: 2px solid #007bff;
     }
-    /* فوتر */
     footer {
       background-color: #eee;
       color: #555;
@@ -126,8 +125,6 @@
       font-size: 14px;
       border-top: 1px solid #ccc;
     }
-
-    /* ریسپانسیو موبایل */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -143,11 +140,11 @@
 <body>
 
   <header>
-    <h1>زیارت سرویس</h1>
+    <h1>زیارت سروس</h1>
     <nav>
-      <a href="#home">خانه</a>
-      <a href="#visaFormSection" id="navVisaLink">درخواست ویزا</a>
-      <a href="#contact">تماس با ما</a>
+      <a href="#home">ہوم</a>
+      <a href="#visaFormSection" id="navVisaLink">ویزا درخواست</a>
+      <a href="#contact">رابطہ کریں</a>
     </nav>
   </header>
 
@@ -164,7 +161,7 @@
         <p>اپنے پاسپورٹ کی تصویر اپلوڈ کریں:</p>
         <input type="file" id="passportImage" accept="image/*" required />
         <div id="imagePreviewWrapper" style="display:none;">
-          <img id="uploadedImage" alt="تصویر پاسپورٹ" />
+          <img id="uploadedImage" alt="پاسپورٹ کی تصویر" />
         </div>
         <p id="uploadStatus"></p>
         <button type="submit" class="primary-btn">درخواست جمع کریں</button>
@@ -173,8 +170,8 @@
   </main>
 
   <footer id="contact">
-    <p>© ۱۴۰۲ زیارت سرویس - تمام حقوق محفوظ است.</p>
-    <p>تماس با ما: info@ziaratservice.com</p>
+    <p>© ۱۴۰۲ زیارت سروس - جملہ حقوق محفوظ ہیں۔</p>
+    <p>رابطہ: info@ziaratservice.com</p>
   </footer>
 
   <script>
@@ -187,20 +184,17 @@
     const uploadStatus = document.getElementById('uploadStatus');
     const navVisaLink = document.getElementById('navVisaLink');
 
-    // وقتی کاربر دکمه درخواست ویزا را میزند
     startVisaBtn.addEventListener('click', () => {
       visaForm.style.display = 'block';
       visaFormSection.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // وقتی روی لینک منو درخواست ویزا کلیک شود، فرم نمایش داده شود و اسکرول شود
     navVisaLink.addEventListener('click', (e) => {
       e.preventDefault();
       visaForm.style.display = 'block';
       visaFormSection.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // نمایش پیش‌نمایش تصویر انتخاب شده
     passportImageInput.addEventListener('change', () => {
       const file = passportImageInput.files[0];
       if (!file) {
@@ -213,19 +207,18 @@
       reader.onload = function(e) {
         uploadedImage.src = e.target.result;
         imagePreviewWrapper.style.display = 'block';
-        uploadStatus.textContent = 'تصویر انتخاب شد';
+        uploadStatus.textContent = 'تصویر منتخب کر لی گئی ہے۔';
       };
       reader.readAsDataURL(file);
     });
 
-    // ارسال فرم درخواست ویزا (نمونه ساده)
     visaForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!passportImageInput.files[0]) {
-        alert('لطفاً تصویر پاسپورت را انتخاب کنید');
+        alert('براہ کرم پاسپورٹ کی تصویر منتخب کریں۔');
         return;
       }
-      alert('درخواست شما ثبت شد، بعداً با شما تماس می‌گیریم.');
+      alert('آپ کی درخواست جمع ہو گئی ہے، جلد آپ سے رابطہ کیا جائے گا۔');
       visaForm.reset();
       imagePreviewWrapper.style.display = 'none';
       uploadedImage.src = '';
