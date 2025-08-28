@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ویزا درخواست</title>
+  <title>زیارت سرویس - ویزا درخواست</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
       background: #f9f9f9;
       padding: 20px;
       text-align: center;
+      margin: 0;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px 0;
+      font-size: 28px;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
     }
     button {
       font-size: 20px;
@@ -17,15 +27,22 @@
       margin: 10px;
       cursor: pointer;
       border-radius: 8px;
+      border: none;
+      transition: background-color 0.3s ease;
     }
-    #uploadOptions button {
-      width: 220px;
+    #uploadBtn, #iranPayBtn, #pakistanPayBtn {
+      background-color: #007bff;
+      color: white;
     }
-    #paymentOptions button {
-      width: 240px;
+    #uploadBtn:hover, #iranPayBtn:hover, #pakistanPayBtn:hover {
+      background-color: #0056b3;
     }
-    input[type="file"] {
-      display: none;
+    #cameraBtn {
+      background-color: #ffc107;
+      color: #333;
+    }
+    #cameraBtn:hover {
+      background-color: #e0a800;
     }
     #uploadedImage {
       max-width: 80%;
@@ -37,27 +54,7 @@
       margin-top: 30px;
     }
     .hidden {
-      display: none;
-    }
-    .btn-primary {
-      background-color: #007bff;
-      color: white;
-      border: none;
-    }
-    .btn-success {
-      background-color: #28a745;
-      color: white;
-      border: none;
-    }
-    .btn-danger {
-      background-color: #dc3545;
-      color: white;
-      border: none;
-    }
-    .btn-warning {
-      background-color: #ffc107;
-      color: #333;
-      border: none;
+      display: none !important;
     }
     a.whatsapp-link {
       display: inline-block;
@@ -68,18 +65,38 @@
       border-radius: 8px;
       text-decoration: none;
       margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    a.whatsapp-link:hover {
+      background-color: #1ebe5d;
+    }
+    #managerApproveBtn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 25px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+      box-shadow: 0 0 8px rgba(40,167,69,0.7);
+      display: none;
+    }
+    #managerApproveBtn:hover {
+      background-color: #218838;
     }
   </style>
 </head>
 <body>
 
+  <header>زیارت سرویس</header>
+
   <h1>اگر آپ ایران کا ویزا لینا چاہتے ہیں، تو اپنے پاسپورٹ کی تصویر اپلوڈ کریں</h1>
 
-  <button id="uploadBtn" class="btn-primary" style="font-size:28px; padding:20px 40px;">ویزا کے لیے درخواست دیں</button>
+  <button id="uploadBtn">ویزا کے لیے درخواست دیں</button>
 
   <div id="uploadOptions" class="hidden">
-    <!-- فقط دکمه دوربین باقی مانده -->
-    <button id="cameraBtn" class="btn-warning">کیمرہ سے تصویر لیں</button>
+    <button id="cameraBtn">کیمرہ سے تصویر لیں</button>
     <input type="file" id="fileInput" accept="image/*" />
   </div>
 
@@ -87,16 +104,16 @@
     <h3>اپلوڈ شدہ تصویر</h3>
     <img id="uploadedImage" src="" alt="Uploaded Passport Image" />
     <div id="confirmSection">
-      <p style="font-size: 18px; color: #555;">تصویر اپلوڈ ہو گئی ہے۔ براہ کرم منتظر رہیں، منتظم تصویر کی تصدیق کرے گا۔</p>
+      <p style="font-size: 18px; color: #555;">
+        تصویر اپلوڈ ہو گئی ہے۔ براہ کرم منتظر رہیں، منتظم تصویر کی تصدیق کرے گا۔
+      </p>
     </div>
   </div>
 
   <div id="paymentSection" class="hidden">
     <h3>ادائیگی کے لیے طریقہ منتخب کریں</h3>
-    <div id="paymentOptions">
-      <button id="iranPayBtn" class="btn-primary">ایرانی درگاه - تومان میں ادائیگی</button>
-      <button id="pakistanPayBtn" class="btn-primary">پاکستانی درگاه - روپیہ میں ادائیگی</button>
-    </div>
+    <button id="iranPayBtn">ایرانی درگاه - تومان میں ادائیگی</button>
+    <button id="pakistanPayBtn">پاکستانی درگاه - روپیہ میں ادائیگی</button>
   </div>
 
   <div id="paymentProcessingSection" class="hidden">
@@ -112,7 +129,7 @@
   </div>
 
   <!-- دکمه تست برای تایید توسط مدیر -->
-  <button onclick="simulateManagerApproval()" style="display:none;" id="managerApproveBtn">مدیر تصویب</button>
+  <button id="managerApproveBtn" onclick="simulateManagerApproval()">مدیر تصویب (فقط تست)</button>
 
   <script>
     const uploadBtn = document.getElementById('uploadBtn');
@@ -126,10 +143,12 @@
     const pakistanPayBtn = document.getElementById('pakistanPayBtn');
     const paymentProcessingSection = document.getElementById('paymentProcessingSection');
     const whatsappSection = document.getElementById('whatsappSection');
+    const managerApproveBtn = document.getElementById('managerApproveBtn');
 
     // مرحله اول: نمایش گزینه آپلود
     uploadBtn.addEventListener('click', () => {
       uploadOptions.classList.remove('hidden');
+      uploadBtn.disabled = true;
     });
 
     // باز کردن دوربین برای گرفتن عکس مستقیم
@@ -142,16 +161,20 @@
     fileInput.addEventListener('change', () => {
       if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
+        if (!file.type.startsWith('image/')) {
+          alert('براہ کرم صرف تصویری فائل اپلوڈ کریں۔');
+          return;
+        }
         const reader = new FileReader();
         reader.onload = function(e) {
           uploadedImage.src = e.target.result;
           imagePreviewSection.classList.remove('hidden');
+          uploadOptions.classList.add('hidden');
 
           // نمایش دکمه تایید برای مدیر (برای تست)
-          document.getElementById('managerApproveBtn').style.display = 'inline-block';
+          managerApproveBtn.style.display = 'inline-block';
         }
         reader.readAsDataURL(file);
-        uploadOptions.classList.add('hidden');
       }
     });
 
@@ -159,7 +182,7 @@
     function simulateManagerApproval() {
       imagePreviewSection.classList.add('hidden');
       paymentSection.classList.remove('hidden');
-      document.getElementById('managerApproveBtn').style.display = 'none';
+      managerApproveBtn.style.display = 'none';
     }
 
     // پرداخت ایرانی
@@ -187,4 +210,3 @@
 
 </body>
 </html>
-
