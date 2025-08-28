@@ -1,196 +1,190 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ویزا درخواست</title>
-<style>
-  body {
-    font-family: 'Arial', sans-serif;
-    background: #f9f9f9;
-    padding: 20px;
-    text-align: center;
-  }
-  button {
-    font-size: 20px;
-    padding: 15px 30px;
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 8px;
-  }
-  #uploadOptions button {
-    width: 220px;
-  }
-  #paymentOptions button {
-    width: 240px;
-  }
-  input[type="file"] {
-    display: none;
-  }
-  #uploadedImage {
-    max-width: 80%;
-    margin: 15px 0;
-    border: 2px solid #333;
-    border-radius: 10px;
-  }
-  #confirmSection, #paymentSection, #whatsappSection {
-    margin-top: 30px;
-  }
-  .hidden {
-    display: none;
-  }
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-    border: none;
-  }
-  .btn-success {
-    background-color: #28a745;
-    color: white;
-    border: none;
-  }
-  .btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-  }
-  .btn-warning {
-    background-color: #ffc107;
-    color: #333;
-    border: none;
-  }
-  a.whatsapp-link {
-    display: inline-block;
-    background-color: #25D366;
-    color: white;
-    padding: 15px 25px;
-    font-size: 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    margin-top: 20px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ویزا درخواست</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+    }
+    button {
+      font-size: 20px;
+      padding: 15px 30px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    #uploadOptions button {
+      width: 220px;
+    }
+    #paymentOptions button {
+      width: 240px;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    #uploadedImage {
+      max-width: 80%;
+      margin: 15px 0;
+      border: 2px solid #333;
+      border-radius: 10px;
+    }
+    #confirmSection, #paymentSection, #whatsappSection {
+      margin-top: 30px;
+    }
+    .hidden {
+      display: none;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      border: none;
+    }
+    .btn-success {
+      background-color: #28a745;
+      color: white;
+      border: none;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+    }
+    .btn-warning {
+      background-color: #ffc107;
+      color: #333;
+      border: none;
+    }
+    a.whatsapp-link {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 15px 25px;
+      font-size: 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
 
-<h1>اگر آپ ایران کا ویزا لینا چاہتے ہیں، تو اپنے پاسپورٹ کی تصویر اپلوڈ کریں</h1>
+  <h1>اگر آپ ایران کا ویزا لینا چاہتے ہیں، تو اپنے پاسپورٹ کی تصویر اپلوڈ کریں</h1>
 
-<button id="uploadBtn" class="btn-primary" style="font-size:28px; padding:20px 40px;">ویزا کے لیے درخواست دیں</button>
+  <button id="uploadBtn" class="btn-primary" style="font-size:28px; padding:20px 40px;">ویزا کے لیے درخواست دیں</button>
 
-<div id="uploadOptions" class="hidden">
-  <!-- فقط دکمه دوربین باقی مانده -->
-  <button id="cameraBtn" class="btn-warning">کیمرہ سے تصویر لیں</button>
-  <input type="file" id="fileInput" accept="image/*" />
-</div>
-
-<div id="imagePreviewSection" class="hidden">
-  <h3>اپلوڈ شدہ تصویر</h3>
-  <img id="uploadedImage" src="" alt="Uploaded Passport Image" />
-  <div id="confirmSection">
-    <p>براہ کرم اس تصویر کی تصدیق کریں تاکہ صارف اگلے مرحلے میں جائے</p>
-    <button id="approveBtn" class="btn-success">تصویر منظور کریں</button>
-    <button id="rejectBtn" class="btn-danger">تصویر مسترد کریں</button>
+  <div id="uploadOptions" class="hidden">
+    <!-- فقط دکمه دوربین باقی مانده -->
+    <button id="cameraBtn" class="btn-warning">کیمرہ سے تصویر لیں</button>
+    <input type="file" id="fileInput" accept="image/*" />
   </div>
-</div>
 
-<div id="paymentSection" class="hidden">
-  <h3>ادائیگی کے لیے طریقہ منتخب کریں</h3>
-  <div id="paymentOptions">
-    <button id="iranPayBtn" class="btn-primary">ایرانی درگاه - تومان میں ادائیگی</button>
-    <button id="pakistanPayBtn" class="btn-primary">پاکستانی درگاه - روپیہ میں ادائیگی</button>
+  <div id="imagePreviewSection" class="hidden">
+    <h3>اپلوڈ شدہ تصویر</h3>
+    <img id="uploadedImage" src="" alt="Uploaded Passport Image" />
+    <div id="confirmSection">
+      <p style="font-size: 18px; color: #555;">تصویر اپلوڈ ہو گئی ہے۔ براہ کرم منتظر رہیں، منتظم تصویر کی تصدیق کرے گا۔</p>
+    </div>
   </div>
-</div>
 
-<div id="paymentProcessingSection" class="hidden">
-  <p>ادائیگی جاری ہے، براہ کرم انتظار کریں...</p>
-</div>
+  <div id="paymentSection" class="hidden">
+    <h3>ادائیگی کے لیے طریقہ منتخب کریں</h3>
+    <div id="paymentOptions">
+      <button id="iranPayBtn" class="btn-primary">ایرانی درگاه - تومان میں ادائیگی</button>
+      <button id="pakistanPayBtn" class="btn-primary">پاکستانی درگاه - روپیہ میں ادائیگی</button>
+    </div>
+  </div>
 
-<div id="whatsappSection" class="hidden">
-  <p>ادائیگی مکمل ہو گئی ہے۔ پیروی کے لیے نیچے دیے گئے نمبر پر رابطہ کریں:</p>
-  <p><strong>+989302844084</strong></p>
-  <a href="https://wa.me/989302844084" target="_blank" class="whatsapp-link">
-    واٹس ایپ کے ذریعے پیروی کے لیے یہاں کلک کریں
-  </a>
-</div>
+  <div id="paymentProcessingSection" class="hidden">
+    <p>ادائیگی جاری ہے، براہ کرم انتظار کریں...</p>
+  </div>
 
-<script>
-  const uploadBtn = document.getElementById('uploadBtn');
-  const uploadOptions = document.getElementById('uploadOptions');
-  const cameraBtn = document.getElementById('cameraBtn');
-  const fileInput = document.getElementById('fileInput');
-  const imagePreviewSection = document.getElementById('imagePreviewSection');
-  const uploadedImage = document.getElementById('uploadedImage');
-  const confirmSection = document.getElementById('confirmSection');
-  const approveBtn = document.getElementById('approveBtn');
-  const rejectBtn = document.getElementById('rejectBtn');
-  const paymentSection = document.getElementById('paymentSection');
-  const iranPayBtn = document.getElementById('iranPayBtn');
-  const pakistanPayBtn = document.getElementById('pakistanPayBtn');
-  const paymentProcessingSection = document.getElementById('paymentProcessingSection');
-  const whatsappSection = document.getElementById('whatsappSection');
+  <div id="whatsappSection" class="hidden">
+    <p>ادائیگی مکمل ہو گئی ہے۔ پیروی کے لیے نیچے دیے گئے نمبر پر رابطہ کریں:</p>
+    <p><strong>+989302844084</strong></p>
+    <a href="https://wa.me/989302844084" target="_blank" class="whatsapp-link">
+      واٹس ایپ کے ذریعے پیروی کے لیے یہاں کلک کریں
+    </a>
+  </div>
 
-  // مرحله اول: نمایش گزینه آپلود
-  uploadBtn.addEventListener('click', () => {
-    uploadOptions.classList.remove('hidden');
-  });
+  <!-- دکمه تست برای تایید توسط مدیر -->
+  <button onclick="simulateManagerApproval()" style="display:none;" id="managerApproveBtn">مدیر تصویب</button>
 
-  // باز کردن دوربین برای گرفتن عکس مستقیم
-  cameraBtn.addEventListener('click', () => {
-    fileInput.capture = 'environment';
-    fileInput.click();
-  });
+  <script>
+    const uploadBtn = document.getElementById('uploadBtn');
+    const uploadOptions = document.getElementById('uploadOptions');
+    const cameraBtn = document.getElementById('cameraBtn');
+    const fileInput = document.getElementById('fileInput');
+    const imagePreviewSection = document.getElementById('imagePreviewSection');
+    const uploadedImage = document.getElementById('uploadedImage');
+    const paymentSection = document.getElementById('paymentSection');
+    const iranPayBtn = document.getElementById('iranPayBtn');
+    const pakistanPayBtn = document.getElementById('pakistanPayBtn');
+    const paymentProcessingSection = document.getElementById('paymentProcessingSection');
+    const whatsappSection = document.getElementById('whatsappSection');
 
-  // بعد از انتخاب عکس
-  fileInput.addEventListener('change', () => {
-    if (fileInput.files.length > 0) {
-      const file = fileInput.files[0];
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        uploadedImage.src = e.target.result;
-        imagePreviewSection.classList.remove('hidden');
+    // مرحله اول: نمایش گزینه آپلود
+    uploadBtn.addEventListener('click', () => {
+      uploadOptions.classList.remove('hidden');
+    });
+
+    // باز کردن دوربین برای گرفتن عکس مستقیم
+    cameraBtn.addEventListener('click', () => {
+      fileInput.capture = 'environment';
+      fileInput.click();
+    });
+
+    // بعد از انتخاب عکس
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          uploadedImage.src = e.target.result;
+          imagePreviewSection.classList.remove('hidden');
+
+          // نمایش دکمه تایید برای مدیر (برای تست)
+          document.getElementById('managerApproveBtn').style.display = 'inline-block';
+        }
+        reader.readAsDataURL(file);
+        uploadOptions.classList.add('hidden');
       }
-      reader.readAsDataURL(file);
+    });
 
-      uploadOptions.classList.add('hidden');
+    // شبیه‌سازی تأیید توسط مدیر
+    function simulateManagerApproval() {
+      imagePreviewSection.classList.add('hidden');
+      paymentSection.classList.remove('hidden');
+      document.getElementById('managerApproveBtn').style.display = 'none';
     }
-  });
 
-  // تایید عکس
-  approveBtn.addEventListener('click', () => {
-    imagePreviewSection.classList.add('hidden');
-    paymentSection.classList.remove('hidden');
-  });
+    // پرداخت ایرانی
+    iranPayBtn.addEventListener('click', () => {
+      paymentSection.classList.add('hidden');
+      paymentProcessingSection.classList.remove('hidden');
+      setTimeout(() => {
+        paymentProcessingSection.classList.add('hidden');
+        whatsappSection.classList.remove('hidden');
+        alert('ادائیگی ایرانی با کامیابی مکمل ہوئی!');
+      }, 3000);
+    });
 
-  // رد عکس
-  rejectBtn.addEventListener('click', () => {
-    uploadedImage.src = '';
-    fileInput.value = '';
-    imagePreviewSection.classList.add('hidden');
-    uploadOptions.classList.remove('hidden');
-  });
-
-  // پرداخت ایرانی
-  iranPayBtn.addEventListener('click', () => {
-    paymentSection.classList.add('hidden');
-    paymentProcessingSection.classList.remove('hidden');
-    setTimeout(() => {
-      paymentProcessingSection.classList.add('hidden');
-      whatsappSection.classList.remove('hidden');
-      alert('ادائیگی ایرانی با کامیابی مکمل ہوئی!');
-    }, 3000);
-  });
-
-  // پرداخت پاکستانی
-  pakistanPayBtn.addEventListener('click', () => {
-    paymentSection.classList.add('hidden');
-    paymentProcessingSection.classList.remove('hidden');
-    setTimeout(() => {
-      paymentProcessingSection.classList.add('hidden');
-      whatsappSection.classList.remove('hidden');
-      alert('ادائیگی پاکستانی با کامیابی مکمل ہوئی!');
-    }, 3000);
-  });
-</script>
+    // پرداخت پاکستانی
+    pakistanPayBtn.addEventListener('click', () => {
+      paymentSection.classList.add('hidden');
+      paymentProcessingSection.classList.remove('hidden');
+      setTimeout(() => {
+        paymentProcessingSection.classList.add('hidden');
+        whatsappSection.classList.remove('hidden');
+        alert('ادائیگی پاکستانی با کامیابی مکمل ہوئی!');
+      }, 3000);
+    });
+  </script>
 
 </body>
 </html>
+
