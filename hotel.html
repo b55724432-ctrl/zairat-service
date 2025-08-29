@@ -6,8 +6,8 @@
   <title>ہوٹل بکنگ</title>
   <style>
     body {
-      font-family: "Tahoma", sans-serif;
-      background: #f5f6fa;
+      font-family: Tahoma, sans-serif;
+      background: #f5f5f5;
       margin: 0;
       padding: 0;
       text-align: center;
@@ -22,18 +22,35 @@
     }
 
     .card {
-      background: white;
-      width: 320px;
+      width: 340px;
       margin: 20px auto;
       padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      background: url('https://i.postimg.cc/kMT4CZkB/91700-1.webp') no-repeat center center/cover;
+    }
+
+    /* لایه تاریک روی عکس برای خوانایی متن */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      border-radius: 15px;
+    }
+
+    .card h3, .card .stars, .card .price, .card button {
+      position: relative;
+      z-index: 1;
     }
 
     .card h3 {
       margin: 10px 0;
-      color: #2c3e50;
+      font-size: 22px;
     }
 
     .stars {
@@ -44,7 +61,6 @@
 
     .price {
       font-size: 18px;
-      color: green;
       margin: 8px 0;
     }
 
@@ -62,12 +78,6 @@
     .card button:hover {
       background: #2980b9;
     }
-
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 12px;
-    }
   </style>
 </head>
 <body>
@@ -79,16 +89,6 @@
     <div class="stars">★★★</div>
     <p class="price">فی رات 90$</p>
     <button>Book Now</button>
-    <!-- تصویر آخر میں -->
-    <img src="https://i.postimg.cc/3J5N3w7M/tashrifat-hotel.jpg" alt="Hotel Tashrifat">
-  </div>
-
-  <div class="card">
-    <h3>ہوٹل مثال</h3>
-    <div class="stars">★★★★</div>
-    <p class="price">فی رات 120$</p>
-    <button>Book Now</button>
-    <img src="https://i.postimg.cc/yNB7f6yF/sample-hotel.jpg" alt="Hotel Example">
   </div>
 
 </body>
