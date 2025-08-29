@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="ur">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>زیارت سروس</title>
   <style>
-    /* 🎨 استایل عمومی */
+    /* 🎨 ریست و فونت */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: "Segoe UI", Tahoma, sans-serif;
     }
+
     body {
       direction: rtl;
-      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
       color: #fff;
-      line-height: 1.7;
-      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #f39c12, #8e44ad);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     /* 🔝 هدر */
     header {
-      background: #111827;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
       color: #fff;
-      padding: 15px 30px;
+      padding: 15px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -32,160 +43,98 @@
       top: 0;
       z-index: 1000;
     }
+
     .logo {
-      font-size: 22px;
+      font-size: 26px;
       font-weight: bold;
-      background: #ffd700;
-      color: #111;
-      padding: 8px 14px;
-      border-radius: 10px;
+      color: #ffd700;
+      letter-spacing: 1px;
     }
-    nav {
-      display: flex;
-      gap: 20px;
-    }
+
     nav a {
+      margin: 0 15px;
       text-decoration: none;
       color: #fff;
       font-size: 16px;
       transition: 0.3s;
     }
+
     nav a:hover {
       color: #ffd700;
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 4px;
     }
 
-    /* 📱 منوی همبرگری */
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #111827;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 15px;
-        border-radius: 8px;
-      }
-      nav.active {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-    }
-
-    /* 📦 بخش هیرو */
-    .hero {
+    /* 🏠 بخش اصلی */
+    .main {
+      flex: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
       padding: 80px 20px;
     }
-    .hero-box {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
-      padding: 40px 25px;
-      max-width: 700px;
-      text-align: center;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.3);
-      animation: slideUp 1.5s forwards;
-    }
-    .hero-box h1 {
-      font-size: 28px;
-      margin-bottom: 15px;
-      color: #ffd700;
-    }
-    .hero-box p {
-      font-size: 16px;
-      margin-bottom: 30px;
-      color: #eee;
+
+    .main h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 0px 3px 10px rgba(0,0,0,0.4);
+      animation: fadeInDown 2s ease;
     }
 
-    /* 🎯 دکمه‌ها */
+    .main p {
+      font-size: 18px;
+      margin-bottom: 50px;
+      color: #f1f1f1;
+      animation: fadeInUp 2s ease;
+    }
+
+    @keyframes fadeInDown {
+      0% {opacity: 0; transform: translateY(-30px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      0% {opacity: 0; transform: translateY(30px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    /* 🔘 دکمه‌ها */
     .buttons {
       display: flex;
-      justify-content: center;
-      gap: 15px;
       flex-wrap: wrap;
-    }
-    .btn {
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 16px;
-      transition: 0.3s;
-      font-weight: bold;
-    }
-    .btn-primary {
-      background: #ffd700;
-      color: #111;
-    }
-    .btn-primary:hover {
-      background: #e6c200;
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.25);
+      justify-content: center;
+      gap: 25px;
     }
 
-    /* 📦 بخش خدمات */
-    .services {
-      padding: 60px 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    .btn {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 18px 40px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.4s ease;
+      backdrop-filter: blur(6px);
     }
-    .service-card {
-      background: rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 25px;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      transform: translateY(30px);
-      opacity: 0;
-      transition: 0.6s;
-    }
-    .service-card.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    .service-card h3 {
-      color: #ffd700;
-      margin-bottom: 10px;
+
+    .btn:hover {
+      background: #ffd700;
+      color: #2c3e50;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.5);
     }
 
     /* ⚓ فوتر */
     footer {
-      background: #111827;
-      color: white;
+      background: rgba(0, 0, 0, 0.7);
       text-align: center;
       padding: 20px;
-      margin-top: 40px;
       font-size: 14px;
-    }
-
-    /* ✨ انیمیشن‌ها */
-    @keyframes slideUp {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      margin-top: auto;
     }
   </style>
 </head>
@@ -193,64 +142,33 @@
 
   <!-- ====== هدر ====== -->
   <header>
-    <div class="logo">ZS</div>
-    <div class="title">زیارت سروس</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="logo">🌍 زیارت سروس</div>
     <nav>
-      <a href="index.html">🏠 خانه</a>
-      <a href="visa.html">📑 ویزا</a>
-      <a href="hotel.html">🏨 هتل</a>
-      <a href="transport.html">🚌 ترانسپورت</a>
-      <a href="food.html">🍴 غذا</a>
+      <a href="index.html" class="active">🏠 ہوم</a>
+      <a href="visa.html">📑 ویزہ</a>
+      <a href="hotel.html">🏨 ہوٹل</a>
+      <a href="transport.html">🚌 ٹرانسپورٹ</a>
+      <a href="food.html">🍴 کھانے</a>
     </nav>
   </header>
 
   <!-- ====== بخش اصلی ====== -->
-  <section class="hero">
-    <div class="hero-box">
-      <h1>بهترین خدمات زیارتی ایران و عراق</h1>
-      <p>
-        ویزا، هتل، ترانسپورت و غذا – همه در یک مکان.  
-        کیفیتی بی‌نظیر، سرعت بالا و قیمت عادلانه برای زائرین محترم.
-      </p>
-      <div class="buttons">
-        <a href="visa.html" class="btn btn-primary">📑 درخواست ویزا</a>
-        <a href="hotel.html" class="btn btn-secondary">🏨 رزرو هتل</a>
-      </div>
-    </div>
-  </section>
+  <main class="main">
+    <h1>خوش آمدید زیارت سروس میں</h1>
+    <p>اپنی زیارت کے لئے بہترین سہولیات منتخب کریں:</p>
 
-  <!-- ====== بخش خدمات ====== -->
-  <section class="services">
-    <div class="service-card"><h3>📑 ویزا</h3><p>سریع و مطمئن.</p></div>
-    <div class="service-card"><h3>🏨 هتل</h3><p>اقامت راحت و امن.</p></div>
-    <div class="service-card"><h3>🚌 ترانسپورت</h3><p>حمل‌ونقل آسان.</p></div>
-    <div class="service-card"><h3>🍴 غذا</h3><p>غذای سالم و متنوع.</p></div>
-  </section>
+    <div class="buttons">
+      <a href="visa.html" class="btn">📑 ویزہ</a>
+      <a href="hotel.html" class="btn">🏨 ہوٹل</a>
+      <a href="transport.html" class="btn">🚌 ٹرانسپورٹ</a>
+      <a href="food.html" class="btn">🍴 کھانے</a>
+    </div>
+  </main>
 
   <!-- ====== فوتر ====== -->
   <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ است</p>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
 
-  <!-- 📜 اسکریپت -->
-  <script>
-    // منوی موبایل
-    function toggleMenu() {
-      document.querySelector("nav").classList.toggle("active");
-    }
-
-    // انیمیشن کارت‌ها هنگام اسکرول
-    const cards = document.querySelectorAll(".service-card");
-    window.addEventListener("scroll", () => {
-      const triggerBottom = window.innerHeight * 0.9;
-      cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        if(cardTop < triggerBottom) {
-          card.classList.add("show");
-        }
-      });
-    });
-  </script>
 </body>
 </html>
