@@ -1,59 +1,102 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ویزا - زیارت سروس</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ویزای زیارتی</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 10px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #388E3C;
+    }
+    .content-box {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: right;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .content-box h2 {
+      color: #4CAF50;
+    }
+    .btn-whatsapp {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #25D366;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5d;
+    }
+  </style>
 </head>
 <body>
+  <h1>📑 خدمات ویزا</h1>
 
-  <!-- هدر -->
-  <header>
-    <div class="overlay">
-      <h1>ویزا خدمات</h1>
-      <p>ہم آپ کے لئے بہترین ویزا سروس فراہم کرتے ہیں</p>
-    </div>
-  </header>
+  <!-- دکمه‌ها -->
+  <button class="btn" onclick="showContent('iran')">📄 مدارک لازم ویزای ایران</button>
+  <button class="btn" onclick="showContent('iraq')">📄 مدارک لازم ویزای عراق</button>
 
-  <!-- محتوا -->
-  <main>
-    <section class="content">
-      <h2>ویزا درخواست</h2>
-      <p>
-        برائے مہربانی ویزا حاصل کرنے کے لئے ہمیں واٹس ایپ پر پیغام دیں:
-        <br>
-        <strong><a href="https://wa.me/989302844084" target="_blank">+989302844084</a></strong>
-      </p>
-    </section>
-  </main>
+  <!-- جعبه اطلاعات ایران -->
+  <div id="iran" class="content-box">
+    <h2>مدارک لازم برای ویزای ایران</h2>
+    <ul>
+      <li>پاسپورت معتبر (حداقل ۶ ماه اعتبار)</li>
+      <li>یک قطعه عکس پرسنلی</li>
+      <li>فرم تکمیل شده درخواست</li>
+    </ul>
+    <p><strong>⏱ زمان صدور:</strong> ۵ تا ۱۰ روز</p>
+    <a href="https://wa.me/989302844084" class="btn-whatsapp">ارسال مدارک از طریق واتساپ</a>
+  </div>
 
-  <!-- فوتر -->
-  <footer>
-    © 2025 زیارت سروس - تمام حقوق محفوظ ہیں
-  </footer>
+  <!-- جعبه اطلاعات عراق -->
+  <div id="iraq" class="content-box">
+    <h2>مدارک لازم برای ویزای عراق</h2>
+    <ul>
+      <li>پاسپورت با حداقل ۶ ماه اعتبار</li>
+      <li>۲ قطعه عکس پرسنلی</li>
+      <li>فرم مشخصات تکمیل شده</li>
+    </ul>
+    <p><strong>⏱ زمان صدور:</strong> ۳ تا ۷ روز</p>
+    <a href="https://wa.me/989302844084" class="btn-whatsapp">ارسال مدارک از طریق واتساپ</a>
+  </div>
 
+  <script>
+    function showContent(id) {
+      document.querySelectorAll('.content-box').forEach(box => {
+        box.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
-<div class="container">
-  <h2>📌 مدارک لازم برای ویزای عراق</h2>
-  <ul>
-    <li>پاسپورت با حداقل ۶ ماه اعتبار</li>
-    <li>۲ قطعه عکس پرسنلی</li>
-    <li>تکمیل فرم مشخصات (نام، تاریخ تولد، شماره تماس)</li>
-  </ul>
-  <p><strong>⏱ مدت زمان صدور:</strong> ۳ تا ۷ روز</p>
-  <a href="https://wa.me/989302844084" class="btn">ارسال مدارک از طریق واتساپ</a>
-</div>
-
-<div class="container">
-  <h2>📌 مدارک لازم برای ویزای ایران</h2>
-  <ul>
-    <li>پاسپورت معتبر</li>
-    <li>یک قطعه عکس پرسنلی</li>
-    <li>فرم درخواست</li>
-  </ul>
-  <p><strong>⏱ مدت زمان صدور:</strong> ۵ تا ۱۰ روز</p>
-  <a href="https://wa.me/989302844084" class="btn">درخواست ویزای ایران از طریق واتساپ</a>
-</div>
