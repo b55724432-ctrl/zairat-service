@@ -1,241 +1,138 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>زیارت سروس - ایران و عراق ویزا اور ہوٹل بکنگ</title>
-  <meta name="description" content="زیارت سروس - آن لائن ویزا (ایران و عراق) اور ہوٹل بکنگ۔ پاسپورٹ اپلوڈ کریں اور درخواست دیں۔ تیز، آسان اور محفوظ۔">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>زیارت سرویس</title>
   <style>
-    * {
-      box-sizing: border-box;
+    /* استایل عمومی */
+    body {
+      font-family: "Tahoma", Arial, sans-serif;
+      background: #f5f6fa;
       margin: 0;
       padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f8fa;
       color: #333;
-      line-height: 1.6;
       direction: rtl;
-      text-align: right;
     }
+
+    /* نوار بالا */
     header {
-      background-color: #007bff;
-      color: white;
-      padding: 15px 30px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: #007bff;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
     }
-    header h1 {
-      margin: 0;
-      font-weight: 700;
-      font-size: 28px;
+    header nav {
+      margin-top: 10px;
     }
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
+    header nav a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
-      padding: 8px 12px;
+      margin: 0 10px;
+      font-weight: bold;
+      padding: 6px 10px;
       border-radius: 5px;
-      transition: background-color 0.3s;
     }
-    nav a:hover {
-      background-color: #0056b3;
+    header nav a:hover {
+      background: #0056b3;
     }
-    main {
-      max-width: 900px;
+
+    /* بخش اصلی */
+    .container {
+      max-width: 700px;
       margin: 30px auto;
-      padding: 0 20px;
-    }
-    .hero {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
-      margin-bottom: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
     }
-    .hero h2 {
-      font-size: 30px;
-      margin-bottom: 15px;
-      color: #222;
-    }
-    .hero p {
-      font-size: 20px;
-      line-height: 1.6;
-      color: #444;
-    }
-    .primary-btn {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 14px 25px;
-      border-radius: 7px;
-      font-size: 18px;
-      cursor: pointer;
-      margin-top: 20px;
-      margin-right: 10px;
-      transition: background-color 0.3s;
-      display: inline-block;
-    }
-    .primary-btn:hover {
-      background-color: #0056b3;
-    }
-    #visaForm {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
-      margin-bottom: 50px;
-      display: none;
-    }
-    #visaForm h3 {
+    .container h1 {
       font-size: 26px;
-      margin-bottom: 20px;
-      color: #222;
+      margin-bottom: 15px;
     }
-    #visaForm label {
-      font-weight: bold;
-    }
-    #visaForm input, #visaForm textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0 15px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    #uploadedImage {
-      max-width: 100%;
-      margin: 10px 0;
-      border-radius: 10px;
-      border: 2px solid #007bff;
-      display: none;
-    }
-    #uploadStatus {
-      margin-top: 10px;
-      font-size: 16px;
-      font-weight: bold;
+    .container p {
+      font-size: 18px;
       color: #444;
+      line-height: 1.6;
     }
-    progress {
+
+    /* دکمه‌ها */
+    .btn {
+      display: block;
       width: 100%;
-      height: 20px;
-      border-radius: 10px;
-      margin: 15px 0;
-      display: none;
+      max-width: 250px;
+      margin: 15px auto;
+      padding: 12px;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: 0.3s;
     }
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    /* پاورقی */
     footer {
-      background-color: #eee;
+      background: #eee;
       color: #555;
       text-align: center;
-      padding: 20px 10px;
+      padding: 15px;
+      margin-top: 40px;
       font-size: 14px;
-      border-top: 1px solid #ccc;
     }
+
+    /* ریسپانسیو برای گوشی */
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+      .container {
+        margin: 15px;
+        padding: 15px;
       }
-      nav {
-        flex-wrap: wrap;
+      .container h1 {
+        font-size: 22px;
+      }
+      .container p {
+        font-size: 16px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- نوار بالا -->
   <header>
-    <h1>زیارت سروس</h1>
+    <h2>زیارت سرویس</h2>
     <nav>
-      <a href="#home">ہوم</a>
-      <a href="#visaFormSection" id="navVisaLink">ویزہ درخواست</a>
-      <a href="#contact">رابطہ کریں</a>
+      <a href="index.html">خانه</a>
+      <a href="visa.html">درخواست ویزا</a>
+      <a href="contact.html">تماس با ما</a>
     </nav>
   </header>
 
+  <!-- محتوای اصلی -->
   <main>
-    <section id="home" class="hero">
-      <h2>خوش آمدید!</h2>
-      <p>ایران یا عراق کا ویزا اور ہوٹل بکنگ ایک ہی جگہ سے۔ صرف پاسپورٹ اپلوڈ کریں اور درخواست دیں۔</p>
-      <button class="primary-btn" id="startVisaBtn">ویزا کے لیے درخواست دیں</button>
-      <button class="primary-btn" id="startHotelBtn">ہوٹل بکنگ</button>
-    </section>
-
-    <section id="visaFormSection">
-      <form id="visaForm" action="https://formspree.io/f/xrbaeqvw" method="POST" enctype="multipart/form-data">
-        <h3>ویزا / ہوٹل درخواست فارم</h3>
-
-        <label>نام مکمل:</label>
-        <input type="text" name="name" required>
-
-        <label>ای میل:</label>
-        <input type="email" name="email" required>
-
-        <label>فون نمبر:</label>
-        <input type="text" name="phone" required>
-
-        <label>پاسپورٹ اپلوڈ کریں:</label>
-        <input type="file" name="passport" id="passportInput" accept="image/*,.pdf" required>
-        <progress id="uploadProgress" value="0" max="100"></progress>
-        <img id="uploadedImage" alt="Passport Preview">
-        <div id="uploadStatus"></div>
-
-        <label>پیغام / تفصیل:</label>
-        <textarea name="message" rows="5"></textarea>
-
-        <button type="submit" class="primary-btn">جمع کروائیں</button>
-      </form>
-    </section>
+    <div class="container">
+      <h1>خوش آمدید!</h1>
+      <p>
+        ایران یا عراق کا ویزا اور ہوٹل بکنگ ایک ہی جگہ سے۔  
+        صرف پاسپورٹ اپلوڈ کریں اور درخواست دیں۔
+      </p>
+      <a href="visa.html" class="btn">درخواست ویزا</a>
+      <a href="hotel.html" class="btn">رزرو هتل</a>
+    </div>
   </main>
 
+  <!-- پاورقی -->
   <footer>
-    <p>© 2025 زیارت سروس۔ تمام حقوق محفوظ ہیں۔</p>
+    © 2025 زیارت سرویس - تمامی حقوق محفوظ ہیں
   </footer>
-
-  <script>
-    // فارم دکھانا
-    document.getElementById("startVisaBtn").addEventListener("click", () => {
-      document.getElementById("visaForm").style.display = "block";
-      document.getElementById("visaForm").scrollIntoView({ behavior: "smooth" });
-    });
-
-    // پاسپورٹ preview
-    const passportInput = document.getElementById("passportInput");
-    const uploadedImage = document.getElementById("uploadedImage");
-    const uploadProgress = document.getElementById("uploadProgress");
-    const uploadStatus = document.getElementById("uploadStatus");
-
-    passportInput.addEventListener("change", () => {
-      const file = passportInput.files[0];
-      if (file) {
-        if (file.type.startsWith("image/")) {
-          const reader = new FileReader();
-          reader.onload = e => {
-            uploadedImage.src = e.target.result;
-            uploadedImage.style.display = "block";
-          };
-          reader.readAsDataURL(file);
-        } else {
-          uploadedImage.style.display = "none";
-        }
-        uploadProgress.style.display = "block";
-        uploadProgress.value = 100;
-        uploadStatus.innerText = "فائل اپلوڈ ہو گئی ✅";
-      }
-    });
-  </script>
 
 </body>
 </html>
