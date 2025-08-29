@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>زیارت سروس</title>
   <style>
-    /* 🎨 ریست */
+    /* 🎨 ریست و فونت */
     * {
       margin: 0;
       padding: 0;
@@ -15,15 +15,25 @@
 
     body {
       direction: rtl;
-      background: #f0f2f5;
-      color: #333;
-      line-height: 1.7;
-      overflow-x: hidden;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #f39c12, #8e44ad);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     /* 🔝 هدر */
     header {
-      background: linear-gradient(135deg, #2c3e50, #1a252f);
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
       color: #fff;
       padding: 15px 40px;
       display: flex;
@@ -32,14 +42,13 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .logo {
       font-size: 26px;
       font-weight: bold;
       color: #ffd700;
-      animation: glow 2s infinite alternate;
+      letter-spacing: 1px;
     }
 
     nav a {
@@ -48,150 +57,84 @@
       color: #fff;
       font-size: 16px;
       transition: 0.3s;
-      position: relative;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #ffd700;
-      transition: 0.3s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
     }
 
     nav a:hover {
       color: #ffd700;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #ffd700; }
-      to { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffea00; }
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 4px;
     }
 
     /* 🏠 بخش اصلی */
     .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 80px 20px;
-      background: linear-gradient(to right, #f9fafc, #e6ebf0);
-      animation: fadeIn 1.5s ease-in;
     }
 
     .main h1 {
-      font-size: 38px;
+      font-size: 42px;
       margin-bottom: 20px;
-      color: #2c3e50;
-      animation: slideDown 1.2s ease;
+      color: #fff;
+      text-shadow: 0px 3px 10px rgba(0,0,0,0.4);
+      animation: fadeInDown 2s ease;
     }
 
     .main p {
       font-size: 18px;
-      margin-bottom: 40px;
-      color: #555;
-      animation: fadeIn 2s ease-in;
+      margin-bottom: 50px;
+      color: #f1f1f1;
+      animation: fadeInUp 2s ease;
     }
 
-    /* 🎁 کارت‌های انتخاب */
+    @keyframes fadeInDown {
+      0% {opacity: 0; transform: translateY(-30px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      0% {opacity: 0; transform: translateY(30px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    /* 🔘 دکمه‌ها */
     .buttons {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 25px;
     }
 
     .btn {
-      background: #2c3e50;
-      color: white;
-      padding: 20px 35px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 18px 40px;
       border-radius: 15px;
       text-decoration: none;
       font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
     }
 
     .btn:hover {
       background: #ffd700;
       color: #2c3e50;
-      transform: scale(1.1);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
-
-    /* 📦 سکشن کادر */
-    .box-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      padding: 60px 10%;
-    }
-
-    .box {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: 0.4s ease;
-      animation: fadeInUp 1.2s ease;
-    }
-
-    .box:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    }
-
-    .box h2 {
-      margin-bottom: 15px;
-      color: #2c3e50;
-    }
-
-    .box p {
-      color: #555;
-      font-size: 15px;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.5);
     }
 
     /* ⚓ فوتر */
     footer {
-      background: #2c3e50;
-      color: white;
+      background: rgba(0, 0, 0, 0.7);
       text-align: center;
-      padding: 25px;
-      margin-top: 50px;
+      padding: 20px;
       font-size: 14px;
-      box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
-    }
-
-    /* 🌈 انیمیشن‌ها */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* 📱 ریسپانسیو */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      nav {
-        margin-top: 10px;
-      }
+      margin-top: auto;
     }
   </style>
 </head>
@@ -201,7 +144,7 @@
   <header>
     <div class="logo">🌍 زیارت سروس</div>
     <nav>
-      <a href="index.html">🏠 ہوم</a>
+      <a href="index.html" class="active">🏠 ہوم</a>
       <a href="visa.html">📑 ویزہ</a>
       <a href="hotel.html">🏨 ہوٹل</a>
       <a href="transport.html">🚌 ٹرانسپورٹ</a>
@@ -221,26 +164,6 @@
       <a href="food.html" class="btn">🍴 کھانے</a>
     </div>
   </main>
-
-  <!-- ====== سکشن کارت‌ها ====== -->
-  <section class="box-section">
-    <div class="box">
-      <h2>📑 آسان ویزہ</h2>
-      <p>ہم آپ کو تیز ترین ویزہ سہولت فراہم کرتے ہیں تاکہ آپ سکون سے زیارت پر جائیں۔</p>
-    </div>
-    <div class="box">
-      <h2>🏨 بہترین ہوٹل</h2>
-      <p>آرام دہ اور معیاری ہوٹل کے انتخاب کے ساتھ زیارت کو مزید پر سکون بنائیں۔</p>
-    </div>
-    <div class="box">
-      <h2>🚌 آرام دہ ٹرانسپورٹ</h2>
-      <p>جدید اور محفوظ ٹرانسپورٹ کے ذریعے زیارت کا سفر کریں۔</p>
-    </div>
-    <div class="box">
-      <h2>🍴 لذیذ کھانے</h2>
-      <p>حلال اور معیاری کھانے کی سہولت سے زیارت کو مکمل خوشگوار بنائیں۔</p>
-    </div>
-  </section>
 
   <!-- ====== فوتر ====== -->
   <footer>
