@@ -64,3 +64,20 @@ footer {
   margin-top: 80px;
   font-size: 14px;
 }
+/* Content Section */
+.content {
+  max-width: 700px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.content h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+}
+.content p {
+  font-size: 20px;
+  line-height: 1.8;
+}
