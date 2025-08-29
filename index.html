@@ -5,37 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>زیارت سروس</title>
   <style>
-    /* 🎨 ریست و فونت */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-    }
-
-    body {
-      direction: rtl;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(-45deg, #1e3c72, #2a5298, #f39c12, #8e44ad);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
-
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+    /* 🎨 استایل عمومی */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Tahoma, sans-serif; }
+    body { direction: rtl; background: linear-gradient(to right, #f8f9fa, #eef1f6); color: #333; line-height: 1.7; overflow-x: hidden; }
 
     /* 🔝 هدر */
     header {
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
+      background: #2c3e50;
       color: #fff;
-      padding: 15px 40px;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -43,98 +21,129 @@
       top: 0;
       z-index: 1000;
     }
-
     .logo {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: bold;
       color: #ffd700;
-      letter-spacing: 1px;
+      animation: fadeInDown 1s ease-in-out;
     }
 
-    nav a {
-      margin: 0 15px;
+    /* دکمه منو */
+    .menu-toggle {
+      font-size: 26px;
+      cursor: pointer;
+      display: none;
+      transition: transform 0.3s ease;
+    }
+    .menu-toggle:hover {
+      transform: rotate(90deg);
+    }
+
+    /* لینک‌ها (دسکتاپ) */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
       text-decoration: none;
       color: #fff;
       font-size: 16px;
       transition: 0.3s;
     }
-
-    nav a:hover {
+    nav ul li a:hover {
       color: #ffd700;
-      border-bottom: 2px solid #ffd700;
-      padding-bottom: 4px;
+    }
+
+    /* 📱 منوی موبایل (Slide) */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        background: #2c3e50;
+        width: 250px;
+        height: 100%;
+        transition: right 0.4s ease;
+        padding-top: 60px;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 20px;
+      }
+      nav ul li a {
+        font-size: 18px;
+        display: block;
+      }
+      nav.show { right: 0; }
     }
 
     /* 🏠 بخش اصلی */
     .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      padding: 80px 20px;
+      padding: 100px 20px;
     }
-
     .main h1 {
-      font-size: 42px;
+      font-size: 40px;
       margin-bottom: 20px;
-      color: #fff;
-      text-shadow: 0px 3px 10px rgba(0,0,0,0.4);
-      animation: fadeInDown 2s ease;
+      color: #2c3e50;
+      animation: fadeInUp 1.2s ease-in-out;
     }
-
     .main p {
       font-size: 18px;
-      margin-bottom: 50px;
-      color: #f1f1f1;
-      animation: fadeInUp 2s ease;
+      margin-bottom: 40px;
+      color: #555;
+      animation: fadeIn 2s ease-in-out;
     }
 
-    @keyframes fadeInDown {
-      0% {opacity: 0; transform: translateY(-30px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInUp {
-      0% {opacity: 0; transform: translateY(30px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-
-    /* 🔘 دکمه‌ها */
+    /* دکمه‌ها */
     .buttons {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 25px;
+      flex-wrap: wrap;
+      gap: 20px;
     }
-
     .btn {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 18px 40px;
-      border-radius: 15px;
+      background: #2c3e50;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 18px;
-      color: #fff;
-      font-weight: bold;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      transition: all 0.4s ease;
-      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     }
-
     .btn:hover {
       background: #ffd700;
       color: #2c3e50;
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
     }
 
     /* ⚓ فوتر */
     footer {
-      background: rgba(0, 0, 0, 0.7);
+      background: #2c3e50;
+      color: white;
       text-align: center;
       padding: 20px;
-      font-size: 14px;
-      margin-top: auto;
+      margin-top: 50px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    /* ✨ انیمیشن‌ها */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -143,12 +152,15 @@
   <!-- ====== هدر ====== -->
   <header>
     <div class="logo">🌍 زیارت سروس</div>
-    <nav>
-      <a href="index.html" class="active"> ہـــــــــوم</a>
-      <a href="visa.html"> ویـــــــــزا</a>
-      <a href="hotel.html"> ہـــــوٹــــل</a>
-      <a href="transport.html">🚌 ٹرانـــسپورٹ</a>
-      <a href="food.html">🍴 کــــھــانے</a>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+    <nav id="navbar">
+      <ul>
+        <li><a href="index.html">🏠 ہوم</a></li>
+        <li><a href="visa.html">📑 ویزہ</a></li>
+        <li><a href="hotel.html">🏨 ہوٹل</a></li>
+        <li><a href="transport.html">🚌 ٹرانسپورٹ</a></li>
+        <li><a href="food.html">🍴 کھانے</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -158,9 +170,9 @@
     <p>اپنی زیارت کے لئے بہترین سہولیات منتخب کریں:</p>
 
     <div class="buttons">
-      <a href="visa.html" class="btn"> ویزا</a>
-      <a href="hotel.html" class="btn"> ہوٹل</a>
-      <a href="transport.html" class="btn"> ٹرانسپورٹ</a>
+      <a href="visa.html" class="btn">📑 ویزہ</a>
+      <a href="hotel.html" class="btn">🏨 ہوٹل</a>
+      <a href="transport.html" class="btn">🚌 ٹرانسپورٹ</a>
       <a href="food.html" class="btn">🍴 کھانے</a>
     </div>
   </main>
@@ -169,6 +181,15 @@
   <footer>
     <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
+
+  <!-- 📌 اسکریپت -->
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const navbar = document.getElementById("navbar");
+    toggle.addEventListener("click", () => {
+      navbar.classList.toggle("show");
+    });
+  </script>
 
 </body>
 </html>
