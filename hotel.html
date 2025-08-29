@@ -1,114 +1,43 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ہوٹلز</title>
+  <title>هتل تشریفات</title>
   <style>
     body {
       font-family: "Tahoma", sans-serif;
-      background: #f4f4f9;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 15px;
       text-align: center;
-    }
-
-    header h1 {
+      background: #f8f9fa;
       margin: 0;
-      font-size: 26px;
+      padding: 20px;
     }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 30px;
-    }
-
-    .card {
+    .hotel-card {
       background: white;
+      padding: 20px;
       border-radius: 12px;
-      overflow: hidden;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      transition: transform 0.2s;
+      max-width: 600px;
+      margin: auto;
     }
-
-    .card:hover {
-      transform: scale(1.03);
-    }
-
-    .card img {
+    .hotel-card img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 15px;
     }
-
-    .card-content {
-      padding: 15px;
-      text-align: center;
-    }
-
-    .card-content h3 {
-      margin: 10px 0;
-      font-size: 20px;
+    h2 {
       color: #333;
-    }
-
-    .stars {
-      color: #f1c40f;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-size: 18px;
-      color: #27ae60;
-      margin-bottom: 15px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #2980b9;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #1f5f8b;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>ہوٹل بکنگ</h1>
-  </header>
+  <div class="hotel-card">
+    <h2>هتل تشریفات</h2>
+    <p>هتل تشریفات یکی از بهترین هتل‌های سه ستاره مشهد است که امکانات خوب و موقعیت مناسب دارد.</p>
+    
+    <!-- اینجا لینک مستقیم عکس رو بزار -->
+    <img src="https://i.postimg.cc/XXXXXXX/tashrifat-hotel.png" alt="هتل تشریفات">
+  </div>
 
-  <div class="container">
-
-    <!-- Hotel Tashrifat -->
-    <div class="card">
-      <img src="def460fc-5744-48ad-b6ab-280e626272f7.png" alt="Hotel Tashrifat">
-      <div class="card-content">
-        <h3>ہوٹل تشریفات</h3>
-        <div class="stars">⭐⭐⭐</div>
-        <div class="price">90$ فی رات</div>
-        <a class="btn" href="https://wa.me/989302844084?text=سلام، میں ہوٹل تشریفات بک کرنا چاہتا ہوں">Book Now</a>
-      </div>
-    </div>
-
-    <!-- مثال کے طور پر دوسرا ہوٹل -->
-    <div class="card">
-      <img src="https://picsum.photos/400/200?random=2" alt="Hotel Example">
-      <div class="card-content">
-        <h3>ہوٹل مثال</h3>
-        <div class="stars">⭐⭐⭐⭐</div>
+</body>
+</html>
