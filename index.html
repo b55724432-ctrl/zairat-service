@@ -1,60 +1,68 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="ur" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>زیارت سرویس</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>زیارت سروس</title>
   <style>
     body {
+      font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
       margin: 0;
-      font-family: 'Tahoma', sans-serif;
-      background: linear-gradient(135deg, #007bff, #00c6ff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: #fff;
-    }
-
-    .container {
+      padding: 0;
       text-align: center;
     }
-
-    h1 {
-      margin-bottom: 40px;
-      font-size: 32px;
-      font-weight: bold;
-    }
-
-    .btn {
-      display: block;
-      width: 220px;
-      margin: 15px auto;
-      padding: 15px 25px;
-      font-size: 20px;
-      font-weight: bold;
+    header {
+      background-color: #007bff;
       color: white;
-      background: #0056b3;
-      border: none;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
     }
-
+    main {
+      margin-top: 50px;
+    }
+    .btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 18px 35px;
+      font-size: 22px;
+      border: none;
+      border-radius: 12px;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
     .btn:hover {
-      background: #003f7f;
-      transform: translateY(-3px);
+      background: #0056b3;
+    }
+    footer {
+      margin-top: 50px;
+      background: #eee;
+      padding: 15px;
+      font-size: 14px;
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>زیارت سرویس</h1>
-    <a class="btn" href="visa.html" target="_blank">ویزای زیارت</a>
-    <a class="btn" href="hotel.html" target="_blank">رزرو هتل</a>
-    <a class="btn" href="transport.html" target="_blank">ترانسپورت</a>
-    <a class="btn" href="food.html" target="_blank">خدمات غذا</a>
-  </div>
+
+  <header>
+    زیارت سروس
+  </header>
+
+  <main>
+    <a href="visa.html" class="btn">ویزا</a>
+    <a href="hotel.html" class="btn">ہوٹل</a>
+    <a href="transport.html" class="btn">ٹرانسپورٹ</a>
+    <a href="food.html" class="btn">کھانا</a>
+  </main>
+
+  <footer>
+    © 2025 زیارت سروس - تمام حقوق محفوظ ہیں
+  </footer>
+
 </body>
 </html>
