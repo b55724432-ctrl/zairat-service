@@ -6,7 +6,6 @@
   <title>زیارت سروس - ایران و عراق ویزا اور ہوٹل بکنگ</title>
   <meta name="description" content="زیارت سروس - آن لائن ویزا (ایران و عراق) اور ہوٹل بکنگ۔ پاسپورٹ اپلوڈ کریں اور درخواست دیں۔ تیز، آسان اور محفوظ۔">
   <style>
-    /* Reset */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -92,7 +91,6 @@
     .primary-btn:hover {
       background-color: #0056b3;
     }
-    /* فارم ویزا */
     #visaForm {
       background: white;
       padding: 30px;
@@ -106,18 +104,22 @@
       margin-bottom: 20px;
       color: #222;
     }
-    #visaForm p {
-      font-size: 18px;
-      margin-bottom: 15px;
+    #visaForm label {
+      font-weight: bold;
     }
-    #passportImage {
-      display: none;
+    #visaForm input, #visaForm textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
     #uploadedImage {
       max-width: 100%;
-      margin: 20px 0;
+      margin: 10px 0;
       border-radius: 10px;
       border: 2px solid #007bff;
+      display: none;
     }
     #uploadStatus {
       margin-top: 10px;
@@ -130,6 +132,7 @@
       height: 20px;
       border-radius: 10px;
       margin: 15px 0;
+      display: none;
     }
     footer {
       background-color: #eee;
@@ -139,7 +142,6 @@
       font-size: 14px;
       border-top: 1px solid #ccc;
     }
-    /* ریسپانسیو */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -167,12 +169,73 @@
     <section id="home" class="hero">
       <h2>خوش آمدید!</h2>
       <p>ایران یا عراق کا ویزا اور ہوٹل بکنگ ایک ہی جگہ سے۔ صرف پاسپورٹ اپلوڈ کریں اور درخواست دیں۔</p>
-      
-      <!-- دونوں بٹن ایک جیسے -->
       <button class="primary-btn" id="startVisaBtn">ویزا کے لیے درخواست دیں</button>
       <button class="primary-btn" id="startHotelBtn">ہوٹل بکنگ</button>
     </section>
 
     <section id="visaFormSection">
-      <form id="visaForm" enctype="multipart/form-data">
+      <form id="visaForm" action="https://formspree.io/f/xrbaeqvw" method="POST" enctype="multipart/form-data">
         <h3>ویزا / ہوٹل درخواست فارم</h3>
+
+        <label>نام مکمل:</label>
+        <input type="text" name="name" required>
+
+        <label>ای میل:</label>
+        <input type="email" name="email" required>
+
+        <label>فون نمبر:</label>
+        <input type="text" name="phone" required>
+
+        <label>پاسپورٹ اپلوڈ کریں:</label>
+        <input type="file" name="passport" id="passportInput" accept="image/*,.pdf" required>
+        <progress id="uploadProgress" value="0" max="100"></progress>
+        <img id="uploadedImage" alt="Passport Preview">
+        <div id="uploadStatus"></div>
+
+        <label>پیغام / تفصیل:</label>
+        <textarea name="message" rows="5"></textarea>
+
+        <button type="submit" class="primary-btn">جمع کروائیں</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 زیارت سروس۔ تمام حقوق محفوظ ہیں۔</p>
+  </footer>
+
+  <script>
+    // فارم دکھانا
+    document.getElementById("startVisaBtn").addEventListener("click", () => {
+      document.getElementById("visaForm").style.display = "block";
+      document.getElementById("visaForm").scrollIntoView({ behavior: "smooth" });
+    });
+
+    // پاسپورٹ preview
+    const passportInput = document.getElementById("passportInput");
+    const uploadedImage = document.getElementById("uploadedImage");
+    const uploadProgress = document.getElementById("uploadProgress");
+    const uploadStatus = document.getElementById("uploadStatus");
+
+    passportInput.addEventListener("change", () => {
+      const file = passportInput.files[0];
+      if (file) {
+        if (file.type.startsWith("image/")) {
+          const reader = new FileReader();
+          reader.onload = e => {
+            uploadedImage.src = e.target.result;
+            uploadedImage.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        } else {
+          uploadedImage.style.display = "none";
+        }
+        uploadProgress.style.display = "block";
+        uploadProgress.value = 100;
+        uploadStatus.innerText = "فائل اپلوڈ ہو گئی ✅";
+      }
+    });
+  </script>
+
+</body>
+</html>
