@@ -1,73 +1,66 @@
-/* وارد کردن فونت وزیر از CDN */
-@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
-
+/* فونت */
 body {
-    font-family: 'Vazir', sans-serif;
-    direction: rtl;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
+  font-family: 'Noto Nastaliq Urdu', serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+  text-align: center;
 }
 
+/* هدر با بک‌گراند شیک */
 header {
-    background-color: #2196F3;
-    color: white;
-    padding: 20px;
-    text-align: center;
+  position: relative;
+  height: 50vh;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+header .overlay {
+  text-align: center;
+}
+header h1 {
+  font-size: 48px;
+  margin: 0;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+header p {
+  font-size: 20px;
+  margin-top: 10px;
 }
 
-.booking-form {
-    background-color: white;
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* دکمه‌ها */
+.buttons {
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.btn {
+  padding: 18px 40px;
+  font-size: 22px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.btn:hover {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
-.booking-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.booking-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.booking-form input[type="text"],
-.booking-form input[type="date"],
-.booking-form input[type="time"],
-.booking-form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.booking-form button {
-    width: 100%;
-    background-color: #2196F3;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 7px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.booking-form button:hover {
-    background-color: #0b7dda;
-}
-
+/* فوتر */
 footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #eee;
-    margin-top: 40px;
+  background: #222;
+  color: #aaa;
+  padding: 20px;
+  margin-top: 80px;
+  font-size: 14px;
 }
-
-
