@@ -4,15 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>زیارت سروس</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ریست */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Tahoma', sans-serif;
+      direction: rtl;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #fff;
+    }
+
+    /* ===== هدر ===== */
+    header {
+      background: rgba(0,0,0,0.6);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffd700;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* ===== بخش اصلی ===== */
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('https://i.postimg.cc/kMT4CZkB/91700-1.webp') no-repeat center center/cover;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero h1 {
+      font-size: 40px;
+      z-index: 1;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 25px;
+      z-index: 1;
+    }
+
+    .buttons {
+      z-index: 1;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 30px;
+      background: #ffd700;
+      color: #222;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .btn:hover {
+      background: #fff;
+      color: #000;
+      transform: translateY(-3px);
+    }
+
+    /* ===== فوتر ===== */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ====== هدر ====== -->
-  <header class="header">
+  <!-- ===== هدر ===== -->
+  <header>
     <div class="logo">🌍 زیارت سروس</div>
-    <nav class="navbar">
-      <a href="index.html" class="active">🏠 ہوم</a>
+    <nav>
+      <a href="index.html">🏠 ہوم</a>
       <a href="visa.html">📑 ویزہ</a>
       <a href="hotel.html">🏨 ہوٹل</a>
       <a href="transport.html">🚌 ٹرانسپورٹ</a>
@@ -20,21 +120,20 @@
     </nav>
   </header>
 
-  <!-- ====== بخش اصلی ====== -->
-  <main class="main">
+  <!-- ===== بخش اصلی ===== -->
+  <section class="hero">
     <h1>خوش آمدید زیارت سروس میں</h1>
-    <p>اپنی زیارت کے لئے بہترین سہولیات منتخب کریں:</p>
-
+    <p>اپنی زیارت کے لئے بہترین سہولیات منتخب کریں</p>
     <div class="buttons">
       <a href="visa.html" class="btn">📑 ویزہ</a>
       <a href="hotel.html" class="btn">🏨 ہوٹل</a>
       <a href="transport.html" class="btn">🚌 ٹرانسپورٹ</a>
       <a href="food.html" class="btn">🍴 کھانے</a>
     </div>
-  </main>
+  </section>
 
-  <!-- ====== فوتر ====== -->
-  <footer class="footer">
+  <!-- ===== فوتر ===== -->
+  <footer>
     <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
 
