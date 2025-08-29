@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>زیارت سرویس</title>
+  <title>زیارت سرویس - درخواست ویزای ایران</title>
+  <meta name="description" content="زیارت سرویس - درخواست آنلاین ویزای ایران با آپلود تصویر پاسپورت. سریع، ساده و مطمئن.">
   <style>
-    /* Reset ساده */
+    /* Reset */
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
       background-color: #f5f8fa;
       color: #333;
+      line-height: 1.6;
       direction: rtl;
       text-align: right;
     }
@@ -62,6 +64,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
       margin-bottom: 30px;
+      text-align: center;
     }
     .hero h2 {
       font-size: 30px;
@@ -73,7 +76,7 @@
       line-height: 1.6;
       color: #444;
     }
-    button.primary-btn {
+    .primary-btn {
       background-color: #007bff;
       color: white;
       border: none;
@@ -85,10 +88,10 @@
       transition: background-color 0.3s;
       display: inline-block;
     }
-    button.primary-btn:hover {
+    .primary-btn:hover {
       background-color: #0056b3;
     }
-    /* بخش فرم ویزا */
+    /* فرم ویزا */
     #visaForm {
       background: white;
       padding: 30px;
@@ -106,10 +109,8 @@
       font-size: 18px;
       margin-bottom: 15px;
     }
-    #visaForm input[type="file"] {
-      font-size: 16px;
-      padding: 8px;
-      margin-top: 10px;
+    #passportImage {
+      display: none;
     }
     #uploadedImage {
       max-width: 100%;
@@ -117,7 +118,18 @@
       border-radius: 10px;
       border: 2px solid #007bff;
     }
-    /* فوتر */
+    #uploadStatus {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #444;
+    }
+    progress {
+      width: 100%;
+      height: 20px;
+      border-radius: 10px;
+      margin: 15px 0;
+    }
     footer {
       background-color: #eee;
       color: #555;
@@ -126,8 +138,7 @@
       font-size: 14px;
       border-top: 1px solid #ccc;
     }
-
-    /* ریسپانسیو موبایل */
+    /* ریسپانسیو */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -154,20 +165,26 @@
   <main>
     <section id="home" class="hero">
       <h2>خوش آمدید!</h2>
-      <p>اگر آپ ایران کا ویزا لینا چاہتے ہیں، تو اپنے پاسپورٹ کی تصویر اپلوڈ کریں اور ویزا کے لیے درخواست دیں۔</p>
+      <p>اگر قصد دریافت ویزای ایران را دارید، کافیست تصویر پاسپورت خود را آپلود کرده و درخواست ویزا ثبت کنید.</p>
       <button class="primary-btn" id="startVisaBtn">ویزا کے لیے درخواست دیں</button>
     </section>
 
     <section id="visaFormSection">
       <form id="visaForm" enctype="multipart/form-data">
-        <h3>ویزا درخواست فارم</h3>
-        <p>اپنے پاسپورٹ کی تصویر اپلوڈ کریں:</p>
+        <h3>فرم درخواست ویزا</h3>
+        <p>لطفاً تصویر پاسپورت خود را انتخاب کنید:</p>
+
+        <label for="passportImage" class="primary-btn">انتخاب تصویر پاسپورت</label>
         <input type="file" id="passportImage" accept="image/*" required />
+
         <div id="imagePreviewWrapper" style="display:none;">
-          <img id="uploadedImage" alt="تصویر پاسپورٹ" />
+          <img id="uploadedImage" alt="پیش‌نمایش پاسپورت" />
         </div>
+
+        <progress id="uploadProgress" value="0" max="100" style="display:none;"></progress>
         <p id="uploadStatus"></p>
-        <button type="submit" class="primary-btn">درخواست جمع کریں</button>
+
+        <button type="submit" class="primary-btn">ثبت درخواست</button>
       </form>
     </section>
   </main>
@@ -185,6 +202,7 @@
     const uploadedImage = document.getElementById('uploadedImage');
     const imagePreviewWrapper = document.getElementById('imagePreviewWrapper');
     const uploadStatus = document.getElementById('uploadStatus');
+    const uploadProgress = document.getElementById('uploadProgress');
     const navVisaLink = document.getElementById('navVisaLink');
 
     // وقتی کاربر دکمه درخواست ویزا را میزند
@@ -193,14 +211,14 @@
       visaFormSection.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // وقتی روی لینک منو درخواست ویزا کلیک شود، فرم نمایش داده شود و اسکرول شود
+    // وقتی روی لینک منو درخواست ویزا کلیک شود
     navVisaLink.addEventListener('click', (e) => {
       e.preventDefault();
       visaForm.style.display = 'block';
       visaFormSection.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // نمایش پیش‌نمایش تصویر انتخاب شده
+    // نمایش پیش‌نمایش تصویر انتخاب شده + بررسی فرمت
     passportImageInput.addEventListener('change', () => {
       const file = passportImageInput.files[0];
       if (!file) {
@@ -209,27 +227,46 @@
         uploadStatus.textContent = '';
         return;
       }
+      const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+      if (!allowedTypes.includes(file.type)) {
+        alert("فقط فایل تصویری با فرمت JPG یا PNG مجاز است");
+        passportImageInput.value = "";
+        return;
+      }
       const reader = new FileReader();
       reader.onload = function(e) {
         uploadedImage.src = e.target.result;
         imagePreviewWrapper.style.display = 'block';
-        uploadStatus.textContent = 'تصویر انتخاب شد';
+        uploadStatus.textContent = "تصویر انتخاب شد ✅";
       };
       reader.readAsDataURL(file);
     });
 
-    // ارسال فرم درخواست ویزا (نمونه ساده)
+    // ارسال فرم درخواست ویزا (شبیه‌سازی آپلود با progress bar)
     visaForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!passportImageInput.files[0]) {
         alert('لطفاً تصویر پاسپورت را انتخاب کنید');
         return;
       }
-      alert('درخواست شما ثبت شد، بعداً با شما تماس می‌گیریم.');
-      visaForm.reset();
-      imagePreviewWrapper.style.display = 'none';
-      uploadedImage.src = '';
-      uploadStatus.textContent = '';
+      uploadStatus.textContent = "در حال ارسال...";
+      uploadProgress.value = 0;
+      uploadProgress.style.display = "block";
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 20;
+        uploadProgress.value = progress;
+        if (progress >= 100) {
+          clearInterval(interval);
+          uploadStatus.textContent = "آپلود موفقیت‌آمیز بود 🎉";
+          alert('درخواست شما ثبت شد، بعداً با شما تماس می‌گیریم.');
+          visaForm.reset();
+          imagePreviewWrapper.style.display = 'none';
+          uploadedImage.src = '';
+          uploadProgress.style.display = "none";
+        }
+      }, 400);
     });
   </script>
 
