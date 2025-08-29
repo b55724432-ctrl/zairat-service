@@ -1,77 +1,121 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>زیارت سروس</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <!-- هدر -->
-  <header>
-    <div class="overlay">
-      <h1>زیارت سروس</h1>
-      <p>ویزا، ہوٹل، ٹرانسپورٹ اور کھانے کی بہترین خدمات</p>
-    </div>
-  </header>
-
-  <!-- دکمه‌ها -->
-  <main>
-    <div class="buttons">
-      <a href="visa.html" class="btn">ویزا</a>
-      <a href="hotel.html" class="btn">ہوٹل</a>
-      <a href="transport.html" class="btn">ٹرانسپورٹ</a>
-      <a href="food.html" class="btn">کھانا</a>
-    </div>
-  </main>
-
-  <!-- فوتر -->
-  <footer>
-    © 2025 زیارت سروس - تمام حقوق محفوظ ہیں
-  </footer>
-
-</body>
-</html>
-<!DOCTYPE html>
 <html lang="ur">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>زیارت سروس</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f2f4f7;
+      direction: rtl;
+    }
+
+    /* هدر */
+    header {
+      background: #1e2e3f;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    /* بخش خدمات */
+    .services {
+      padding: 30px 15px;
+      text-align: center;
+    }
+
+    .services h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .service-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .service-buttons a {
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 12px;
+      font-size: 16px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+
+    .service-buttons a:hover {
+      background: #2980b9;
+    }
+
+    /* فوتر */
+    footer {
+      background: #1e2e3f;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+    }
+
+    footer p {
+      margin: 10px 0 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ====== هدر ====== -->
-  <header class="header">
-    <div class="logo">🌍 زیارت سروس</div>
-    <nav class="navbar">
-      <a href="index.html" class="active">🏠 ہوم</a>
-      <a href="visa.html">📑 ویزہ</a>
-      <a href="hotel.html">🏨 ہوٹل</a>
-      <a href="transport.html">🚌 ٹرانسپورٹ</a>
-      <a href="food.html">🍴 کھانے</a>
-    </nav>
+  <!-- هدر -->
+  <header>
+    زیارت سروس
   </header>
 
-  <!-- ====== بخش اصلی ====== -->
-  <main class="main">
-    <h1>خوش آمدید زیارت سروس میں</h1>
-    <p>اپنی زیارت کے لئے بہترین سہولیات منتخب کریں:</p>
-
-    <div class="buttons">
-      <a href="visa.html" class="btn">📑 ویزہ</a>
-      <a href="hotel.html" class="btn">🏨 ہوٹل</a>
-      <a href="transport.html" class="btn">🚌 ٹرانسپورٹ</a>
-      <a href="food.html" class="btn">🍴 کھانے</a>
+  <!-- خدمات -->
+  <section class="services">
+    <h2>خدمات</h2>
+    <div class="service-buttons">
+      <a href="#">ویزا</a>
+      <a href="#">ہوٹل</a>
+      <a href="#">ٹرانسپورٹ</a>
+      <a href="#">کہانا</a>
     </div>
-  </main>
+  </section>
 
-  <!-- ====== فوتر ====== -->
-  <footer class="footer">
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+  <!-- فوتر -->
+  <footer>
+    <ul>
+      <li><a href="#">🌍 زیارت سروس</a></li>
+      <li><a href="#">🏠 بوم</a></li>
+      <li><a href="#">📄 ویزہ</a></li>
+      <li><a href="#">🏨 ہوٹل</a></li>
+      <li><a href="#">🚌 ٹرانسپورٹ</a></li>
+      <li><a href="#">🍽️ کہانا</a></li>
+    </ul>
+    <p>© 2025 زیارت سروس - تمام حقوق محفوظ ہیں</p>
   </footer>
 
 </body>
