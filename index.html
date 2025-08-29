@@ -3,103 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>زیارت سروس</title>
+  <title>زیارت سروس | عالمی معیار</title>
   <style>
-    /* 🎨 استایل عمومی */
+    /* 🔝 استایل عمومی */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, sans-serif;
+      font-family: 'Tahoma', sans-serif;
     }
     body {
-      direction: rtl;
-      background: #f9fafc;
+      background: #fdfdfd;
       color: #333;
-      line-height: 1.7;
     }
 
-    /* 🔝 هدر */
+    /* 🔝 هدر شفاف */
     header {
-      background: #2c3e50;
-      color: #fff;
-      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
       z-index: 1000;
     }
-    .logo {
+    header .logo {
       font-size: 24px;
       font-weight: bold;
-      color: #ffd700;
+      color: gold;
     }
-    nav a {
-      margin: 0 15px;
+    header nav a {
+      margin-left: 25px;
       text-decoration: none;
-      color: #fff;
+      color: white;
       font-size: 16px;
       transition: 0.3s;
     }
-    nav a:hover {
-      color: #ffd700;
+    header nav a:hover {
+      color: gold;
     }
 
-    /* 🏠 بخش اصلی */
-    .main {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(to right, #f0f2f5, #e8ecf1);
-    }
-    .main h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-    .main p {
-      font-size: 18px;
-      margin-bottom: 40px;
-      color: #555;
-    }
-    .buttons {
+    /* 🔹 بخش Hero */
+    .hero {
+      height: 100vh;
+      background: url("https://i.postimg.cc/kMT4CZkB/91700-1.webp") no-repeat center center/cover;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero h1, .hero p, .hero .btn {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      animation: fadeDown 1.5s ease;
+    }
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      animation: fadeUp 2s ease;
     }
     .btn {
-      background: #2c3e50;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 8px;
-      text-decoration: none;
+      background: linear-gradient(135deg, gold, orange);
+      padding: 15px 35px;
       font-size: 18px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       transition: 0.3s;
     }
     .btn:hover {
-      background: #ffd700;
-      color: #2c3e50;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
     }
 
-    /* ⚓ فوتر */
+    /* 🔹 بخش خدمات */
+    .services {
+      padding: 80px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      margin-bottom: 15px;
+      color: #34495e;
+    }
+    .card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* 🔹 فوتر */
     footer {
-      background: #2c3e50;
-      color: white;
+      background: #111;
+      color: #aaa;
       text-align: center;
       padding: 20px;
       margin-top: 50px;
+    }
+
+    /* انیمیشن */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- ====== هدر ====== -->
+  <!-- هدر -->
   <header>
     <div class="logo">🌍 زیارت سروس</div>
     <nav>
-      <a href="index.html">🏠 ہوم</a>
+      <a href="index.html" class="active">🏠 ہوم</a>
       <a href="visa.html">📑 ویزہ</a>
       <a href="hotel.html">🏨 ہوٹل</a>
       <a href="transport.html">🚌 ٹرانسپورٹ</a>
@@ -107,40 +158,37 @@
     </nav>
   </header>
 
-  <!-- ====== بخش اصلی ====== -->
-  <main class="main">
+  <!-- بخش Hero -->
+  <section class="hero">
     <h1>خوش آمدید زیارت سروس میں</h1>
-    <p>اپنی زیارت کے لئے بہترین سہولیات منتخب کریں:</p>
+    <p>آپ کے سفر کے لئے عالمی معیار کی سہولیات</p>
+    <a href="hotel.html" class="btn">ابھی شروع کریں</a>
+  </section>
 
-    <div class="buttons">
-      <a href="visa.html" class="btn">📑 ویزہ</a>
-      <a href="hotel.html" class="btn">🏨 ہوٹل</a>
-      <a href="transport.html" class="btn">🚌 ٹرانسپورٹ</a>
-      <a href="food.html" class="btn">🍴 کھانے</a>
+  <!-- خدمات -->
+  <section class="services">
+    <div class="card">
+      <h3>📑 ویزہ</h3>
+      <p>تیز اور قابل اعتماد ویزہ سروسز</p>
     </div>
-  </main>
+    <div class="card">
+      <h3>🏨 ہوٹل</h3>
+      <p>آرام دہ اور معیاری ہوٹل بکنگ</p>
+    </div>
+    <div class="card">
+      <h3>🚌 ٹرانسپورٹ</h3>
+      <p>محفوظ اور آرام دہ ٹرانسپورٹیشن</p>
+    </div>
+    <div class="card">
+      <h3>🍴 کھانے</h3>
+      <p>مزیدار اور متنوع کھانے کے آپشنز</p>
+    </div>
+  </section>
 
-  <!-- ====== فوتر ====== -->
+  <!-- فوتر -->
   <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+    © 2025 زیارت سروس | تمام حقوق محفوظ ہیں
   </footer>
 
 </body>
 </html>
-<!-- ====== هدر ====== -->
-<header class="header">
-  <div class="logo">🌍 زیارت سروس</div>
-  
-  <!-- دکمه همبرگری برای موبایل -->
-  <div class="menu-toggle" id="menu-toggle">☰</div>
-
-  <nav class="navbar" id="navbar">
-    <ul>
-      <li><a href="index.html" class="active">🏠 ہوم</a></li>
-      <li><a href="visa.html">📑 ویزہ</a></li>
-      <li><a href="hotel.html">🏨 ہوٹل</a></li>
-      <li><a href="transport.html">🚌 ٹرانسپورٹ</a></li>
-      <li><a href="food.html">🍴 کھانے</a></li>
-    </ul>
-  </nav>
-</header>
