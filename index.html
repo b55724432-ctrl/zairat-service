@@ -1,138 +1,274 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>زیارت سرویس</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>زیارت سرویس - درخواست ویزای ایران</title>
+  <meta name="description" content="زیارت سرویس - درخواست آنلاین ویزای ایران با آپلود تصویر پاسپورت. سریع، ساده و مطمئن.">
   <style>
-    /* استایل عمومی */
-    body {
-      font-family: "Tahoma", Arial, sans-serif;
-      background: #f5f6fa;
+    /* Reset */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      color: #333;
-      direction: rtl;
     }
-
-    /* نوار بالا */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f8fa;
+      color: #333;
+      line-height: 1.6;
+      direction: rtl;
+      text-align: right;
+    }
     header {
-      background: #007bff;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
-    header nav {
-      margin-top: 10px;
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 28px;
     }
-    header nav a {
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
       color: white;
       text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-      padding: 6px 10px;
+      font-weight: 600;
+      padding: 8px 12px;
       border-radius: 5px;
+      transition: background-color 0.3s;
     }
-    header nav a:hover {
-      background: #0056b3;
+    nav a:hover {
+      background-color: #0056b3;
     }
-
-    /* بخش اصلی */
-    .container {
-      max-width: 700px;
+    main {
+      max-width: 900px;
       margin: 30px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 0 20px;
+    }
+    .hero {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      margin-bottom: 30px;
       text-align: center;
     }
-    .container h1 {
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+      color: #222;
+    }
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #444;
+    }
+    .primary-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 7px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+      display: inline-block;
+    }
+    .primary-btn:hover {
+      background-color: #0056b3;
+    }
+    /* فرم ویزا */
+    #visaForm {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      margin-bottom: 50px;
+      display: none;
+    }
+    #visaForm h3 {
       font-size: 26px;
+      margin-bottom: 20px;
+      color: #222;
+    }
+    #visaForm p {
+      font-size: 18px;
       margin-bottom: 15px;
     }
-    .container p {
-      font-size: 18px;
-      color: #444;
-      line-height: 1.6;
+    #passportImage {
+      display: none;
     }
-
-    /* دکمه‌ها */
-    .btn {
-      display: block;
-      width: 100%;
-      max-width: 250px;
-      margin: 15px auto;
-      padding: 12px;
-      background: #007bff;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
+    #uploadedImage {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 10px;
+      border: 2px solid #007bff;
+    }
+    #uploadStatus {
+      margin-top: 10px;
+      font-size: 16px;
       font-weight: bold;
-      transition: 0.3s;
+      color: #444;
     }
-    .btn:hover {
-      background: #0056b3;
+    progress {
+      width: 100%;
+      height: 20px;
+      border-radius: 10px;
+      margin: 15px 0;
     }
-
-    /* پاورقی */
     footer {
-      background: #eee;
+      background-color: #eee;
       color: #555;
       text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+      padding: 20px 10px;
       font-size: 14px;
+      border-top: 1px solid #ccc;
     }
-
-    /* ریسپانسیو برای گوشی */
+    /* ریسپانسیو */
     @media (max-width: 600px) {
-      .container {
-        margin: 15px;
-        padding: 15px;
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
-      .container h1 {
-        font-size: 22px;
-      }
-      .container p {
-        font-size: 16px;
+      nav {
+        flex-wrap: wrap;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- نوار بالا -->
   <header>
-    <h2>زیارت سرویس</h2>
+    <h1>زیارت سرویس</h1>
     <nav>
-      <a href="index.html">خانه</a>
-      <a href="visa.html">درخواست ویزا</a>
-      <a href="contact.html">تماس با ما</a>
+      <a href="#home">خانه</a>
+      <a href="#visaFormSection" id="navVisaLink">درخواست ویزا</a>
+      <a href="#contact">تماس با ما</a>
     </nav>
   </header>
 
-  <!-- محتوای اصلی -->
   <main>
-    <div class="container">
-      <h1>خوش آمدید!</h1>
-      <p>
-        ایران یا عراق کا ویزا اور ہوٹل بکنگ ایک ہی جگہ سے۔  
-        صرف پاسپورٹ اپلوڈ کریں اور درخواست دیں۔
-      </p>
-      <a href="visa.html" class="btn">درخواست ویزا</a>
-      <a href="hotel.html" class="btn">رزرو هتل</a>
-    </div>
+    <section id="home" class="hero">
+      <h2>خوش آمدید!</h2>
+      <p>اگر قصد دریافت ویزای ایران را دارید، کافیست تصویر پاسپورت خود را آپلود کرده و درخواست ویزا ثبت کنید.</p>
+      <button class="primary-btn" id="startVisaBtn">ویزا کے لیے درخواست دیں</button>
+    </section>
+
+    <section id="visaFormSection">
+      <form id="visaForm" enctype="multipart/form-data">
+        <h3>فرم درخواست ویزا</h3>
+        <p>لطفاً تصویر پاسپورت خود را انتخاب کنید:</p>
+
+        <label for="passportImage" class="primary-btn">انتخاب تصویر پاسپورت</label>
+        <input type="file" id="passportImage" accept="image/*" required />
+
+        <div id="imagePreviewWrapper" style="display:none;">
+          <img id="uploadedImage" alt="پیش‌نمایش پاسپورت" />
+        </div>
+
+        <progress id="uploadProgress" value="0" max="100" style="display:none;"></progress>
+        <p id="uploadStatus"></p>
+
+        <button type="submit" class="primary-btn">ثبت درخواست</button>
+      </form>
+    </section>
   </main>
 
-  <!-- پاورقی -->
-  <footer>
-    © 2025 زیارت سرویس - تمامی حقوق محفوظ ہیں
+  <footer id="contact">
+    <p>© ۱۴۰۲ زیارت سرویس - تمام حقوق محفوظ است.</p>
+    <p>تماس با ما: info@ziaratservice.com</p>
   </footer>
+
+  <script>
+    const startVisaBtn = document.getElementById('startVisaBtn');
+    const visaForm = document.getElementById('visaForm');
+    const visaFormSection = document.getElementById('visaFormSection');
+    const passportImageInput = document.getElementById('passportImage');
+    const uploadedImage = document.getElementById('uploadedImage');
+    const imagePreviewWrapper = document.getElementById('imagePreviewWrapper');
+    const uploadStatus = document.getElementById('uploadStatus');
+    const uploadProgress = document.getElementById('uploadProgress');
+    const navVisaLink = document.getElementById('navVisaLink');
+
+    // وقتی کاربر دکمه درخواست ویزا را میزند
+    startVisaBtn.addEventListener('click', () => {
+      visaForm.style.display = 'block';
+      visaFormSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // وقتی روی لینک منو درخواست ویزا کلیک شود
+    navVisaLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      visaForm.style.display = 'block';
+      visaFormSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // نمایش پیش‌نمایش تصویر انتخاب شده + بررسی فرمت
+    passportImageInput.addEventListener('change', () => {
+      const file = passportImageInput.files[0];
+      if (!file) {
+        imagePreviewWrapper.style.display = 'none';
+        uploadedImage.src = '';
+        uploadStatus.textContent = '';
+        return;
+      }
+      const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+      if (!allowedTypes.includes(file.type)) {
+        alert("فقط فایل تصویری با فرمت JPG یا PNG مجاز است");
+        passportImageInput.value = "";
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        uploadedImage.src = e.target.result;
+        imagePreviewWrapper.style.display = 'block';
+        uploadStatus.textContent = "تصویر انتخاب شد ✅";
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // ارسال فرم درخواست ویزا (شبیه‌سازی آپلود با progress bar)
+    visaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!passportImageInput.files[0]) {
+        alert('لطفاً تصویر پاسپورت را انتخاب کنید');
+        return;
+      }
+      uploadStatus.textContent = "در حال ارسال...";
+      uploadProgress.value = 0;
+      uploadProgress.style.display = "block";
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 20;
+        uploadProgress.value = progress;
+        if (progress >= 100) {
+          clearInterval(interval);
+          uploadStatus.textContent = "آپلود موفقیت‌آمیز بود 🎉";
+          alert('درخواست شما ثبت شد، بعداً با شما تماس می‌گیریم.');
+          visaForm.reset();
+          imagePreviewWrapper.style.display = 'none';
+          uploadedImage.src = '';
+          uploadProgress.style.display = "none";
+        }
+      }, 400);
+    });
+  </script>
 
 </body>
 </html>
