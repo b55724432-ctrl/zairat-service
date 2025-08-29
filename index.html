@@ -1,187 +1,174 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>زیارت سرویس</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>زیارت سروس</title>
   <style>
-    /* 🎨 ریست کلی */
+    /* 🎨 استایل عمومی */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Tahoma", sans-serif;
+      font-family: "Segoe UI", Tahoma, sans-serif;
     }
-
     body {
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
-      background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite;
+      direction: rtl;
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
       color: #fff;
-      line-height: 1.8;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    a { text-decoration: none; }
-
-    /* 🟡 هدر */
+    /* 🔝 هدر */
     header {
+      background: #111827;
+      color: #fff;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 1000;
     }
-
     .logo {
       font-size: 22px;
       font-weight: bold;
-      color: #facc15;
+      background: #ffd700;
+      color: #111;
+      padding: 8px 14px;
+      border-radius: 10px;
     }
-
+    nav {
+      display: flex;
+      gap: 20px;
+    }
     nav a {
-      margin: 0 10px;
-      color: #ddd;
-      font-weight: 500;
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
       transition: 0.3s;
     }
-
-    nav a:hover,
-    nav a.active {
-      color: #facc15;
+    nav a:hover {
+      color: #ffd700;
     }
 
-    /* 🟢 سکشن هیرو */
+    /* 📦 بخش اصلی */
     .hero {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 80px 20px;
-      min-height: 80vh;
+      padding: 60px 20px;
     }
-
-    .hero-card {
-      max-width: 750px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(18px);
-      border-radius: 24px;
-      padding: 50px;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+    .hero-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 40px 25px;
+      max-width: 700px;
       text-align: center;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.3);
     }
-
-    .hero-card .badge {
-      display: inline-block;
-      background: rgba(250, 204, 21, 0.15);
-      color: #facc15;
-      padding: 8px 16px;
-      border-radius: 12px;
-      font-size: 15px;
-      margin-bottom: 20px;
-      font-weight: bold;
+    .hero-box h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #ffd700;
     }
-
-    .hero-card h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
-
-    .hero-card p {
-      font-size: 17px;
+    .hero-box p {
+      font-size: 16px;
       margin-bottom: 30px;
-      color: #e5e7eb;
+      color: #eee;
     }
 
-    .hero-card .buttons {
+    /* 🎯 دکمه‌ها */
+    .buttons {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
       flex-wrap: wrap;
     }
-
     .btn {
       padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: bold;
-      transition: all 0.3s;
+      border-radius: 8px;
+      text-decoration: none;
       font-size: 16px;
-      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
     }
-
-    .btn.primary {
-      background: linear-gradient(45deg, #facc15, #f59e0b);
-      color: #000;
+    .btn-primary {
+      background: #ffd700;
+      color: #111;
     }
-    .btn.primary:hover {
-      background: linear-gradient(45deg, #fbbf24, #eab308);
-      transform: scale(1.05);
+    .btn-primary:hover {
+      background: #e6c200;
     }
-
-    .btn.secondary {
-      background: rgba(255,255,255,0.12);
-      color: #fff;
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
       border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
     }
-    .btn.secondary:hover {
+    .btn-secondary:hover {
       background: rgba(255,255,255,0.25);
-      transform: scale(1.05);
     }
 
-    /* ⚫ فوتر */
+    /* ⚓ فوتر */
     footer {
-      background: rgba(0,0,0,0.6);
+      background: #111827;
+      color: white;
       text-align: center;
       padding: 20px;
+      margin-top: 40px;
       font-size: 14px;
-      color: #aaa;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* 📱 واکنش‌گرا */
+    @media (max-width: 768px) {
+      nav {
+        display: none; /* منوی همبرگری بعداً اضافه میشه */
+      }
+      .hero-box {
+        padding: 30px 20px;
+      }
+      .hero-box h1 {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔹 هدر -->
+  <!-- ====== هدر ====== -->
   <header>
-    <div class="logo">🌍 زیارت سرویس</div>
+    <div class="logo">ZS</div>
+    <div class="title">زیارت سروس</div>
     <nav>
-      <a href="#" class="active">🏠 خانه</a>
-      <a href="#">📑 ویزا</a>
-      <a href="#">🏨 هتل</a>
-      <a href="#">🚌 ترانسپورت</a>
-      <a href="#">🍴 خوراک</a>
+      <a href="index.html">🏠 ہوم</a>
+      <a href="visa.html">📑 ویزہ</a>
+      <a href="hotel.html">🏨 ہوٹل</a>
+      <a href="transport.html">🚌 ٹرانسپورٹ</a>
+      <a href="food.html">🍴 کھانے</a>
     </nav>
   </header>
 
-  <!-- 🔹 هیرو -->
+  <!-- ====== بخش اصلی ====== -->
   <section class="hero">
-    <div class="hero-card">
-      <span class="badge">💎 استاندارد جهانی • سریع، امن، قابل اعتماد</span>
-      <h1>ایران و عراق کے لیے بہترین زیارتی سروسز</h1>
+    <div class="hero-box">
+      <h1>بهترین خدمات زیارتی ایران و عراق</h1>
       <p>
-        ویزا، ہوٹل، ٹرانسپورٹ اور کھانے – سب کچھ ایک ہی جگہ۔  
-        معیار ایسا کہ دل جیت لے، رفتار ایسی کہ وقت بچ جائے، اور قیمت ایسی کہ خوشی ہو۔
+        ویزا، هتل، ترانسپورت و غذا – همه در یک مکان.  
+        کیفیتی بی‌نظیر، سرعت بالا و قیمت عادلانه برای زائرین محترم.
       </p>
       <div class="buttons">
-        <a href="#" class="btn primary">ابھی شروع کریں</a>
-        <a href="#" class="btn secondary">مشاورت فوری</a>
+        <a href="visa.html" class="btn btn-primary">📑 درخواست ویزا</a>
+        <a href="hotel.html" class="btn btn-secondary">🏨 رزرو هتل</a>
       </div>
     </div>
   </section>
 
-  <!-- 🔹 فوتر -->
+  <!-- ====== فوتر ====== -->
   <footer>
-    <p>© 2025 زیارت سرویس | تمام حقوق محفوظ ہیں</p>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ است</p>
   </footer>
 
 </body>
