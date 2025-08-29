@@ -3,47 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>زیارت سروس</title>
-  <link rel="stylesheet" href="style.css">
+  <title>زیارت سرویس</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tahoma', sans-serif;
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .btn {
+      display: block;
+      width: 220px;
+      margin: 15px auto;
+      padding: 15px 25px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      background: #0056b3;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      background: #003f7f;
+      transform: translateY(-3px);
+    }
+  </style>
 </head>
 <body>
-  <!-- هدر -->
-  <header>
-    <div class="container header-content">
-      <h1>زیارت سروس</h1>
-      <nav>
-        <ul>
-          <li><a href="#home">خانه</a></li>
-          <li><a href="visa.html">ویزای زیارت</a></li>
-          <li><a href="hotel.html">رزرو هتل</a></li>
-          <li><a href="#contact">تماس</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- بخش اصلی -->
-  <main>
-    <section id="home" class="hero">
-      <div class="container">
-        <h2>خوش آمدید!</h2>
-        <p>خدمات سریع و مطمئن برای ویزای عراق و ایران + رزرو هتل‌های معتبر</p>
-        <div class="btn-group">
-          <a href="visa.html" class="primary-btn">درخواست ویزا</a>
-          <a href="hotel.html" class="secondary-btn">رزرو هتل</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- فوتر -->
-  <footer id="contact">
-    <div class="container">
-      <p>ارتباط با ما در واتساپ: 
-        <a href="https://wa.me/989302844084" target="_blank">+989302844084</a>
-      </p>
-      <p>تمام حقوق محفوظ است © 2025</p>
-    </div>
-  </footer>
+  <div class="container">
+    <h1>زیارت سرویس</h1>
+    <a class="btn" href="visa.html" target="_blank">ویزای زیارت</a>
+    <a class="btn" href="hotel.html" target="_blank">رزرو هتل</a>
+    <a class="btn" href="transport.html" target="_blank">ترانسپورت</a>
+    <a class="btn" href="food.html" target="_blank">خدمات غذا</a>
+  </div>
 </body>
 </html>
