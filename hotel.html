@@ -1,122 +1,94 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ہوٹلز</title>
+  <title>ہوٹل بکنگ</title>
   <style>
     body {
       font-family: "Tahoma", sans-serif;
-      background: #f4f4f9;
+      background: #f5f6fa;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
 
     header {
       background: #2c3e50;
       color: white;
       padding: 15px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 26px;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 30px;
+      font-size: 22px;
+      font-weight: bold;
     }
 
     .card {
       background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: scale(1.03);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 15px;
+      width: 320px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
 
-    .card-content h3 {
+    .card h3 {
       margin: 10px 0;
-      font-size: 20px;
-      color: #333;
+      color: #2c3e50;
     }
 
     .stars {
-      color: #f1c40f;
-      font-size: 18px;
-      margin-bottom: 10px;
+      font-size: 22px;
+      color: gold;
+      margin: 5px 0;
     }
 
     .price {
       font-size: 18px;
-      color: #27ae60;
-      margin-bottom: 15px;
+      color: green;
+      margin: 8px 0;
     }
 
-    .btn {
-      display: inline-block;
-      background: #2980b9;
+    .card button {
+      background: #3498db;
       color: white;
+      border: none;
       padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.3s;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .btn:hover {
-      background: #1f5f8b;
+    .card button:hover {
+      background: #2980b9;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 12px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>ہوٹل بکنگ</h1>
-  </header>
+  <header>ہوٹل بکنگ</header>
 
-  <div class="container">
+  <div class="card">
+    <h3>ہوٹل تشریفات</h3>
+    <div class="stars">★★★</div>
+    <p class="price">فی رات 90$</p>
+    <button>Book Now</button>
+    <!-- تصویر آخر میں -->
+    <img src="https://i.postimg.cc/3J5N3w7M/tashrifat-hotel.jpg" alt="Hotel Tashrifat">
+  </div>
 
-    <!-- Hotel Tashrifat -->
-    <div class="card">
-      <img src="def460fc-5744-48ad-b6ab-280e626272f7.png" alt="Hotel Tashrifat">
-      <div class="card-content">
-        <h3>ہوٹل تشریفات</h3>
-        <div class="stars">⭐⭐⭐</div>
-        <div class="price">90$ فی رات</div>
-        <a class="btn" href="https://wa.me/989302844084?text=سلام، میں ہوٹل تشریفات بک کرنا چاہتا ہوں">Book Now</a>
-      </div>
-    </div>
-
-    <!-- مثال کے طور پر دوسرا ہوٹل -->
-    <div class="card">
-      <img src="https://picsum.photos/400/200?random=2" alt="Hotel Example">
-      <div class="card-content">
-        <h3>ہوٹل مثال</h3>
-        <div class="stars">⭐⭐⭐⭐</div>
-        <div class="price">120$ فی رات</div>
-        <a class="btn" href="https://wa.me/989302844084?text=سلام، میں ایک اور ہوٹل بک کرنا چاہتا ہوں">Book Now</a>
-      </div>
-    </div>
-
+  <div class="card">
+    <h3>ہوٹل مثال</h3>
+    <div class="stars">★★★★</div>
+    <p class="price">فی رات 120$</p>
+    <button>Book Now</button>
+    <img src="https://i.postimg.cc/yNB7f6yF/sample-hotel.jpg" alt="Hotel Example">
   </div>
 
 </body>
