@@ -58,6 +58,14 @@
     }
     #uploadStatus { margin-top: 10px; font-size: 16px; font-weight: bold; color: #444; }
     progress { width: 100%; height: 20px; border-radius: 10px; margin: 15px 0; }
+    select {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      margin-bottom: 15px;
+      width: 100%;
+    }
     footer {
       background-color: #eee; color: #555; text-align: center;
       padding: 20px 10px; font-size: 14px; border-top: 1px solid #ccc;
@@ -89,6 +97,14 @@
     <section id="visaFormSection">
       <form id="visaForm" enctype="multipart/form-data">
         <h3>ویزا درخواست فارم (ایران / عراق)</h3>
+        
+        <label for="country">ملک منتخب کریں:</label>
+        <select id="country" required>
+          <option value="">-- ملک منتخب کریں --</option>
+          <option value="ایران">ایران</option>
+          <option value="عراق">عراق</option>
+        </select>
+
         <p>اپنے پاسپورٹ کی تصویر اپلوڈ کریں:</p>
 
         <label for="passportImage" class="primary-btn">پاسپورٹ منتخب کریں</label>
@@ -121,6 +137,7 @@
     const uploadStatus = document.getElementById('uploadStatus');
     const uploadProgress = document.getElementById('uploadProgress');
     const navVisaLink = document.getElementById('navVisaLink');
+    const countrySelect = document.getElementById('country');
 
     startVisaBtn.addEventListener('click', () => {
       visaForm.style.display = 'block';
@@ -158,6 +175,10 @@
 
     visaForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (!countrySelect.value) {
+        alert('براہ کرم ملک منتخب کریں');
+        return;
+      }
       if (!passportImageInput.files[0]) {
         alert('براہ کرم پاسپورٹ کی تصویر منتخب کریں');
         return;
@@ -172,8 +193,8 @@
         uploadProgress.value = progress;
         if (progress >= 100) {
           clearInterval(interval);
-          uploadStatus.textContent = "تصویر کامیابی سے اپلوڈ ہو گئی 🎉";
-          alert('آپ کی ویزا درخواست جمع ہو گئی ہے۔ ہم جلد رابطہ کریں گے۔');
+          uploadStatus.textContent = `آپ کی ویزا درخواست (${countrySelect.value}) کامیابی سے جمع ہو گئی 🎉`;
+          alert(`آپ کی ویزا درخواست ${countrySelect.value} کے لیے جمع ہو گئی ہے۔ ہم جلد رابطہ کریں گے۔`);
           visaForm.reset();
           imagePreviewWrapper.style.display = 'none';
           uploadedImage.src = '';
@@ -185,3 +206,4 @@
 
 </body>
 </html>
+
