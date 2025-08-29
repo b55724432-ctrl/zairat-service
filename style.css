@@ -123,3 +123,7 @@ nav ul li a {
 nav ul li a:hover {
   background: #0056b3;
 }
+nav .logo i {
+  margin-right: 10px;
+  color: #ffd700; /* گولڈن کلر */
+}
