@@ -1,94 +1,63 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="ur" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ویزای زیارتی</title>
-  <style>
-    body {
-      font-family: Tahoma, sans-serif;
-      background: #f3f4f6;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      margin-bottom: 20px;
-      color: #333;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      margin: 10px;
-      background: #4CAF50;
-      color: white;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #388E3C;
-    }
-    .content-box {
-      display: none;
-      margin-top: 20px;
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: right;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .content-box h2 {
-      color: #4CAF50;
-    }
-    .btn-whatsapp {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #25D366;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-    .btn-whatsapp:hover {
-      background: #1ebe5d;
-    }
-  </style>
+  <title>ویزہ سروسز</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>📑 خدمات ویزا</h1>
+  <!-- هدر -->
+  <header class="header">
+    <h1>🌍 سروسز ٹریول</h1>
+    <nav>
+      <a href="index.html">🏠 ہوم</a>
+      <a href="visa.html" class="active">📑 ویزہ</a>
+      <a href="hotel.html">🏨 ہوٹل</a>
+      <a href="transport.html">🚌 ٹرانسپورٹ</a>
+      <a href="food.html">🍴 کھانے</a>
+    </nav>
+  </header>
 
-  <!-- دکمه‌ها -->
-  <button class="btn" onclick="showContent('iran')">📄 مدارک لازم ویزای ایران</button>
-  <button class="btn" onclick="showContent('iraq')">📄 مدارک لازم ویزای عراق</button>
+  <!-- مین -->
+  <main class="container">
+    <h2>📑 ویزہ سروسز</h2>
+    <p>براہ کرم مطلوبہ ویزہ منتخب کریں تاکہ تفصیل دیکھ سکیں:</p>
 
-  <!-- جعبه اطلاعات ایران -->
-  <div id="iran" class="content-box">
-    <h2>مدارک لازم برای ویزای ایران</h2>
-    <ul>
-      <li>پاسپورت معتبر (حداقل ۶ ماه اعتبار)</li>
-      <li>یک قطعه عکس پرسنلی</li>
-      <li>فرم تکمیل شده درخواست</li>
-    </ul>
-    <p><strong>⏱ زمان صدور:</strong> ۵ تا ۱۰ روز</p>
-    <a href="https://wa.me/989302844084" class="btn-whatsapp">ارسال مدارک از طریق واتساپ</a>
-  </div>
+    <div class="btn-group">
+      <button class="btn" onclick="showContent('iran')">📄 ایران کا ویزہ</button>
+      <button class="btn" onclick="showContent('iraq')">📄 عراق کا ویزہ</button>
+    </div>
 
-  <!-- جعبه اطلاعات عراق -->
-  <div id="iraq" class="content-box">
-    <h2>مدارک لازم برای ویزای عراق</h2>
-    <ul>
-      <li>پاسپورت با حداقل ۶ ماه اعتبار</li>
-      <li>۲ قطعه عکس پرسنلی</li>
-      <li>فرم مشخصات تکمیل شده</li>
-    </ul>
-    <p><strong>⏱ زمان صدور:</strong> ۳ تا ۷ روز</p>
-    <a href="https://wa.me/989302844084" class="btn-whatsapp">ارسال مدارک از طریق واتساپ</a>
-  </div>
+    <!-- ایران -->
+    <div id="iran" class="content-box">
+      <h3>ایران کے ویزہ کے لیے درکار کاغذات</h3>
+      <ul>
+        <li>پاسپورٹ (کم از کم ۶ ماہ کی معیاد کے ساتھ)</li>
+        <li>ایک عدد پاسپورٹ سائز تصویر</li>
+        <li>درخواست فارم مکمل پُر کیا ہوا</li>
+      </ul>
+      <p><strong>⏱ اجراء کا وقت:</strong> ۵ تا ۱۰ دن</p>
+      <a href="https://wa.me/989302844084" class="btn-whatsapp">واٹس ایپ پر کاغذات بھیجیں</a>
+    </div>
+
+    <!-- عراق -->
+    <div id="iraq" class="content-box">
+      <h3>عراق کے ویزہ کے لیے درکار کاغذات</h3>
+      <ul>
+        <li>پاسپورٹ (کم از کم ۶ ماہ کی معیاد کے ساتھ)</li>
+        <li>۲ عدد پاسپورٹ سائز تصاویر</li>
+        <li>درخواست فارم مکمل پُر کیا ہوا</li>
+      </ul>
+      <p><strong>⏱ اجراء کا وقت:</strong> ۳ تا ۷ دن</p>
+      <a href="https://wa.me/989302844084" class="btn-whatsapp">واٹس ایپ پر کاغذات بھیجیں</a>
+    </div>
+  </main>
+
+  <!-- فوتر -->
+  <footer class="footer">
+    <p>© 2025 سروسز ٹریول | تمام حقوق محفوظ ہیں</p>
+  </footer>
 
   <script>
     function showContent(id) {
