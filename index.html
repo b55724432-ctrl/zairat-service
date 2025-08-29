@@ -54,12 +54,39 @@
       color: #ffd700;
     }
 
-    /* 📦 بخش اصلی */
+    /* 📱 منوی همبرگری */
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #111827;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* 📦 بخش هیرو */
     .hero {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
+      animation: fadeIn 2s ease-in-out;
     }
     .hero-box {
       background: rgba(255, 255, 255, 0.08);
@@ -69,6 +96,9 @@
       max-width: 700px;
       text-align: center;
       box-shadow: 0 4px 25px rgba(0,0,0,0.3);
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slideUp 1.5s forwards;
     }
     .hero-box h1 {
       font-size: 28px;
@@ -112,64 +142,23 @@
       background: rgba(255,255,255,0.25);
     }
 
-    /* ⚓ فوتر */
-    footer {
-      background: #111827;
-      color: white;
+    /* 📦 بخش خدمات */
+    .services {
+      padding: 60px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 25px;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: 0.6s;
     }
-
-    /* 📱 واکنش‌گرا */
-    @media (max-width: 768px) {
-      nav {
-        display: none; /* منوی همبرگری بعداً اضافه میشه */
-      }
-      .hero-box {
-        padding: 30px 20px;
-      }
-      .hero-box h1 {
-        font-size: 22px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ====== هدر ====== -->
-  <header>
-    <div class="logo">ZS</div>
-    <div class="title">زیارت سروس</div>
-    <nav>
-      <a href="index.html">🏠 ہوم</a>
-      <a href="visa.html">📑 ویزہ</a>
-      <a href="hotel.html">🏨 ہوٹل</a>
-      <a href="transport.html">🚌 ٹرانسپورٹ</a>
-      <a href="food.html">🍴 کھانے</a>
-    </nav>
-  </header>
-
-  <!-- ====== بخش اصلی ====== -->
-  <section class="hero">
-    <div class="hero-box">
-      <h1>بهترین خدمات زیارتی ایران و عراق</h1>
-      <p>
-        ویزا، هتل، ترانسپورت و غذا – همه در یک مکان.  
-        کیفیتی بی‌نظیر، سرعت بالا و قیمت عادلانه برای زائرین محترم.
-      </p>
-      <div class="buttons">
-        <a href="visa.html" class="btn btn-primary">📑 درخواست ویزا</a>
-        <a href="hotel.html" class="btn btn-secondary">🏨 رزرو هتل</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== فوتر ====== -->
-  <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ است</p>
-  </footer>
-
-</body>
-</html>
+    .service-card.show {
+      transform: translate
