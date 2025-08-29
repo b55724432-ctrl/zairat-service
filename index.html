@@ -6,144 +6,168 @@
   <title>زیارت سروس</title>
   <style>
     /* 🎨 استایل عمومی */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Tahoma, sans-serif; }
-    body { direction: rtl; background: linear-gradient(to right, #f8f9fa, #eef1f6); color: #333; line-height: 1.7; overflow-x: hidden; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    body {
+      direction: rtl;
+      color: #fff;
+      background: linear-gradient(270deg, #2c3e50, #34495e, #2c3e50);
+      background-size: 600% 600%;
+      animation: bgAnimation 15s ease infinite;
+      line-height: 1.7;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
     /* 🔝 هدر */
     header {
-      background: #2c3e50;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
       color: #fff;
-      padding: 15px 30px;
+      padding: 15px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      animation: slideDown 1.2s ease;
     }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     .logo {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
       color: #ffd700;
-      animation: fadeInDown 1s ease-in-out;
+      animation: fadeIn 2s ease;
     }
 
-    /* دکمه منو */
-    .menu-toggle {
-      font-size: 26px;
-      cursor: pointer;
-      display: none;
-      transition: transform 0.3s ease;
-    }
-    .menu-toggle:hover {
-      transform: rotate(90deg);
-    }
-
-    /* لینک‌ها (دسکتاپ) */
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav ul li a {
+    nav a {
+      margin: 0 15px;
       text-decoration: none;
       color: #fff;
       font-size: 16px;
-      transition: 0.3s;
-    }
-    nav ul li a:hover {
-      color: #ffd700;
+      position: relative;
+      transition: 0.4s;
     }
 
-    /* 📱 منوی موبایل (Slide) */
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      nav {
-        position: fixed;
-        top: 0;
-        right: -250px;
-        background: #2c3e50;
-        width: 250px;
-        height: 100%;
-        transition: right 0.4s ease;
-        padding-top: 60px;
-      }
-      nav ul {
-        flex-direction: column;
-        gap: 20px;
-        padding: 0 20px;
-      }
-      nav ul li a {
-        font-size: 18px;
-        display: block;
-      }
-      nav.show { right: 0; }
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #ffd700;
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #ffd700;
     }
 
     /* 🏠 بخش اصلی */
     .main {
       text-align: center;
-      padding: 100px 20px;
+      padding: 80px 20px;
+      animation: fadeInUp 1.5s ease;
     }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     .main h1 {
       font-size: 40px;
       margin-bottom: 20px;
-      color: #2c3e50;
-      animation: fadeInUp 1.2s ease-in-out;
+      color: #ffd700;
     }
+
     .main p {
       font-size: 18px;
       margin-bottom: 40px;
-      color: #555;
-      animation: fadeIn 2s ease-in-out;
+      color: #f1f1f1;
     }
 
-    /* دکمه‌ها */
+    /* 🎯 دکمه‌ها */
     .buttons {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 20px;
     }
+
     .btn {
       background: #2c3e50;
       color: white;
-      padding: 15px 30px;
-      border-radius: 10px;
+      padding: 15px 35px;
+      border-radius: 50px;
       text-decoration: none;
       font-size: 18px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
     }
-    .btn:hover {
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 300%;
       background: #ffd700;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      transition: 0.6s;
+      z-index: 0;
+    }
+
+    .btn:hover::before {
+      width: 120%;
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn:hover {
       color: #2c3e50;
-      transform: scale(1.1);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      transform: translateY(-5px) scale(1.05);
     }
 
     /* ⚓ فوتر */
     footer {
-      background: #2c3e50;
+      background: rgba(0, 0, 0, 0.8);
       color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      animation: fadeIn 3s ease-in-out;
+      padding: 25px;
+      margin-top: 60px;
+      animation: fadeIn 2s ease;
     }
 
-    /* ✨ انیمیشن‌ها */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-40px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -152,28 +176,23 @@
   <!-- ====== هدر ====== -->
   <header>
     <div class="logo">🌍 زیارت سروس</div>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
-    <nav id="navbar">
-      <ul>
-        <li><a href="index.html">🏠 ہوم</a></li>
-        <li><a href="visa.html">📑 ویزہ</a></li>
-        <li><a href="hotel.html">🏨 ہوٹل</a></li>
-        <li><a href="transport.html">🚌 ٹرانسپورٹ</a></li>
-        <li><a href="food.html">🍴 کھانے</a></li>
-      </ul>
+    <nav>
+      <a href="#">منو ۱</a>
+      <a href="#">منو ۲</a>
+      <a href="#">منو ۳</a>
+      <a href="#">منو ۴</a>
     </nav>
   </header>
 
   <!-- ====== بخش اصلی ====== -->
   <main class="main">
-    <h1>خوش آمدید زیارت سروس میں</h1>
-    <p>اپنی زیارت کے لئے بہترین سہولیات منتخب کریں:</p>
-
+    <h1>خوش آمدید به زیارت سروس</h1>
+    <p>اینجا بهترین تجربه سفر و زیارت رو پیدا می‌کنی ✨</p>
     <div class="buttons">
-      <a href="visa.html" class="btn">📑 ویزہ</a>
-      <a href="hotel.html" class="btn">🏨 ہوٹل</a>
-      <a href="transport.html" class="btn">🚌 ٹرانسپورٹ</a>
-      <a href="food.html" class="btn">🍴 کھانے</a>
+      <a href="#" class="btn"><span>📑 ویزہ</span></a>
+      <a href="#" class="btn"><span>🏨 ہوٹل</span></a>
+      <a href="#" class="btn"><span>🚌 ٹرانسپورٹ</span></a>
+      <a href="#" class="btn"><span>🍴 کھانے</span></a>
     </div>
   </main>
 
@@ -181,15 +200,6 @@
   <footer>
     <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
-
-  <!-- 📌 اسکریپت -->
-  <script>
-    const toggle = document.getElementById("menu-toggle");
-    const navbar = document.getElementById("navbar");
-    toggle.addEventListener("click", () => {
-      navbar.classList.toggle("show");
-    });
-  </script>
 
 </body>
 </html>
