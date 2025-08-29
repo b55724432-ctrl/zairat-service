@@ -1,175 +1,403 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>زیارت سروس</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>زیارت سروس | ویزہ، ہوٹل، ٹرانسپورٹ، کھانے</title>
+
+  <!-- SEO -->
+  <meta name="description" content="زیارت سروس: ایران و عراق کے لیے ویزہ، ہوٹل، ٹرانسپورٹ اور کھانے کی شاندار سروسز۔ تیز، قابلِ اعتماد اور عالمی معیار کا تجربہ۔" />
+  <link rel="canonical" href="https://ziyarat-service.ir/" />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="زیارت سروس | عالمی معیار کی زیارتی خدمات" />
+  <meta property="og:description" content="ویزہ، ہوٹل، ٹرانسپورٹ اور کھانے—سب ایک جگہ۔ فوری رابطہ واتساپ پر!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ziyarat-service.ir/" />
+  <meta property="og:image" content="https://i.postimg.cc/kMT4CZkB/91700-1.webp" />
+
+  <!-- Favicon (ساده) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -5 50 50'%3E%3Ctext y='32' font-size='32'%3E%F0%9F%8C%8D%3C/text%3E%3C/svg%3E" />
+
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-    }
-    body {
-      direction: rtl;
-      background: #111; /* مشکی لوکس */
-      color: #f5f5f5;
-      line-height: 1.7;
+    :root{
+      --bg:#0b0b0f;          /* پس‌زمینه لوکس تیره */
+      --panel:#0f1117;       /* پنل‌ها */
+      --soft:#121420;
+      --glass:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.08);
+      --text:#e9ecf2;
+      --muted:#a9b1c7;
+      --brand:#ffd166;       /* طلایی گرم */
+      --brand-2:#9be7ff;     /* آبی لوکس برای جزئیات */
+      --ok:#22c55e;
+      --danger:#f43f5e;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
     }
 
-    /* 🔝 هدر */
-    header {
-      background: #000;
-      color: #ffd700;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    /* ریست خیلی سبک */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Tahoma", Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 80% -10%, #1b1e2e 0%, transparent 55%),
+                  radial-gradient(1000px 600px at 10% 10%, #14192a 0%, transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.75;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      scroll-behavior:smooth;
     }
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #ffd700;
-      text-shadow: 0 0 10px rgba(255,215,0,0.7);
+
+    /* هدر شفاف با گلس‌مورفیک */
+    .header{
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter:saturate(180%) blur(12px);
+      background:linear-gradient(to bottom, rgba(11,11,15,.75), rgba(11,11,15,.35));
+      border-bottom:1px solid var(--border);
     }
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
+    .nav{
+      max-width:1200px; margin:0 auto; padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
     }
-    .navbar a {
-      text-decoration: none;
-      color: #f5f5f5;
-      font-size: 16px;
-      transition: 0.3s;
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      color:var(--text);
     }
-    .navbar a:hover {
-      color: #ffd700;
+    .brand .logo{
+      width:42px; height:42px; display:grid; place-items:center;
+      border-radius:12px; background:linear-gradient(135deg, var(--brand), #ffb703);
+      color:#121212; font-weight:900; box-shadow:var(--shadow);
     }
+    .brand .title{
+      font-weight:800; letter-spacing:.3px; font-size:1.05rem;
+    }
+
+    .menu{display:flex; gap:14px; align-items:center}
+    .menu a{
+      text-decoration:none; color:var(--muted); font-weight:600;
+      padding:10px 14px; border-radius:12px; border:1px solid transparent;
+      transition:.25s ease;
+    }
+    .menu a:hover{ color:var(--text); border-color:var(--border); background:var(--glass)}
+    .btn-nav{
+      background:linear-gradient(135deg, var(--brand), #ffb703);
+      color:#141414; font-weight:800; border:none; cursor:pointer;
+      padding:10px 16px; border-radius:12px; transition:.25s; box-shadow:var(--shadow);
+      text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    }
+    .btn-nav:hover{ transform:translateY(-1px) scale(1.02) }
 
     /* منوی موبایل */
-    .menu-toggle {
-      display: none;
-      font-size: 26px;
-      cursor: pointer;
-      color: #ffd700;
-    }
-    @media (max-width: 768px) {
-      .navbar ul {
-        display: none;
-        flex-direction: column;
-        background: #000;
-        position: absolute;
-        top: 60px; right: 0;
-        width: 200px;
-        padding: 10px;
-        border: 1px solid #333;
+    .burger{display:none; cursor:pointer; color:var(--text); font-size:24px}
+    @media (max-width: 900px){
+      .menu{display:none}
+      .burger{display:block}
+      .menu.open{
+        display:flex; flex-direction:column; position:absolute; inset:60px 14px auto 14px;
+        background:rgba(17,19,28,.92); border:1px solid var(--border);
+        border-radius:16px; padding:12px;
       }
-      .navbar ul.active { display: flex; }
-      .menu-toggle { display: block; }
+      .menu.open a{padding:12px}
     }
 
-    /* 🏠 بخش اصلی */
-    .main {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(135deg, #1a1a1a, #000);
-      min-height: 70vh;
+    /* هیرو (قهرمان) */
+    .hero{
+      position:relative; overflow:hidden;
+      max-width:1200px; margin:22px auto 0; padding:38px 18px 90px;
     }
-    .main h1 {
-      font-size: 40px;
-      margin-bottom: 20px;
-      color: #ffd700;
-      text-shadow: 0 0 15px rgba(255,215,0,0.8);
+    .hero-card{
+      position:relative; border-radius:28px; border:1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        url('https://i.postimg.cc/kMT4CZkB/91700-1.webp') center/cover no-repeat;
+      min-height:62vh; display:grid; place-items:center; text-align:center;
+      box-shadow:var(--shadow); isolation:isolate;
     }
-    .main p {
-      font-size: 20px;
-      margin-bottom: 50px;
-      color: #ddd;
+    .hero-card::after{
+      content:""; position:absolute; inset:0; z-index:0;
+      background:linear-gradient(180deg, rgba(10,12,18,.55), rgba(10,12,18,.88));
     }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px;
+    .hero-inner{position:relative; z-index:1; max-width:780px; padding:10px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px; border:1px solid var(--border);
+      background:rgba(0,0,0,.35); color:var(--brand); font-weight:800; letter-spacing:.3px;
+      margin-bottom:14px;
     }
-    .btn {
-      background: #ffd700;
-      color: #000;
-      padding: 15px 35px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+    .hero h1{
+      font-size:clamp(28px, 5vw, 52px);
+      line-height:1.18; margin:8px 0 12px; font-weight:900;
+      text-shadow:0 4px 30px rgba(0,0,0,.45);
     }
-    .btn:hover {
-      background: #000;
-      color: #ffd700;
-      box-shadow: 0 0 20px rgba(255,215,0,0.9);
-      transform: scale(1.05);
+    .hero p{
+      color:var(--muted); font-size:clamp(14px, 2.6vw, 18px); margin:0 auto 22px; max-width:680px;
+    }
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+    }
+    .btn{
+      border:none; cursor:pointer; text-decoration:none;
+      padding:14px 20px; border-radius:14px; font-weight:800; letter-spacing:.2px;
+      box-shadow:var(--shadow); transition:.25s;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn-primary{ background:linear-gradient(135deg, var(--brand), #ffb703); color:#171717 }
+    .btn-primary:hover{ transform:translateY(-2px) scale(1.02) }
+    .btn-ghost{ background:rgba(255,255,255,.06); color:var(--text); border:1px solid var(--border) }
+    .btn-ghost:hover{ background:rgba(255,255,255,.1) }
+
+    /* گرید خدمات */
+    .section{max-width:1200px; margin:44px auto; padding:0 18px}
+    .grid{
+      display:grid; gap:16px;
+      grid-template-columns:repeat(12, 1fr);
+    }
+    .card{
+      grid-column:span 3; min-height:170px; border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--border); padding:18px; position:relative; overflow:hidden;
+      transition:.25s; box-shadow:0 20px 60px rgba(0,0,0,.18);
+    }
+    .card:hover{ transform:translateY(-6px) }
+    .card::after{
+      content:""; position:absolute; inset:auto -20% -30% -20%;
+      height:120%; background:radial-gradient(600px 140px at 50% 100%, rgba(255,209,102,.2), transparent 70%);
+      pointer-events:none;
+    }
+    .card h3{ margin:8px 0 6px; font-size:20px }
+    .card p{ color:var(--muted); font-size:14px; margin:0 0 12px }
+    .card .go{ color:var(--brand-2); font-weight:800; text-decoration:none }
+
+    @media (max-width:1100px){
+      .card{ grid-column:span 6 }
+    }
+    @media (max-width:620px){
+      .card{ grid-column:span 12 }
     }
 
-    /* ⚓ فوتر */
-    footer {
-      background: #000;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      border-top: 1px solid #333;
+    /* آکاردئون مدارک لازم */
+    .accordion{ border:1px solid var(--border); border-radius:16px; overflow:hidden; background:var(--soft) }
+    .acc-item + .acc-item{ border-top:1px solid var(--border) }
+    .acc-head{
+      width:100%; text-align:inherit; background:none; color:var(--text);
+      padding:14px 16px; font-weight:800; display:flex; align-items:center; justify-content:space-between;
+      cursor:pointer;
     }
-    footer p {
-      color: #666;
-      font-size: 14px;
+    .acc-body{ display:none; padding:0 16px 16px; color:var(--muted) }
+    .acc-item.open .acc-body{ display:block }
+
+    /* فوتر */
+    .footer{
+      border-top:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+      margin-top:50px;
+    }
+    .foot-wrap{ max-width:1200px; margin:0 auto; padding:26px 18px; display:grid; gap:16px }
+    .foot-grid{ display:grid; gap:14px; grid-template-columns:repeat(12, 1fr) }
+    .foot-col{ grid-column:span 4 }
+    .foot-col p{ color:var(--muted); margin:6px 0 }
+    .foot-col a{ color:var(--text); text-decoration:none }
+    .foot-col a:hover{ color:var(--brand) }
+    @media (max-width:900px){
+      .foot-col{ grid-column:span 12 }
+    }
+    .copy{ color:#7d8596; font-size:13px; text-align:center; padding:12px 0 26px }
+
+    /* دکمه واتساپ شناور */
+    .wa{
+      position:fixed; right:18px; bottom:18px; z-index:1001;
+      background:#25d366; color:#0b0b0b; border-radius:999px; padding:12px 16px; font-weight:900;
+      text-decoration:none; box-shadow:var(--shadow); border:1px solid #1ab955;
+    }
+    .wa:hover{ filter:brightness(1.05) }
+
+    /* دسترسی‌پذیری و انیمیشن‌های ملایم */
+    @media (prefers-reduced-motion:no-preference){
+      .fade-in{ animation:fade .7s ease both }
+      @keyframes fade{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
     }
   </style>
+
+  <!-- Schema.org / JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TravelAgency",
+    "name":"زیارت سروس",
+    "url":"https://ziyarat-service.ir/",
+    "telephone":"+989302844084",
+    "areaServed":["IR","IQ","PK"],
+    "address":{"@type":"PostalAddress","addressLocality":"Qom","addressCountry":"IR"},
+    "sameAs":[]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- ====== هدر ====== -->
-  <header>
-    <div class="logo">🌍 زیارت سروس</div>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
-    <nav class="navbar" id="navbar">
-      <ul>
-        <li><a href="index.html" class="active"> ہوم</a></li>
-        <li><a href="visa.html">ویزا</a></li>
-        <li><a href="hotel.html"> ہوٹل</a></li>
-        <li><a href="transport.html"> ٹرانسپورٹ</a></li>
-        <li><a href="food.html"> کھانے</a></li>
-      </ul>
+  <!-- هدر -->
+  <header class="header">
+    <nav class="nav" aria-label="مینوی اصلی">
+      <a class="brand" href="#top" aria-label="زیارت سروس">
+        <span class="logo">ZS</span>
+        <span class="title">زیارت سروس</span>
+      </a>
+
+      <div class="burger" id="burger" aria-label="باز/بستن منو" aria-expanded="false">☰</div>
+
+      <div class="menu" id="menu">
+        <a href="#services">خدمات</a>
+        <a href="#docs">مدارکِ ویزہ</a>
+        <a href="#contact">رابطہ</a>
+        <a class="btn-nav" href="https://wa.me/989302844084?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%D8%AC%DA%BE%DB%92%20%D9%88%DB%8C%D8%B2%DB%81/%DB%81%D9%88%D9%B9%D9%84%20%DA%A9%DB%8C%20%D8%B1%D8%A7%DB%81%D9%86%D9%85%D8%A7%D8%A6%DB%8C%20%DA%86%D8%A7%DB%81%DB%8C%DB%92%E2%80%94%D8%B2%DB%8C%D8%A7%D8%B1%D8%AA%20%D8%B3%D8%B1%D9%88%D8%B3" target="_blank" rel="noopener">واتساپ</a>
+      </div>
     </nav>
   </header>
 
-  <!-- ====== بخش اصلی ====== -->
-  <main class="main">
-    <h1>خوش آمدید زیارت سروس میں</h1>
-    <p>اپنی زیارت کے لئے بہترین سہولیات ساری ایک جگه:</p>
-    <div class="buttons">
-      <a href="visa.html" class="btn"> ویزا</a>
-      <a href="hotel.html" class="btn"> ہوٹل</a>
-      <a href="transport.html" class="btn"> ٹرانسپورٹ</a>
-      <a href="food.html" class="btn"> کھانے</a>
+  <!-- هیرو -->
+  <section class="hero" id="top">
+    <div class="hero-card fade-in">
+      <div class="hero-inner">
+        <div class="badge">💎 عالمی معیار • تیز، محفوظ، قابلِ اعتماد</div>
+        <h1>ایران و عراق کے لیے بہترین زیارتی سروسز</h1>
+        <p>ویزا، ہوٹل، ٹرانسپورٹ اور کھانے—سب کچھ ایک ہی جگہ۔ معیار ایسا کہ دل جیت لے، رفتار ایسی کہ وقت بچ جائے، اور قیمت ایسی کہ خوشی ہو۔</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#services">ابھی شروع کریں</a>
+          <a class="btn btn-ghost" href="https://wa.me/989302844084?text=%D9%85%DB%8C%D8%B1%DB%92%20%D8%B2%DB%8C%D8%A7%D8%B1%D8%AA%DB%8C%20%D8%B3%D9%81%D8%B1%20%DA%A9%DB%92%20%D9%84%DB%8C%DB%92%20%D8%B1%D8%A7%DB%81%D9%86%D9%85%D8%A7%D8%A6%DB%8C%20%D8%AF%DB%8C%DA%BA" target="_blank" rel="noopener">مشاورتِ فوری</a>
+        </div>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <!-- ====== فوتر ====== -->
-  <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+  <!-- خدمات (کارت‌ها) -->
+  <section class="section" id="services" aria-labelledby="srv-title">
+    <h2 id="srv-title" class="fade-in" style="margin-bottom:14px">ہماری خدمات</h2>
+    <p class="fade-in" style="color:var(--muted); margin:0 0 18px">ایک کلک—اور آپ کے لیے پوری ٹیم تیار۔</p>
+
+    <div class="grid">
+      <!-- Visa -->
+      <article class="card fade-in" style="background-image:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)), url('https://images.unsplash.com/photo-1543946602-5f8b7e8c2d3f?q=80&w=1600&auto=format&fit=crop'); background-size:cover; background-position:center;">
+        <h3>📑 ویزہ</h3>
+        <p>ایران و عراق ویزہ—مدارک، درخواست اور فالو اپ، سب کچھ ہمارے ذمہ۔</p>
+        <a class="go" href="#docs">مدارکِ لازم دیکھیں →</a>
+      </article>
+
+      <!-- Hotel -->
+      <article class="card fade-in" style="background-image:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)), url('https://images.unsplash.com/photo-1559599238-0f4c6f2d9c05?q=80&w=1600&auto=format&fit=crop'); background-size:cover; background-position:center;">
+        <h3>🏨 ہوٹل</h3>
+        <p>نجف، کربلا، مشہد—پریمیئم ہوٹلز بہترین قیمت پر۔</p>
+        <a class="go" href="hotel.html">ہوٹل تفصیل →</a>
+      </article>
+
+      <!-- Transport -->
+      <article class="card fade-in" style="background-image:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)), url('https://images.unsplash.com/photo-1506015391300-4802dc74de2e?q=80&w=1600&auto=format&fit=crop'); background-size:cover; background-position:center;">
+        <h3>🚌 ٹرانسپورٹ</h3>
+        <p>ایئرپورٹ پک اینڈ ڈراپ، انٹر سٹی، اور گروپ ٹور سروسز۔</p>
+        <a class="go" href="transport.html">مزید دیکھیں →</a>
+      </article>
+
+      <!-- Food -->
+      <article class="card fade-in" style="background-image:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop'); background-size:cover; background-position:center;">
+        <h3>🍴 کھانے</h3>
+        <p>حلال، صاف ستھرا، ذائقہ دار—مقامی اور بین الاقوامی آپشنز۔</p>
+        <a class="go" href="food.html">مینوز →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- مدارک لازم (آکاردئون) -->
+  <section class="section" id="docs" aria-labelledby="docs-title">
+    <h2 id="docs-title" class="fade-in" style="margin-bottom:14px">مدارکِ لازم برائے ویزہ</h2>
+    <p class="fade-in" style="color:var(--muted); margin:0 0 18px">سوال نہ رہے—سب کچھ واضح:</p>
+
+    <div class="accordion fade-in">
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span>🇮🇷 ایران ویزہ — لازمی دستاویزات</span><span>▾</span>
+        </button>
+        <div class="acc-body">
+          <ul>
+            <li>رنگین پاسپورٹ اسکین (کم از کم 6 ماہ معیاد)</li>
+            <li>2 عدد سفید پس منظر تصاویرِ پاسپورٹ سائز</li>
+            <li>ذاتی موبائل نمبر + ای میل</li>
+            <li>اگر گروپ میں ہیں: گروپ لیڈر کی معلومات</li>
+          </ul>
+          <p style="margin-top:10px">فوری رہنمائی: <a href="https://wa.me/989302844084?text=%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%20%D9%88%DB%8C%D8%B2%DB%81%20%DA%A9%DB%92%20%D8%AF%D8%B3%D8%AA%D8%A7%D9%88%DB%8C%D8%B2%D8%A7%D8%AA%20%D9%85%DB%8C%DA%BA%20%D9%85%D8%AF%D8%AF%20%DA%86%D8%A7%DB%81%DB%8C%DB%92" target="_blank" rel="noopener">واتساپ</a></p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span>🇮🇶 عراق ویزہ — لازمی دستاویزات</span><span>▾</span>
+        </button>
+        <div class="acc-body">
+          <ul>
+            <li>پاسپورٹ اسکین (کم از کم 6 ماہ معیاد)</li>
+            <li>2 عدد تصاویرِ پاسپورٹ سائز</li>
+            <li>رہائشی پتہ + ہنگامی رابطہ</li>
+            <li>زیارتی شیڈول (اگر موجود ہو)</li>
+          </ul>
+          <p style="margin-top:10px">فوری رہنمائی: <a href="https://wa.me/989302844084?text=%D8%B9%D8%B1%D8%A7%D9%82%20%D9%88%DB%8C%D8%B2%DB%81%20%D9%85%DB%8C%DA%BA%20%D9%85%D8%AF%D8%AF%20%DA%86%D8%A7%DB%81%DB%8C%DB%92" target="_blank" rel="noopener">واتساپ</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- تماس / فوتر -->
+  <footer class="footer" id="contact">
+    <div class="foot-wrap">
+      <div class="foot-grid">
+        <div class="foot-col">
+          <h3 style="margin:0 0 8px">زیارت سروس</h3>
+          <p>ایک ون-اسٹاپ پلیٹ فارم جہاں معیار اور اعتماد ملتے ہیں۔</p>
+        </div>
+        <div class="foot-col">
+          <h4 style="margin:0 0 8px">رابطہ</h4>
+          <p>WhatsApp: <a href="https://wa.me/989302844084" target="_blank" rel="noopener">+98 930 284 4084</a></p>
+          <p>Email: <a href="mailto:info@ziyarat-service.ir">info@ziyarat-service.ir</a></p>
+        </div>
+        <div class="foot-col">
+          <h4 style="margin:0 0 8px">لنکس</h4>
+          <p><a href="#services">خدمات</a> • <a href="#docs">مدارکِ ویزہ</a> • <a href="#top">اوپر</a></p>
+        </div>
+      </div>
+      <div class="copy">© <span id="y"></span> زیارت سروس — تمام حقوق محفوظ ہیں.</div>
+    </div>
   </footer>
 
+  <!-- واتساپ شناور -->
+  <a class="wa" href="https://wa.me/989302844084?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%D8%AC%DA%BE%DB%92%20%D8%B2%DB%8C%D8%A7%D8%B1%D8%AA%DB%8C%20%D8%B3%D8%B1%D9%88%D8%B3%D8%B2%20%DA%A9%DB%8C%20%D9%85%D8%AF%D8%AF%20%DA%86%D8%A7%DB%81%DB%8C%DB%92" target="_blank" rel="noopener" aria-label="واتساپ">
+    💬 واتساپ
+  </a>
+
   <script>
-    // منوی موبایل
-    const toggle = document.getElementById("menu-toggle");
-    const nav = document.getElementById("navbar").querySelector("ul");
-    toggle.addEventListener("click", () => {
-      nav.classList.toggle("active");
+    // سال فوتر
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // برگر منو
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger?.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(isOpen));
     });
+
+    // آکاردئون مدارک
+    document.querySelectorAll('.acc-item').forEach(item=>{
+      const head = item.querySelector('.acc-head');
+      head.addEventListener('click', ()=>{
+        const open = item.classList.toggle('open');
+        head.setAttribute('aria-expanded', String(open));
+      });
+    });
+
+    // محافظت کوچک برای تصاویر پس‌زمینه: اگر لود نشد، بک‌آپِ رنگی باقی می‌ماند (CSS already handles).
   </script>
 </body>
 </html>
