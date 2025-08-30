@@ -1,71 +1,29 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="fa">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ویزا سروسز</title>
+  <title>ویزہ | زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- هدر -->
-  <header class="header">
-    <h1>🌍 زیارات سروس</h1>
-    <nav>
-      <a href="index.html">🏠 ہوم</a>
-      <a href="visa.html" class="active">📑 ویزہ</a>
-      <a href="hotel.html">🏨 ہوٹل</a>
-      <a href="transport.html">🚌 ٹرانسپورٹ</a>
-      <a href="food.html">🍴 کھانے</a>
-    </nav>
+  <header>
+    <div class="logo">زیارت سروس</div>
   </header>
 
-  <!-- مین -->
-  <main class="container">
-    <h2>📑 ویزہ سروسز</h2>
-    <p>براہ کرم مطلوبہ ویزہ منتخب کریں تاکہ تفصیل دیکھ سکیں:</p>
-
-    <div class="btn-group">
-      <button class="btn" onclick="showContent('iran')">📄 ایران کا ویزہ</button>
-      <button class="btn" onclick="showContent('iraq')">📄 عراق کا ویزہ</button>
+  <section class="hero">
+    <div class="hero-box">
+      <h1>خدمات ویزا</h1>
+      <p>درخواست سریع و مطمئن ویزای ایران و عراق برای زائرین.</p>
+      <div class="buttons">
+        <a href="index.html" class="btn btn-secondary">🏠 صفحه اصلی</a>
+        <a href="hotel.html" class="btn btn-secondary">🏨 رزرو هتل</a>
+      </div>
     </div>
+  </section>
 
-    <!-- ایران -->
-    <div id="iran" class="content-box">
-      <h3>ایران کے ویزہ کے لیے درکار کاغذات</h3>
-      <ul>
-        <li>پاسپورٹ (کم از کم ۶ ماہ کی معیاد کے ساتھ)</li>
-        <li>ایک عدد پاسپورٹ سائز تصویر</li>
-        <li>درخواست فارم مکمل پُر کیا ہوا</li>
-      </ul>
-      <p><strong>⏱ اجراء کا وقت:</strong> ۵ تا ۱۰ دن</p>
-      <a href="https://wa.me/989302844084" class="btn-whatsapp">واٹس ایپ پر کاغذات بھیجیں</a>
-    </div>
-
-    <!-- عراق -->
-    <div id="iraq" class="content-box">
-      <h3>عراق کے ویزہ کے لیے درکار کاغذات</h3>
-      <ul>
-        <li>پاسپورٹ (کم از کم ۶ ماہ کی معیاد کے ساتھ)</li>
-        <li>۲ عدد پاسپورٹ سائز تصاویر</li>
-        <li>درخواست فارم مکمل پُر کیا ہوا</li>
-      </ul>
-      <p><strong>⏱ اجراء کا وقت:</strong> ۳ تا ۷ دن</p>
-      <a href="https://wa.me/989302844084" class="btn-whatsapp">واٹس ایپ پر کاغذات بھیجیں</a>
-    </div>
-  </main>
-
-  <!-- فوتر -->
-  <footer class="footer">
-    <p>© 2025 سروسز ٹریول | تمام حقوق محفوظ ہیں</p>
+  <footer>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ است</p>
   </footer>
-
-  <script>
-    function showContent(id) {
-      document.querySelectorAll('.content-box').forEach(box => {
-        box.style.display = 'none';
-      });
-      document.getElementById(id).style.display = 'block';
-    }
-  </script>
 </body>
 </html>
