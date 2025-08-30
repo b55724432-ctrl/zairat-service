@@ -1,162 +1,124 @@
-/* فونت */
-body {
-  font-family: 'Noto Nastaliq Urdu', serif;
-  margin: 0;
-  padding: 0;
-  background: #f9f9f9;
-  color: #333;
-  text-align: center;
-}
-
-/* هدر با بک‌گراند شیک */
-header {
-  position: relative;
-  height: 50vh;
-  background: linear-gradient(135deg, #007bff, #00c6ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-header .overlay {
-  text-align: center;
-}
-header h1 {
-  font-size: 48px;
-  margin: 0;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-header p {
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-/* دکمه‌ها */
-.buttons {
-  margin: 50px auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.btn {
-  padding: 18px 40px;
-  font-size: 22px;
-  border: none;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #007bff, #00c6ff);
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-.btn:hover {
-  background: linear-gradient(135deg, #0056b3, #007bff);
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-
-/* فوتر */
-footer {
-  background: #222;
-  color: #aaa;
-  padding: 20px;
-  margin-top: 80px;
-  font-size: 14px;
-}
-/* عمومی استایل */
+/* 🎨 استایل عمومی */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Tahoma", sans-serif;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
-
 body {
-  background: #f4f6f9;
-  color: #2c3e50;
-  line-height: 1.6;
+  direction: rtl;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  line-height: 1.7;
+  overflow-x: hidden;
+  animation: fadeIn 2s ease-in-out;
 }
 
-/* ===== هدر ===== */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #2c3e50;
-  padding: 15px 40px;
-  color: white;
+/* ✨ انیمیشن پس‌زمینه */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.header .logo {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.navbar {
-  display: flex;
-  gap: 25px;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
-
-.navbar a:hover {
-  color: #f39c12;
-}
-
-.navbar a.active {
-  border-bottom: 2px solid #f39c12;
-}
-
-/* ===== بخش اصلی ===== */
-.main {
+/* 🔝 هدر */
+header {
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 20px;
   text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+}
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffd700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ffd700, 0 0 10px #ffae00; }
+  to { text-shadow: 0 0 20px #ffe44d, 0 0 30px #ffd700; }
+}
+
+/* 📦 بخش اصلی */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 80px 20px;
+  min-height: calc(100vh - 150px);
 }
-
-.main h1 {
-  font-size: 36px;
+.hero-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px 25px;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.3);
+  animation: slideUp 1.2s ease-out;
+}
+.hero-box h1 {
+  font-size: 28px;
   margin-bottom: 15px;
+  color: #ffd700;
+}
+.hero-box p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #eee;
 }
 
-.main p {
-  font-size: 18px;
-  margin-bottom: 40px;
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-/* ===== دکمه‌ها ===== */
+/* 🎯 دکمه‌ها */
 .buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
   flex-wrap: wrap;
 }
-
 .btn {
-  display: inline-block;
-  background: #3498db;
-  color: white;
-  text-decoration: none;
-  padding: 15px 30px;
+  padding: 14px 28px;
   border-radius: 8px;
-  font-size: 18px;
+  text-decoration: none;
+  font-size: 16px;
   transition: 0.3s;
+  font-weight: bold;
+  display: inline-block;
+}
+.btn-primary {
+  background: #ffd700;
+  color: #111;
+}
+.btn-primary:hover {
+  background: #e6c200;
+  transform: scale(1.05);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
 }
 
-.btn:hover {
-  background: #2980b9;
-}
-
-/* ===== فوتر ===== */
-.footer {
-  text-align: center;
-  background: #2c3e50;
+/* ⚓ فوتر */
+footer {
+  background: rgba(17,24,39,0.85);
   color: white;
-  padding: 15px;
-  margin-top: 60px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
 }
