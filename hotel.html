@@ -1,95 +1,29 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="fa">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ہوٹل بکنگ</title>
-  <style>
-    body {
-      font-family: Tahoma, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 15px;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .card {
-      width: 340px;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      background: url('https://i.postimg.cc/kMT4CZkB/91700-1.webp') no-repeat center center/cover;
-    }
-
-    /* لایه تاریک روی عکس برای خوانایی متن */
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      border-radius: 15px;
-    }
-
-    .card h3, .card .stars, .card .price, .card button {
-      position: relative;
-      z-index: 1;
-    }
-
-    .card h3 {
-      margin: 10px 0;
-      font-size: 22px;
-    }
-
-    .stars {
-      font-size: 22px;
-      color: gold;
-      margin: 5px 0;
-    }
-
-    .price {
-      font-size: 18px;
-      margin: 8px 0;
-    }
-
-    .card button {
-      background: #3498db;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .card button:hover {
-      background: #2980b9;
-    }
-  </style>
+  <title>هتل | زیارت سروس</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <div class="logo">زیارت سروس</div>
+  </header>
 
-  <header>ہوٹل بکنگ</header>
+  <section class="hero">
+    <div class="hero-box">
+      <h1>رزرو هتل</h1>
+      <p>بهترین هتل‌ها در شهرهای مقدس با قیمت مناسب.</p>
+      <div class="buttons">
+        <a href="index.html" class="btn btn-secondary">🏠 صفحه اصلی</a>
+        <a href="visa.html" class="btn btn-secondary">📑 درخواست ویزا</a>
+      </div>
+    </div>
+  </section>
 
-  <div class="card">
-    <h3> ہوٹل تشریفات قم/ایران</h3>
-    <div class="stars">★★★</div>
-    <p class="price">فی رات 90$</p>
-    <button>Book Now</button>
-  </div>
-
+  <footer>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ است</p>
+  </footer>
 </body>
 </html>
