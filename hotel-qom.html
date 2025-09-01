@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ہوٹل قم - زیارت سروس</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      margin: 0; padding: 0;
+      background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+      color: #333;
+    }
+    header {
+      background: rgba(44, 62, 80, 0.9);
+      color: #fff; padding: 20px; text-align: center;
+      font-size: 28px; font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .hero-box {
+      text-align: center; padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.7);
+      margin: 20px; border-radius: 12px;
+      animation: fadeIn 1.2s ease;
+    }
+    .hero-box h1 {
+      margin-bottom: 10px; font-size: 32px;
+      color: #2c3e50;
+    }
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px; padding: 20px;
+    }
+    .hotel-card {
+      background: #fff; border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+      animation: slideUp 1s ease;
+    }
+    .hotel-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .hotel-card img {
+      width: 100%; height: 180px; object-fit: cover;
+    }
+    .hotel-card h3 {
+      margin: 15px 10px 5px; font-size: 20px; color: #2c3e50;
+    }
+    .hotel-card p {
+      margin: 5px 10px; font-size: 15px;
+    }
+    .btn {
+      display: block; text-align: center;
+      margin: 15px 10px 20px; padding: 12px;
+      background: #3498db; color: #fff;
+      text-decoration: none; border-radius: 8px;
+      transition: background 0.3s;
+      font-weight: bold;
+    }
+    .btn:hover { background: #1d6fa5; }
+    footer {
+      text-align: center; padding: 20px;
+      background: #2c3e50; color: #fff;
+      margin-top: 30px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>زیارت سروس | ہوٹل قم</header>
 
+  <div class="hero-box">
+    <h1>بہترین ہوٹل حرم کے قریب - قم</h1>
+    <p>یہاں منتخب شدہ ہوٹل ہیں جہاں آپ آسانی سے بکنگ کر سکتے ہیں:</p>
+  </div>
+
+  <div class="hotel-grid">
+    <div class="hotel-card">
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/223529437.jpg" alt="Karimeh Hotel">
+      <h3>ہوٹل کریمہ (Karimeh Hotel)</h3>
+      <p>⭐️⭐️⭐️⭐️</p>
+      <p>قیمت: ۱۷،۰۰۰،۰۰۰ IRR / شب</p>
+      <a href="https://wa.me/989302844084" class="btn">رزرو فوری</a>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/476433781.jpg" alt="Sana Hotel">
+      <h3>ہوٹل سنا (Hotel Sana)</h3>
+      <p>⭐️⭐️⭐️</p>
+      <p>قیمت: ۱۲،۰۰۰،۰۰۰ IRR / شب</p>
+      <a href="https://wa.me/989302844084" class="btn">رزرو فوری</a>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/453804536.jpg" alt="Qom International Hotel">
+      <h3>ہوٹل بین‌المللی قم</h3>
+      <p>⭐️⭐️⭐️⭐️</p>
+      <p>قیمت: ۲۰،۰۰۰،۰۰۰ IRR / شب</p>
+      <a href="https://wa.me/989302844084" class="btn">رزرو فوری</a>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/325540553.jpg" alt="Olympic Hotel">
+      <h3>ہوٹل المپیک قم</h3>
+      <p>⭐️⭐️⭐️</p>
+      <p>قیمت: ۱۵،۰۰۰،۰۰۰ IRR / شب</p>
+      <a href="https://wa.me/989302844084" class="btn">رزرو فوری</a>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/236041813.jpg" alt="Al Zahra Hotel">
+      <h3>ہوٹل الزہرا</h3>
+      <p>⭐️⭐️⭐️⭐️</p>
+      <p>قیمت: ۱۸،۰۰۰،۰۰۰ IRR / شب</p>
+      <a href="https://wa.me/989302844084" class="btn">رزرو فوری</a>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/238348240.jpg" alt="Khorshid Hotel">
+      <h3>ہوٹل خورشید</h3>
+      <p>⭐️⭐️⭐️⭐️</p>
+      <p>قیمت: ۱۹،۰۰۰،۰۰۰ IRR / شب</p>
+      <a href="https://wa.me/989302844084" class="btn">رزرو فوری</a>
+    </div>
+  </div>
+
+  <footer>© 2025 زیارت سروس - تمام حقوق محفوظ ہیں</footer>
+</body>
+</html>
