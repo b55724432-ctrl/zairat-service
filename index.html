@@ -5,27 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Tahoma, sans-serif; margin: 0; padding: 0; background: #f5f7fa; }
+    header { background: #2c3e50; color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 24px; font-weight: bold; }
+    .lang-select { padding: 5px; border-radius: 6px; }
+    .hero { text-align: center; padding: 50px 20px; }
+    .buttons a { display: inline-block; margin: 10px; padding: 12px 20px; border-radius: 8px; text-decoration: none; }
+    .btn-primary { background: #3498db; color: #fff; }
+    .btn-secondary { background: #2ecc71; color: #fff; }
+    footer { background: #2c3e50; color: #fff; text-align: center; padding: 15px; }
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">زیارت سروس</div>
+    <div class="logo" id="logo">زیارت سروس</div>
+    <select id="language" class="lang-select">
+      <option value="ur">اردو</option>
+      <option value="fa">فارسی</option>
+      <option value="en">English</option>
+    </select>
   </header>
 
   <section class="hero">
     <div class="hero-box">
-      <h1>بہترین زیارتی خدمات</h1>
-      <p>ویزا، ہوٹل، ٹرانسپورٹ اور کھانے کی سہولت ایک جگہ پر۔</p>
+      <h1 id="title">بہترین زیارتی خدمات</h1>
+      <p id="desc">ویزا، ہوٹل، ٹرانسپورٹ اور کھانے کی سہولت ایک جگہ پر۔</p>
       <div class="buttons">
-        <a href="visa.html" class="btn btn-primary">📑 ویزا درخواست</a>
-        <a href="hotel.html" class="btn btn-secondary">🏨 ہوٹل بُک کریں</a>
-        <a href="transport.html" class="btn btn-secondary">🚌 ٹرانسپورٹ</a>
-        <a href="food.html" class="btn btn-secondary">🍴 کھانا</a>
+        <a href="visa.html" class="btn btn-primary" id="visa">📑 ویزا درخواست</a>
+        <a href="hotel.html" class="btn btn-secondary" id="hotel">🏨 ہوٹل بُک کریں</a>
+        <a href="transport.html" class="btn btn-secondary" id="transport">🚌 ٹرانسپورٹ</a>
+        <a href="food.html" class="btn btn-secondary" id="food">🍴 کھانا</a>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+    <p id="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
+
+  <script>
+    const texts = {
+      ur: {
+        logo: "زیارت سروس",
+        title: "بہترین زیارتی خدمات",
+        desc: "ویزا، ہوٹل، ٹرانسپورٹ اور کھانے کی سہولت ایک جگہ پر۔",
+        visa: "📑 ویزا درخواست",
+        hotel: "🏨 ہوٹل بُک کریں",
+        transport: "🚌 ٹرانسپورٹ",
+        food: "🍴 کھانا",
+        footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
+      },
+      fa: {
+        logo: "زیارت سرویس",
+        title: "بهترین خدمات زیارتی",
+        desc: "ویزا، هتل، ترانسپورت و غذا در یک‌جا.",
+        visa: "📑 درخواست ویزا",
+        hotel: "🏨 رزرو هتل",
+        transport: "🚌 ترانسپورت",
+        food: "🍴 غذا",
+        footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
+      },
+      en: {
+        logo: "Ziarat Service",
+        title: "Best Pilgrimage Services",
+        desc: "Visa, hotels, transport, and food in one place.",
+        visa: "📑 Apply Visa",
+        hotel: "🏨 Book Hotel",
+        transport: "🚌 Transport",
+        food: "🍴 Food",
+        footer: "© 2025 Ziarat Service | All Rights Reserved"
+      }
+    };
+
+    const langSelect = document.getElementById("language");
+    langSelect.addEventListener("change", (e) => {
+      const lang = e.target.value;
+      document.getElementById("logo").textContent = texts[lang].logo;
+      document.getElementById("title").textContent = texts[lang].title;
+      document.getElementById("desc").textContent = texts[lang].desc;
+      document.getElementById("visa").textContent = texts[lang].visa;
+      document.getElementById("hotel").textContent = texts[lang].hotel;
+      document.getElementById("transport").textContent = texts[lang].transport;
+      document.getElementById("food").textContent = texts[lang].food;
+      document.getElementById("footer").textContent = texts[lang].footer;
+    });
+  </script>
 </body>
 </html>
