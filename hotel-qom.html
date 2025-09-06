@@ -1,16 +1,435 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ہوٹل قم - زیارت سروس</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .hotel-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .hotel-card
+  <link rel="stylesheet" href="style.css"/>
 
+  <style>
+    /* ====== فقط استایل‌های مخصوص این صفحه ====== */
+    .sub-hero { margin-top: -10px; }
+    .filters {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+      padding: 10px 20px; margin-top: 10px;
+    }
+    .filters input, .filters select {
+      padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.08); color: #fff; min-width: 220px; outline: none;
+    }
+    .filters input::placeholder { color: #ddd; }
+
+    .hotel-list {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 18px; padding: 20px;
+    }
+    .hotel-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .hotel-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.35); }
+    .hotel-card img { width: 100%; height: 170px; object-fit: cover; }
+    .hotel-body { padding: 14px 16px; }
+    .hotel-title { font-weight: 700; font-size: 18px; color: #ffd700; margin-bottom: 6px; }
+    .meta { font-size: 14px; color: #eee; margin: 6px 0; }
+    .stars { letter-spacing: 1px; }
+    .price { margin-top: 8px; font-weight: 700; }
+    .card-actions {
+      display: flex; gap: 10px; padding: 12px 16px 16px; flex-wrap: wrap;
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.25); color:#fff;
+      padding: 10px 16px; border-radius: 10px; text-decoration: none; display: inline-block;
+      transition: .2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.2); transform: translateY(-1px); }
+
+    /* ====== Modal ====== */
+    .modal {
+      position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.55); z-index: 2000; padding: 20px;
+    }
+    .modal.open { display: flex; }
+    .modal-box {
+      width: 100%; max-width: 520px; background: rgba(17,24,39,.95); color:#fff;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5); overflow: hidden;
+      animation: slideUp .25s ease;
+    }
+    .modal-head { padding: 16px 18px; background: rgba(255,255,255,0.06); }
+    .modal-title { font-weight: 800; color: #ffd700; }
+    .modal-body { padding: 16px 18px; display: grid; gap: 10px; }
+    .modal-body input, .modal-body textarea, .modal-body select {
+      padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.08); color: #fff; outline: none;
+    }
+    .modal-foot { padding: 14px 18px; display: flex; gap: 10px; justify-content: flex-end; }
+    .toast {
+      position: fixed; bottom: 20px; right: 20px; background: #10b981; color:#fff;
+      padding: 12px 16px; border-radius: 10px; display: none; z-index: 2100;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+    }
+  </style>
+</head>
+<body>
+  <!-- هدر از قالب اصلی -->
+  <header>
+    <div class="logo">زیارت سروس</div>
+  </header>
+
+  <!-- هيرو هماهنگ با قالب -->
+  <section class="hero sub-hero">
+    <div class="hero-box">
+      <h1>بہترین ہوٹل حرم کے قریب (قم)</h1>
+      <p>لیست منتخب ہتل‌ها با قیمت هر شب، امتیاز ستاره و امکان ثبت درخواست رزرو.</p>
+
+      <!-- فیلتر / جست‌وجو / مرتب‌سازی -->
+      <div class="filters">
+        <input id="searchBox" type="text" placeholder="جست‌وجو: نام هتل…" />
+        <select id="sortSelect" aria-label="مرتب‌سازی">
+          <option value="default">مرتب‌سازی</option>
+          <option value="price-asc">قیمت: کم به زیاد</option>
+          <option value="price-desc">قیمت: زیاد به کم</option>
+          <option value="stars-desc">ستاره: بیشترین</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- لیست هتل‌ها -->
+  <section>
+    <div class="hotel-list" id="hotelList">
+      <!-- هر کارت: تصویر، نام، ستاره، فاصله، قیمت، دکمه‌ها -->
+
+      <!-- 1 -->
+      <article class="hotel-card" data-name="ہوٹل کریمہ" data-price="17000000" data-stars="4">
+        <img src="https://picsum.photos/seed/karimeh/600/400" alt="Karimeh Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل کریمہ (Karimeh Hotel)</div>
+          <div class="meta stars">⭐️⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 150 متر</div>
+          <div class="price">قیمت: ۱۷،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل کریمہ">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: صبحانه، اینترنت، ترانسفر.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="hotel-card" data-name="ہوٹل بین‌المللی قم" data-price="20000000" data-stars="4">
+        <img src="https://picsum.photos/seed/qominternational/600/400" alt="Qom International Hotel"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل بین‌المللی قم</div>
+          <div class="meta stars">⭐️⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 400 متر</div>
+          <div class="price">قیمت: ۲۰،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل بین‌المللی قم">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: رستوران، سالن همایش، پارکینگ.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="hotel-card" data-name="ہوٹل سنا" data-price="12000000" data-stars="3">
+        <img src="https://picsum.photos/seed/sana/600/400" alt="Hotel Sana Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل سنا (Hotel Sana)</div>
+          <div class="meta stars">⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 500 متر</div>
+          <div class="price">قیمت: ۱۲،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل سنا">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: وای‌فای، صبحانه، پذیرش ۲۴ساعته.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="hotel-card" data-name="ہوٹل خورشید" data-price="14000000" data-stars="3">
+        <img src="https://picsum.photos/seed/khorshid/600/400" alt="Khorshid Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل خورشید</div>
+          <div class="meta stars">⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 300 متر</div>
+          <div class="price">قیمت: ۱۴،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل خورشید">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: تهویه، رستوران سنتی.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="hotel-card" data-name="ہوٹل الماس" data-price="15500000" data-stars="4">
+        <img src="https://picsum.photos/seed/almas/600/400" alt="Almas Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل الماس</div>
+          <div class="meta stars">⭐️⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 600 متر</div>
+          <div class="price">قیمت: ۱۵،۵۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل الماس">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: اتاق خانوادگی، کافی‌شاپ.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="hotel-card" data-name="ہوٹل اطلس" data-price="11000000" data-stars="3">
+        <img src="https://picsum.photos/seed/atlas/600/400" alt="Atlas Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل اطلس</div>
+          <div class="meta stars">⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 750 متر</div>
+          <div class="price">قیمت: ۱۱،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل اطلس">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: آسانسور، پارکینگ.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="hotel-card" data-name="ہوٹل ونوس" data-price="13500000" data-stars="3">
+        <img src="https://picsum.photos/seed/venus/600/400" alt="Venus Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل ونوس</div>
+          <div class="meta stars">⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 500 متر</div>
+          <div class="price">قیمت: ۱۳،۵۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل ونوس">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: خدمات روم‌سرویس.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="hotel-card" data-name="هتل بهشت" data-price="9000000" data-stars="2">
+        <img src="https://picsum.photos/seed/behesht/600/400" alt="Behesht Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل بہشت (آپارتمانی)</div>
+          <div class="meta stars">⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 850 متر</div>
+          <div class="price">قیمت: ۹،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل بہشت">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: سوئیت خانوادگی.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="hotel-card" data-name="آپارتمان مسالمه" data-price="8000000" data-stars="2">
+        <img src="https://picsum.photos/seed/masoumeh/600/400" alt="Masoumeh Apt Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">مسالمه آپارتمان</div>
+          <div class="meta stars">⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 700 متر</div>
+          <div class="price">قیمت: ۸،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="مسالمه آپارتمان">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: آشپزخانه مشترک.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="hotel-card" data-name="ہوٹل عماد" data-price="15000000" data-stars="4">
+        <img src="https://picsum.photos/seed/emad/600/400" alt="Emad Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل عماد</div>
+          <div class="meta stars">⭐️⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 450 متر</div>
+          <div class="price">قیمت: ۱۵،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل عماد">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: لابی لوکس، ترانسفر.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="hotel-card" data-name="ہوٹل رسالت" data-price="10000000" data-stars="3">
+        <img src="https://picsum.photos/seed/resalat/600/400" alt="Resalat Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل رسالت</div>
+          <div class="meta stars">⭐️⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 900 متر</div>
+          <div class="price">قیمت: ۱۰،۰۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل رسالت">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: صبحانه، پارکینگ.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+      <!-- 12 -->
+      <article class="hotel-card" data-name="ہوٹل نسترن" data-price="9500000" data-stars="2">
+        <img src="https://picsum.photos/seed/nasrin/600/400" alt="Nasrin Hotel Qom"/>
+        <div class="hotel-body">
+          <div class="hotel-title">ہوٹل نسترن</div>
+          <div class="meta stars">⭐️⭐️</div>
+          <div class="meta">فاصله تا حرم: 1.1 کیلومتر</div>
+          <div class="price">قیمت: ۹،۵۰۰،۰۰۰ IRR / شب</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary reserve-btn" data-hotel="ہوٹل نسترن">درخواست رزرو</button>
+          <a class="btn-ghost" href="#" onclick="alert('امکانات نمونه: اتاق اقتصادی.');return false;">جزئیات</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- فوتر از قالب اصلی -->
+  <footer>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+  </footer>
+
+  <!-- ===== Modal رزرو ===== -->
+  <div class="modal" id="reserveModal" aria-hidden="true" role="dialog">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-title" id="modalTitle">درخواست رزرو</div>
+      </div>
+      <form id="reserveForm" class="modal-body">
+        <input type="hidden" id="hotelName" name="hotelName"/>
+
+        <label>نام و نام خانوادگی
+          <input type="text" id="fullName" required placeholder="مثال: علی رضایی"/>
+        </label>
+
+        <label>شماره تماس (واتساپ یا موبایل)
+          <input type="tel" id="phone" required placeholder="مثال: 09XXXXXXXXX"/>
+        </label>
+
+        <label>تاریخ ورود
+          <input type="date" id="checkIn" required/>
+        </label>
+
+        <label>تاریخ خروج
+          <input type="date" id="checkOut" required/>
+        </label>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <label>تعداد نفرات
+            <select id="guests">
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6</option>
+            </select>
+          </label>
+          <label>تعداد اتاق
+            <select id="rooms">
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+            </select>
+          </label>
+        </div>
+
+        <label>درخواست/توضیحات
+          <textarea id="notes" rows="3" placeholder="مثال: نزدیک پنجره، تخت دبل…"></textarea>
+        </label>
+
+        <div class="modal-foot">
+          <button type="button" class="btn btn-secondary" id="closeModal">انصراف</button>
+          <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">درخواست شما ثبت شد. (فقط ذخیره محلی – بک‌اند نیاز است)</div>
+
+  <script>
+    // ----- جست‌وجو و مرتب‌سازی -----
+    const listEl = document.getElementById('hotelList');
+    const cards = Array.from(listEl.querySelectorAll('.hotel-card'));
+    const searchBox = document.getElementById('searchBox');
+    const sortSelect = document.getElementById('sortSelect');
+
+    function applyFilters() {
+      const q = (searchBox.value || '').trim().toLowerCase();
+      let filtered = cards.filter(c => c.dataset.name.toLowerCase().includes(q));
+
+      const sort = sortSelect.value;
+      if (sort === 'price-asc') {
+        filtered.sort((a,b)=> +a.dataset.price - +b.dataset.price);
+      } else if (sort === 'price-desc') {
+        filtered.sort((a,b)=> +b.dataset.price - +a.dataset.price);
+      } else if (sort === 'stars-desc') {
+        filtered.sort((a,b)=> +b.dataset.stars - +a.dataset.stars);
+      }
+
+      listEl.innerHTML = '';
+      filtered.forEach(el => listEl.appendChild(el));
+    }
+    searchBox.addEventListener('input', applyFilters);
+    sortSelect.addEventListener('change', applyFilters);
+
+    // ----- Modal رزرو -----
+    const modal = document.getElementById('reserveModal');
+    const toast = document.getElementById('toast');
+    const reserveBtns = document.querySelectorAll('.reserve-btn');
+    const modalTitle = document.getElementById('modalTitle');
+    const hotelNameInput = document.getElementById('hotelName');
+    const closeModalBtn = document.getElementById('closeModal');
+    const form = document.getElementById('reserveForm');
+
+    reserveBtns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const hotel = btn.dataset.hotel;
+        modalTitle.textContent = 'درخواست رزرو: ' + hotel;
+        hotelNameInput.value = hotel;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+      });
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    // ذخیره ساده درخواست‌ها در localStorage
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = {
+        hotel: hotelNameInput.value,
+        name: document.getElementById('fullName').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        checkIn: document.getElementById('checkIn').value,
+        checkOut: document.getElementById('checkOut').value,
+        guests: document.getElementById('guests').value,
+        rooms: document.getElementById('rooms').value,
+        notes: document.getElementById('notes').value.trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      const key = 'qs_booking_requests';
+      const prev = JSON.parse(localStorage.getItem(key) || '[]');
+      prev.push(data);
+      localStorage.setItem(key, JSON.stringify(prev));
+
+      showToast('درخواست شما ثبت شد. برای رزرو واقعی باید بک‌اند اضافه شود.');
+      form.reset();
+      closeModal();
+    });
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(()=> toast.style.display='none', 3200);
+    }
+
+    // اجرای اولیه فیلتر (برای اطمینان از ترتیب)
+    applyFilters();
+  </script>
+</body>
+</html>
