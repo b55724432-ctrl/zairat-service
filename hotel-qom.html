@@ -1,53 +1,40 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="ur">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>هتل‌های قم - زیارت سروس</title>
+  <title>ہوٹل قم - زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .filter-bar {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .filter-bar select {
-      padding: 8px;
-      border-radius: 6px;
-    }
     .hotel-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      padding: 20px;
+      margin-top: 30px;
     }
     .hotel-card {
       background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
       overflow: hidden;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
-    .hotel-card:hover {
-      transform: translateY(-5px);
-    }
+    .hotel-card:hover { transform: translateY(-6px); }
     .hotel-card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
-    .hotel-card h3 {
-      margin: 12px 0 6px;
-      color: #ffd700;
+    .hotel-info {
+      padding: 15px;
     }
-    .hotel-card p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
+    .hotel-info h3 { color: #ffd700; margin-bottom: 10px; }
+    .stars { color: gold; margin-bottom: 8px; }
+    .price { margin-bottom: 10px; color: #eee; }
     .reserve-btn {
       display: inline-block;
-      margin: 12px 0 20px;
-      padding: 10px 20px;
+      padding: 10px 18px;
       background: #ffd700;
       color: #111;
       border-radius: 8px;
@@ -55,144 +42,98 @@
       font-weight: bold;
       transition: 0.3s;
     }
-    .reserve-btn:hover {
-      background: #e6c200;
+    .reserve-btn:hover { background: #e6c200; }
+    .filter-box {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .filter-box select {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
     }
   </style>
 </head>
 <body>
+  <!-- هدر -->
   <header>
-    <div class="logo" data-i18n="logo">زیارت سروس</div>
-    <div class="lang-switch">
-      <select id="language">
-        <option value="fa" selected>فارسی</option>
-        <option value="ur">اردو</option>
-        <option value="en">English</option>
-      </select>
-    </div>
+    <div class="logo">زیارت سروس</div>
   </header>
 
+  <!-- بخش فیلتر -->
   <section class="hero">
     <div class="hero-box">
-      <h1 data-i18n="title">هتل‌های قم</h1>
-      <p data-i18n="subtitle">لیست هتل‌های نزدیک حرم مطهر</p>
+      <h1 data-i18n="title">ہوٹل قم</h1>
+      <p data-i18n="desc">قریب حرم مطهر کے بہترین ہوٹل:</p>
 
-      <div class="filter-bar">
-        <label data-i18n="sort_label">مرتب‌سازی:</label>
-        <select id="sortHotels">
-          <option value="price" selected data-i18n="sort_price">بر اساس قیمت</option>
-          <option value="stars" data-i18n="sort_stars">بر اساس ستاره</option>
+      <div class="filter-box">
+        <label for="starFilter" data-i18n="filter">⭐ ستاروں کے مطابق فلٹر کریں:</label>
+        <select id="starFilter">
+          <option value="all" selected data-i18n="all">تمام</option>
+          <option value="5">۵ ستاره</option>
+          <option value="4">۴ ستاره</option>
+          <option value="3">۳ ستاره</option>
         </select>
       </div>
 
+      <!-- لیست هتل‌ها -->
       <div class="hotel-list" id="hotelList">
-        <!-- هتل‌ها اینجا با جاوااسکریپت رندر می‌شن -->
+        <!-- هتل‌ها به صورت داینامیک اینجا میاد -->
       </div>
     </div>
   </section>
 
+  <!-- فوتر -->
   <footer>
-    <p data-i18n="footer">© 2025 زیارت سروس | تمامی حقوق محفوظ است</p>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
 
   <script>
     const hotels = [
-      {name: "هتل کریمه", img: "https://i.postimg.cc/ZR8KXvG8/image.jpg", stars: 4, price: 1500000, distance: "200 متر تا حرم"},
-      {name: "هتل بین المللی", img: "https://i.postimg.cc/vmGP5JQG/image.webp", stars: 5, price: 2500000, distance: "150 متر تا حرم"},
-      {name: "هتل سانا", img: "https://i.postimg.cc/3Rcn5W2w/image.webp", stars: 3, price: 1200000, distance: "500 متر تا حرم"},
-      {name: "هتل خورشید", img: "https://i.postimg.cc/FR88bTWG/image.webp", stars: 4, price: 1400000, distance: "300 متر تا حرم"},
-      {name: "هتل اطلس", img: "https://i.postimg.cc/SRbVN3t0/image.jpg", stars: 3, price: 1100000, distance: "600 متر تا حرم"},
-      {name: "هتل شاه خراسان", img: "https://i.postimg.cc/jqzbTJM9/image.jpg", stars: 4, price: 1600000, distance: "250 متر تا حرم"},
-      {name: "هتل آبشار", img: "https://i.postimg.cc/RVdx6x5L/image.webp", stars: 2, price: 900000, distance: "1 کیلومتر تا حرم"},
-      {name: "هتل سفیر", img: "https://i.postimg.cc/hjVxgKCg/image.webp", stars: 3, price: 1300000, distance: "700 متر تا حرم"},
-      {name: "هتل تشریفات", img: "https://i.postimg.cc/xd3nS7Kh/image.jpg", stars: 3, price: 1350000, distance: "550 متر تا حرم"},
-      {name: "هتل قصر نادری", img: "https://i.postimg.cc/1RjPPDqm/image.jpg", stars: 4, price: 1800000, distance: "400 متر تا حرم"},
-      {name: "هتل صادقیه", img: "https://i.postimg.cc/d0wcnBzB/image.jpg", stars: 2, price: 950000, distance: "1.2 کیلومتر تا حرم"},
-      {name: "هتل المپیک", img: "https://i.postimg.cc/xdJpvbdR/image.webp", stars: 3, price: 1250000, distance: "800 متر تا حرم"},
-      {name: "هتل ایرانا", img: "https://i.postimg.cc/mkRdWXyX/image.jpg", stars: 3, price: 1200000, distance: "750 متر تا حرم"},
-      {name: "هتل ماهان", img: "https://i.postimg.cc/nrk3F4dH/image.jpg", stars: 2, price: 850000, distance: "1.3 کیلومتر تا حرم"},
-      {name: "هتل آریا", img: "https://i.postimg.cc/sDjnnLX1/image.webp", stars: 3, price: 1100000, distance: "650 متر تا حرم"},
-      {name: "هتل فیروزه", img: "https://i.postimg.cc/JnCxj6vr/image.jpg", stars: 2, price: 800000, distance: "1.5 کیلومتر تا حرم"},
-      {name: "مهمان پذیر وارش", img: "https://i.postimg.cc/QCXqyBjv/image.jpg", stars: 1, price: 600000, distance: "2 کیلومتر تا حرم"},
-      {name: "هتل ذوی القربی", img: "https://i.postimg.cc/L6QVx6w0/image.webp", stars: 3, price: 1150000, distance: "900 متر تا حرم"},
+      {name: "ہوٹل کریمہ", stars: 4, price: "50$", img: "https://i.postimg.cc/ZR8KXvG8/image.jpg"},
+      {name: "ہوٹل بین المللی", stars: 5, price: "70$", img: "https://i.postimg.cc/vmGP5JQG/image.webp"},
+      {name: "ہوٹل سانا", stars: 4, price: "45$", img: "https://i.postimg.cc/3Rcn5W2w/image.webp"},
+      {name: "ہوٹل خورشید", stars: 3, price: "30$", img: "https://i.postimg.cc/FR88bTWG/image.webp"},
+      {name: "ہوٹل اطلس", stars: 4, price: "40$", img: "https://i.postimg.cc/SRbVN3t0/image.jpg"},
+      {name: "ہوٹل شاه خراسان", stars: 5, price: "75$", img: "https://i.postimg.cc/jqzbTJM9/image.jpg"},
+      {name: "ہوٹل ابشار", stars: 3, price: "28$", img: "https://i.postimg.cc/RVdx6x5L/image.webp"},
+      {name: "ہوٹل سفیر", stars: 4, price: "42$", img: "https://i.postimg.cc/hjVxgKCg/image.webp"},
+      {name: "ہوٹل تشریفات", stars: 5, price: "80$", img: "https://i.postimg.cc/xd3nS7Kh/image.jpg"},
+      {name: "ہوٹل قصر نادری", stars: 4, price: "55$", img: "https://i.postimg.cc/1RjPPDqm/image.jpg"},
+      {name: "ہوٹل صادقیه قم", stars: 3, price: "25$", img: "https://i.postimg.cc/d0wcnBzB/image.jpg"},
+      {name: "ہوٹل المپیک", stars: 4, price: "48$", img: "https://i.postimg.cc/xdJpvbdR/image.webp"},
+      {name: "ہوٹل ایرانا قم", stars: 3, price: "35$", img: "https://i.postimg.cc/mkRdWXyX/image.jpg"},
+      {name: "ہوٹل ماهان", stars: 4, price: "50$", img: "https://i.postimg.cc/nrk3F4dH/image.jpg"},
+      {name: "ہوٹل اریا", stars: 3, price: "27$", img: "https://i.postimg.cc/sDjnnLX1/image.webp"},
+      {name: "ہوٹل فیروزه", stars: 4, price: "44$", img: "https://i.postimg.cc/JnCxj6vr/image.jpg"},
+      {name: "مہمان پذیر وارش", stars: 2, price: "18$", img: "https://i.postimg.cc/QCXqyBjv/image.jpg"},
+      {name: "ہوٹل ذوی القربی", stars: 3, price: "32$", img: "https://i.postimg.cc/L6QVx6w0/image.webp"},
     ];
 
-    const hotelList = document.getElementById("hotelList");
-    const sortSelect = document.getElementById("sortHotels");
-
-    function renderHotels(list) {
-      hotelList.innerHTML = "";
-      list.forEach(hotel => {
-        hotelList.innerHTML += `
-          <div class="hotel-card">
-            <img src="${hotel.img}" alt="${hotel.name}">
-            <h3>${hotel.name}</h3>
-            <p>⭐ ${hotel.stars} ستاره</p>
-            <p>💰 ${hotel.price.toLocaleString()} تومان / شب</p>
-            <p>📍 ${hotel.distance}</p>
-            <a href="#" class="reserve-btn" data-i18n="reserve">رزرو</a>
-          </div>
-        `;
-      });
+    function renderHotels(filter="all") {
+      const list = document.getElementById("hotelList");
+      list.innerHTML = "";
+      hotels
+        .filter(h => filter === "all" || h.stars == filter)
+        .forEach(hotel => {
+          list.innerHTML += `
+            <div class="hotel-card">
+              <img src="${hotel.img}" alt="${hotel.name}">
+              <div class="hotel-info">
+                <h3>${hotel.name}</h3>
+                <div class="stars">${"⭐".repeat(hotel.stars)}</div>
+                <div class="price">💲 ${hotel.price} / شب</div>
+                <a href="#" class="reserve-btn">رزرو</a>
+              </div>
+            </div>`;
+        });
     }
 
-    sortSelect.addEventListener("change", () => {
-      const value = sortSelect.value;
-      let sorted = [...hotels];
-      if (value === "price") {
-        sorted.sort((a, b) => a.price - b.price);
-      } else if (value === "stars") {
-        sorted.sort((a, b) => b.stars - a.stars);
-      }
-      renderHotels(sorted);
+    document.getElementById("starFilter").addEventListener("change", e => {
+      renderHotels(e.target.value);
     });
 
-    renderHotels(hotels);
-
-    // ===== ترجمه =====
-    const translations = {
-      fa: {
-        logo: "زیارت سروس",
-        title: "هتل‌های قم",
-        subtitle: "لیست هتل‌های نزدیک حرم مطهر",
-        sort_label: "مرتب‌سازی:",
-        sort_price: "بر اساس قیمت",
-        sort_stars: "بر اساس ستاره",
-        reserve: "رزرو",
-        footer: "© 2025 زیارت سروس | تمامی حقوق محفوظ است"
-      },
-      ur: {
-        logo: "زیارت سروس",
-        title: "قم کے ہوٹل",
-        subtitle: "حرم کے قریب ہوٹلوں کی فہرست",
-        sort_label: "ترتیب:",
-        sort_price: "قیمت کے لحاظ سے",
-        sort_stars: "ستاروں کے لحاظ سے",
-        reserve: "بک کریں",
-        footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
-      },
-      en: {
-        logo: "Ziarat Service",
-        title: "Qom Hotels",
-        subtitle: "List of hotels near the Holy Shrine",
-        sort_label: "Sort by:",
-        sort_price: "By Price",
-        sort_stars: "By Stars",
-        reserve: "Reserve",
-        footer: "© 2025 Ziarat Service | All Rights Reserved"
-      }
-    };
-
-    const languageSelector = document.getElementById("language");
-    const elements = document.querySelectorAll("[data-i18n]");
-
-    languageSelector.addEventListener("change", (e) => {
-      const lang = e.target.value;
-      elements.forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        el.innerText = translations[lang][key];
-      });
-    });
+    renderHotels();
   </script>
 </body>
 </html>
