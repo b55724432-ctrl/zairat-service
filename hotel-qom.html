@@ -1,212 +1,504 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ہوٹل قم - زیارت سروس</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ہوٹل قم — زیارت سروس</title>
+
+  <!-- داخلی: استایل قالب شیشه‌ای، انیمیشنی و ریسپانسیو -->
   <style>
-    body {
+    /* ==== ریست و پایه ==== */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
       font-family: "Segoe UI", Tahoma, sans-serif;
-      background: #f5f6fa;
-      margin: 0;
-      padding: 0;
       direction: rtl;
+      background: linear-gradient(120deg,#0f2027 0%,#203a43 50%,#2c5364 100%);
+      color:#f2f6f8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-y:auto;
+      padding-bottom:60px;
     }
-    header {
-      background: #2c3e50;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+
+    /* ==== هدر ==== */
+    header{
+      position:sticky;top:0;z-index:999;
+      background:rgba(10,14,18,0.45);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      padding:12px 20px; display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
     }
     .logo {
-      font-size: 20px;
-      font-weight: bold;
+      width:48px;height:48px;border-radius:10px;
+      background:linear-gradient(135deg,#ffd54a,#ffc107);
+      display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:18px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.35);
     }
-    .lang-switch {
-      position: absolute;
-      top: 15px;
-      right: 20px;
+    .brand-title{
+      font-size:20px;color:#fff;font-weight:700;letter-spacing:1px;
     }
-    .lang-switch select {
-      padding: 4px;
-      border-radius: 4px;
-      border: none;
+
+    /* منوی ساده (آیتمها حذف شدند چون خواسته بودید) */
+    .header-actions{display:flex;align-items:center;gap:10px}
+
+    .lang-select{
+      background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+      color:#fff;padding:6px;border-radius:8px;
     }
+
+    /* ==== کانتینر هيرو ==== */
     .hero {
-      padding: 10px 15px;
-      text-align: center;
+      max-width:1100px;margin:22px auto;padding:18px;
+      display:block;
     }
-    .hero-box h1 {
-      margin: 10px 0;
-      font-size: 22px;
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;padding:22px;
+      box-shadow:0 10px 40px rgba(2,6,23,0.6);
+      backdrop-filter: blur(6px);
+      animation: heroAppear .6s ease;
     }
-    .hero-box p {
-      margin: 5px 0 15px;
-      font-size: 14px;
+    @keyframes heroAppear{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+
+    .hero-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+    .hero-title{font-size:22px;color:#ffd54a;font-weight:800}
+    .hero-sub{color:#dbe6ea;margin-top:6px;font-size:14px}
+
+    /* فیـلتر و کنترل‌ها */
+    .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    .control {
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:8px 10px;border-radius:10px;color:#fff;font-size:14px;
     }
-    .filter {
-      margin-bottom: 15px;
+    .control select, .control input {
+      background:transparent;border:none;color:#fff;font-size:14px;outline:none;
     }
-    .filter select {
-      padding: 6px;
-      border-radius: 6px;
+
+    /* ==== شبکه هتل‌ها ==== */
+    .grid{
+      max-width:1100px;margin:18px auto 40px;padding:0 16px;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;
     }
-    .hotels-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      padding: 15px;
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);
+      transition:transform .22s ease,box-shadow .22s ease;box-shadow:0 6px 30px rgba(2,6,23,0.5);
+      display:flex;flex-direction:column;height:100%;
     }
-    .hotel-card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      padding: 10px;
-      text-align: center;
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 45px rgba(2,6,23,0.6)}
+    .card img{
+      width:100%;height:140px;object-fit:cover;display:block;
+      background:#111;
     }
-    .hotel-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 8px;
+    .card-body{padding:12px 12px 16px;flex:1;display:flex;flex-direction:column;gap:8px}
+    .hotel-name{font-weight:800;color:#ffd54a;font-size:15px}
+    .hotel-meta{color:#cfe6ea;font-size:13px}
+    .hotel-distance{font-size:12px;color:#9fbec4}
+    .hotel-price{margin-top:auto;font-weight:800;color:#67d391;font-size:14px}
+
+    .actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+    .btn-primary{
+      background:linear-gradient(90deg,#ffd54a,#ffc107);
+      color:#111;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:700;
+      border: none;cursor:pointer;
+      box-shadow:0 6px 18px rgba(255,197,0,0.12)
     }
-    .hotel-card h3 {
-      margin: 5px 0;
-      font-size: 16px;
+    .btn-ghost{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:10px;color:#fff;text-decoration:none;font-size:13px
     }
-    .stars {
-      color: #f1c40f;
-      margin-bottom: 5px;
+
+    /* مودال رزرو */ 
+    .modal-back{
+      position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+      background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.7));z-index:9999;padding:18px;
     }
-    .price {
-      color: #27ae60;
-      font-weight: bold;
-      margin-bottom: 8px;
+    .modal-back.open{display:flex}
+    .modal{
+      width:100%;max-width:540px;border-radius:12px;background:linear-gradient(180deg,#071019, #0b1620);
+      border:1px solid rgba(255,255,255,0.04);padding:16px;color:#fff;box-shadow:0 20px 60px rgba(2,6,23,0.7)
     }
-    .btn {
-      display: inline-block;
-      padding: 8px 16px;
-      background: #2980b9;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: 0.3s;
-      font-size: 14px;
+    .modal h3{color:#ffd54a;margin-bottom:6px}
+    .modal .row{display:flex;gap:8px;flex-wrap:wrap}
+    .modal input, .modal select, .modal textarea{
+      width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#fff;
+      outline:none;font-size:14px;margin-bottom:8px
     }
-    .btn:hover {
-      background: #3498db;
+    .modal .actions{justify-content:flex-end;margin-top:6px}
+    .close-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:#fff}
+
+    /* تــوست */
+    .toast{
+      position:fixed;left:20px;bottom:20px;background:#10b981;color:#fff;padding:10px 14px;border-radius:10px;display:none;z-index:10001;
+      box-shadow:0 8px 30px rgba(2,6,23,0.6)
     }
-    footer {
-      background: #2c3e50;
-      color: #fff;
-      text-align: center;
-      padding: 12px;
-      margin-top: 20px;
-      font-size: 13px;
+
+    /* ریسپانسیو موبایل */
+    @media (max-width:700px){
+      .hero-top{flex-direction:column;align-items:flex-start}
+      .brand-title{font-size:18px}
+      .card img{height:130px}
+      header{padding:10px}
+      .logo{width:44px;height:44px;font-size:16px}
     }
+
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo" data-i18n="logo">زیارت سروس</div>
-    <div class="lang-switch">
-      <select id="language">
-        <option value="ur" selected>اردو</option>
-        <option value="fa">فارسی</option>
-        <option value="en">English</option>
-      </select>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="hero-box">
-      <h1 data-i18n="title">ہوٹل قم</h1>
-      <p data-i18n="subtitle">حرم کے نزدیک بہترین ہوٹل منتخب کریں</p>
-      <div class="filter">
-        <label for="stars" data-i18n="filter">ستاروں کے حساب سے فلٹر کریں:</label>
-        <select id="stars">
-          <option value="all" selected data-i18n="all">تمام</option>
-          <option value="5">⭐⭐⭐⭐⭐</option>
-          <option value="4">⭐⭐⭐⭐</option>
-          <option value="3">⭐⭐⭐</option>
+  <!-- ====== هدر ====== -->
+  <header>
+    <div class="brand">
+      <div class="logo">ZS</div>
+      <div>
+        <div class="brand-title" data-i18n="brand">زیارت سرویس</div>
+        <div style="font-size:12px;color:#9fbec4">Visa • Hotel • Transport</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="control" style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:14px;color:#cfe6ea">🌐</span>
+        <select id="lang" class="lang-select" aria-label="Language">
+          <option value="ur">اردو</option>
+          <option value="fa">فارسی</option>
+          <option value="en">English</option>
         </select>
       </div>
     </div>
+  </header>
+
+  <!-- ====== هيرو ====== -->
+  <main class="hero">
+    <div class="hero-card">
+      <div class="hero-top">
+        <div>
+          <div class="hero-title" data-i18n="title">ہوٹل‌های نزدیک حرم — قم</div>
+          <div class="hero-sub" data-i18n="subtitle">لیست هتل‌های معتبر و نزدیک حرم با امکان رزرو سریع و تماس واتس‌اپ</div>
+        </div>
+
+        <div class="controls" aria-hidden="false">
+          <div class="control">
+            <label for="search" style="margin-inline-end:8px;color:#dbe6ea" data-i18n="search">جست‌وجو</label>
+            <input id="search" placeholder="نام هتل را وارد کنید…" />
+          </div>
+
+          <div class="control">
+            <label for="sort" style="margin-inline-end:8px;color:#dbe6ea" data-i18n="sort">مرتب‌سازی</label>
+            <select id="sort">
+              <option value="default" data-i18n="sort_default">پیش‌فرض</option>
+              <option value="price-asc" data-i18n="sort_price_asc">قیمت: کم → زیاد</option>
+              <option value="price-desc" data-i18n="sort_price_desc">قیمت: زیاد → کم</option>
+              <option value="stars-desc" data-i18n="sort_stars_desc">ستاره: زیاد → کم</option>
+            </select>
+          </div>
+
+          <div class="control">
+            <label style="margin-inline-end:8px;color:#dbe6ea" data-i18n="filter">فیلتر</label>
+            <select id="filterStars">
+              <option value="all" data-i18n="all">همه</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="2">⭐⭐</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====== شبکه هتل‌ها ====== -->
+  <section class="grid" id="hotelGrid" aria-live="polite">
+    <!-- کارت‌ها توسط JS تولید می‌شوند -->
   </section>
 
-  <section class="hotels-grid" id="hotels">
-    <!-- هتل‌ها اینجا با جاوااسکریپت میاد -->
-  </section>
+  <!-- ====== مودال رزرو ====== -->
+  <div class="modal-back" id="modalBack" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">درخواست رزرو</h3>
 
-  <footer>
-    <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
-  </footer>
+      <form id="reserveForm" onsubmit="return handleReserve(event)">
+        <input type="hidden" id="selectedHotel" name="hotel"/>
 
+        <label>نام و نام خانوادگی
+          <input id="resName" required placeholder="مثال: علی رضایی" />
+        </label>
+
+        <label>شماره واتس‌اپ
+          <input id="resPhone" required placeholder="مثال: 98930XXXXXXX" />
+        </label>
+
+        <div class="row">
+          <div style="flex:1">
+            <label>تاریخ ورود
+              <input id="resCheckIn" type="date" required />
+            </label>
+          </div>
+          <div style="flex:1">
+            <label>تاریخ خروج
+              <input id="resCheckOut" type="date" required />
+            </label>
+          </div>
+        </div>
+
+        <label>تعداد مهمان
+          <select id="resGuests">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+        </label>
+
+        <label>توضیحات (اختیاری)
+          <textarea id="resNotes" rows="3" placeholder="مثال: اتاق با تخت دو نفره"></textarea>
+        </label>
+
+        <div class="actions">
+          <button type="button" class="close-btn" onclick="closeModal()">انصراف</button>
+          <button type="submit" class="btn-primary">ارسال درخواست</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- توست پیام -->
+  <div class="toast" id="toast">درخواست ثبت شد</div>
+
+  <!-- ====== کد جاوااسکریپت: رندر، فیلتر، ترجمه، مودال ====== -->
   <script>
-    const hotels = [
-      {name:"هتل کریمه",stars:5,price:"150$",img:"https://i.postimg.cc/ZR8KXvG8/image.jpg"},
-      {name:"هتل بین المللی",stars:5,price:"180$",img:"https://i.postimg.cc/vmGP5JQG/image.webp"},
-      {name:"هتل سانا",stars:4,price:"120$",img:"https://i.postimg.cc/3Rcn5W2w/image.webp"},
-      {name:"هتل خورشید",stars:4,price:"100$",img:"https://i.postimg.cc/FR88bTWG/image.webp"},
-      {name:"هتل اطلس",stars:3,price:"90$",img:"https://i.postimg.cc/SRbVN3t0/image.jpg"},
-      {name:"هتل شاه خراسان",stars:4,price:"110$",img:"https://i.postimg.cc/jqzbTJM9/image.jpg"},
-      {name:"هتل ابشار",stars:3,price:"85$",img:"https://i.postimg.cc/RVdx6x5L/image.webp"},
-      {name:"هتل سفیر",stars:4,price:"95$",img:"https://i.postimg.cc/hjVxgKCg/image.webp"},
-      {name:"هتل تشریفات",stars:3,price:"80$",img:"https://i.postimg.cc/xd3nS7Kh/image.jpg"},
-      {name:"هتل قصر نادری",stars:5,price:"170$",img:"https://i.postimg.cc/1RjPPDqm/image.jpg"},
-      {name:"هتل صادقیه",stars:3,price:"75$",img:"https://i.postimg.cc/d0wcnBzB/image.jpg"},
-      {name:"هتل المپیک",stars:4,price:"115$",img:"https://i.postimg.cc/xdJpvbdR/image.webp"},
-      {name:"هتل ایرانا",stars:3,price:"85$",img:"https://i.postimg.cc/mkRdWXyX/image.jpg"},
-      {name:"هتل ماهان",stars:3,price:"80$",img:"https://i.postimg.cc/nrk3F4dH/image.jpg"},
-      {name:"هتل آریا",stars:3,price:"70$",img:"https://i.postimg.cc/sDjnnLX1/image.webp"},
-      {name:"هتل فیروزه",stars:4,price:"95$",img:"https://i.postimg.cc/JnCxj6vr/image.jpg"},
-      {name:"مهمان پذیر وارش",stars:2,price:"50$",img:"https://i.postimg.cc/QCXqyBjv/image.jpg"},
-      {name:"هتل ذوی القربی",stars:4,price:"110$",img:"https://i.postimg.cc/L6QVx6w0/image.webp"}
+    // شماره واتساپ شما (قابل تغییر)
+    const WA_NUMBER = "989302844084";
+
+    // داده‌های هتل — عکس‌ها همان لینک‌هایی هستند که فرستادید
+    const HOTELS = [
+      { id: "karimeh", name: {ur:"ہوٹل کریمہ", fa:"هتل کریمه", en:"Karimeh Hotel"}, stars:5, price:17000000, priceLabel:"۱۷،۰۰۰،۰۰۰ IRR", dist:"150 متر", img:"https://i.postimg.cc/ZR8KXvG8/image.jpg" },
+      { id: "international", name: {ur:"ہوٹل بین المللی", fa:"هتل بین‌المللی", en:"Qom International"}, stars:5, price:20000000, priceLabel:"۲۰،۰۰۰،۰۰۰ IRR", dist:"400 متر", img:"https://i.postimg.cc/vmGP5JQG/image.webp" },
+      { id: "sana", name: {ur:"ہوٹل سانا", fa:"هتل سانا", en:"Hotel Sana"}, stars:4, price:12000000, priceLabel:"۱۲،۰۰۰،۰۰۰ IRR", dist:"500 متر", img:"https://i.postimg.cc/3Rcn5W2w/image.webp" },
+      { id: "khorshid", name: {ur:"ہوٹل خورشید", fa:"هتل خورشید", en:"Khorshid Hotel"}, stars:4, price:15000000, priceLabel:"۱۵،۰۰۰،۰۰۰ IRR", dist:"300 متر", img:"https://i.postimg.cc/FR88bTWG/image.webp" },
+      { id: "atlas", name: {ur:"ہوٹل اطلس", fa:"هتل اطلس", en:"Atlas Hotel"}, stars:3, price:11000000, priceLabel:"۱۱،۰۰۰،۰۰۰ IRR", dist:"600 متر", img:"https://i.postimg.cc/SRbVN3t0/image.jpg" },
+      { id: "shahkhorasan", name: {ur:"ہوٹل شاہ خراسان", fa:"هتل شاه خراسان", en:"Shah Khorasan Hotel"}, stars:4, price:19000000, priceLabel:"۱۹،۰۰۰،۰۰۰ IRR", dist:"250 متر", img:"https://i.postimg.cc/jqzbTJM9/image.jpg" },
+      { id: "abshar", name: {ur:"ہوٹل ابشار", fa:"هتل آبشار", en:"Abshar Hotel"}, stars:3, price:10000000, priceLabel:"۱۰،۰۰۰،۰۰۰ IRR", dist:"1000 متر", img:"https://i.postimg.cc/RVdx6x5L/image.webp" },
+      { id: "safir", name: {ur:"ہوٹل سفیر", fa:"هتل سفیر", en:"Safir Hotel"}, stars:3, price:13000000, priceLabel:"۱۳،۰۰۰،۰۰۰ IRR", dist:"700 متر", img:"https://i.postimg.cc/hjVxgKCg/image.webp" },
+      { id: "tashrifat", name: {ur:"ہوٹل تشریفات", fa:"هتل تشریفات", en:"Tashrifat Hotel"}, stars:4, price:16000000, priceLabel:"۱۶،۰۰۰،۰۰۰ IRR", dist:"550 متر", img:"https://i.postimg.cc/xd3nS7Kh/image.jpg" },
+      { id: "ghasr", name: {ur:"ہوٹل قصر نادری", fa:"هتل قصر نادری", en:"Ghasr Naderi Hotel"}, stars:5, price:21000000, priceLabel:"۲۱،۰۰۰،۰۰۰ IRR", dist:"400 متر", img:"https://i.postimg.cc/1RjPPDqm/image.jpg" },
+      { id: "sadeghieh", name: {ur:"ہوٹل صادقیہ", fa:"هتل صادقیه", en:"Sadeghieh Hotel"}, stars:3, price:9000000, priceLabel:"۹،۰۰۰،۰۰۰ IRR", dist:"1.2 کیلومتر", img:"https://i.postimg.cc/d0wcnBzB/image.jpg" },
+      { id: "olympic", name: {ur:"ہوٹل المپیک", fa:"هتل المپیک", en:"Olympic Hotel"}, stars:4, price:18000000, priceLabel:"۱۸،۰۰۰،۰۰۰ IRR", dist:"800 متر", img:"https://i.postimg.cc/xdJpvbdR/image.webp" },
+      { id: "irana", name: {ur:"ہوٹل ایرانا", fa:"هتل ایرانا", en:"Irana Hotel"}, stars:3, price:12000000, priceLabel:"۱۲،۰۰۰،۰۰۰ IRR", dist:"750 متر", img:"https://i.postimg.cc/mkRdWXyX/image.jpg" },
+      { id: "mahan", name: {ur:"ہوٹل ماهان", fa:"هتل ماهان", en:"Mahan Hotel"}, stars:3, price:10500000, priceLabel:"۱۰،۵۰۰،۰۰۰ IRR", dist:"900 متر", img:"https://i.postimg.cc/nrk3F4dH/image.jpg" },
+      { id: "aria", name: {ur:"ہوٹل آریا", fa:"هتل آریا", en:"Aria Hotel"}, stars:3, price:9500000, priceLabel:"۹،۵۰۰،۰۰۰ IRR", dist:"650 متر", img:"https://i.postimg.cc/sDjnnLX1/image.webp" },
+      { id: "firouzeh", name: {ur:"ہوٹل فیروزه", fa:"هتل فیروزه", en:"Firouzeh Hotel"}, stars:4, price:14000000, priceLabel:"۱۴،۰۰۰،۰۰۰ IRR", dist:"1.1 کیلومتر", img:"https://i.postimg.cc/JnCxj6vr/image.jpg" },
+      { id: "varesh", name: {ur:"مهمان‌پذیر وارش", fa:"مهمان پذیر وارش", en:"Varesh Guesthouse"}, stars:2, price:7000000, priceLabel:"۷،۰۰۰،۰۰۰ IRR", dist:"2 کیلومتر", img:"https://i.postimg.cc/QCXqyBjv/image.jpg" },
+      { id: "dhawi", name: {ur:"ہوٹل ذوی القربی", fa:"هتل ذوی القربی", en:"Dhawy Al-Qurbi Hotel"}, stars:3, price:8500000, priceLabel:"۸،۵۰۰،۰۰۰ IRR", dist:"900 متر", img:"https://i.postimg.cc/L6QVx6w0/image.webp" }
     ];
 
-    const hotelsContainer = document.getElementById("hotels");
-    const starsFilter = document.getElementById("stars");
-
-    function renderHotels(filter="all") {
-      hotelsContainer.innerHTML = "";
-      hotels
-        .filter(h => filter === "all" || h.stars == filter)
-        .forEach(hotel => {
-          hotelsContainer.innerHTML += `
-            <div class="hotel-card">
-              <img src="${hotel.img}" alt="${hotel.name}">
-              <h3>${hotel.name}</h3>
-              <div class="stars">${"⭐".repeat(hotel.stars)}</div>
-              <div class="price">${hotel.price} / شب</div>
-              <a href="#" class="btn">رزرو</a>
-            </div>`;
-        });
-    }
-
-    starsFilter.addEventListener("change", e => renderHotels(e.target.value));
-    renderHotels();
-
-    const translations = {
-      ur:{logo:"زیارت سروس",title:"ہوٹل قم",subtitle:"حرم کے نزدیک بہترین ہوٹل منتخب کریں",filter:"ستاروں کے حساب سے فلٹر کریں:",all:"تمام",footer:"© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"},
-      fa:{logo:"زیارت سرویس",title:"هتل‌های قم",subtitle:"بهترین هتل‌های نزدیک حرم را انتخاب کنید",filter:"فیلتر بر اساس ستاره:",all:"همه",footer:"© 2025 زیارت سرویس | تمامی حقوق محفوظ است"},
-      en:{logo:"Ziarat Service",title:"Qom Hotels",subtitle:"Choose the best hotels near the shrine",filter:"Filter by stars:",all:"All",footer:"© 2025 Ziarat Service | All Rights Reserved"}
+    /* ترجمه‌های متنی */
+    const TEXT = {
+      ur: {
+        title: "ہوٹل‌های نزدیک حرم — قم",
+        subtitle: "لیست هتل‌های معتبر و نزدیک حرم با امکان رزرو سریع",
+        search: "جست‌وجو",
+        sort_default: "پیش‌فرض",
+        sort_price_asc: "قیمت: کم → زیاد",
+        sort_price_desc: "قیمت: زیاد → کم",
+        sort_stars_desc: "ستاره: زیاد → کم",
+        filter_label: "همه",
+        reserve: "رزرو فوری",
+        modal_title: "درخواست رزرو",
+        modal_sent: "درخواست شما ارسال شد (در واتساپ باز می‌شود)",
+        footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
+      },
+      fa: {
+        title: "بهترین هتل‌های نزدیک حرم — قم",
+        subtitle: "فهرست هتل‌های معتبر نزدیک حرم با امکان رزرو سریع",
+        search: "جست‌وجو",
+        sort_default: "پیش‌فرض",
+        sort_price_asc: "قیمت: کم → زیاد",
+        sort_price_desc: "قیمت: زیاد → کم",
+        sort_stars_desc: "ستاره: زیاد → کم",
+        filter_label: "همه",
+        reserve: "رزرو فوری",
+        modal_title: "درخواست رزرو",
+        modal_sent: "درخواست شما ثبت شد — واتساپ باز می‌شود",
+        footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
+      },
+      en: {
+        title: "Hotels near the Shrine — Qom",
+        subtitle: "Trusted hotels close to the shrine — quick booking",
+        search: "Search",
+        sort_default: "Default",
+        sort_price_asc: "Price: Low → High",
+        sort_price_desc: "Price: High → Low",
+        sort_stars_desc: "Stars: High → Low",
+        filter_label: "All",
+        reserve: "Reserve Now",
+        modal_title: "Booking Request",
+        modal_sent: "Your request is prepared — WhatsApp will open",
+        footer: "© 2025 Ziarat Service | All Rights Reserved"
+      }
     };
 
-    const langSelect=document.getElementById("language");
-    const elements=document.querySelectorAll("[data-i18n]");
-    langSelect.addEventListener("change",e=>{
-      const lang=e.target.value;
-      elements.forEach(el=>{
-        const key=el.getAttribute("data-i18n");
-        el.innerText=translations[lang][key];
+    // المانها
+    const grid = document.getElementById("hotelGrid");
+    const searchInput = document.getElementById("search");
+    const sortSelect = document.getElementById("sort");
+    const filterSelect = document.getElementById("filterStars");
+    const langSelect = document.getElementById("lang");
+    const modalBack = document.getElementById("modalBack");
+    const toast = document.getElementById("toast");
+
+    // حالت فعلی زبان
+    let CURRENT_LANG = localStorage.getItem("zs_lang") || "ur";
+
+    // تبدیل قیمت برای مرتب‌سازی (عدد)
+    function priceNum(h){ return h.price; }
+
+    // تولید کارت‌ها و رندر
+    function renderList(hotelsList){
+      grid.innerHTML = "";
+      if(!hotelsList.length){
+        grid.innerHTML = `<div style="padding:18px;text-align:center;color:#cfe6ea">هیچ هتلی پیدا نشد</div>`;
+        return;
+      }
+      hotelsList.forEach(h=>{
+        const card = document.createElement("article");
+        card.className = "card hotel-card";
+        card.dataset.stars = h.stars;
+        card.innerHTML = `
+          <img loading="lazy" src="${h.img}" alt="${h.name[CURRENT_LANG]||h.name.ur}" />
+          <div class="card-body">
+            <div class="hotel-name">${h.name[CURRENT_LANG] || h.name.ur}</div>
+            <div class="hotel-meta">${"⭐".repeat(h.stars)}  •  ${h.dist}</div>
+            <div class="hotel-distance">${h.dist}</div>
+            <div class="hotel-price">${h.priceLabel}</div>
+            <div class="actions">
+              <button class="btn-primary reserve" data-id="${h.id}">${TEXT[CURRENT_LANG].reserve}</button>
+              <a class="btn-ghost" href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent((h.name[CURRENT_LANG]||h.name.ur) + ' - پرسش')}" target="_blank" rel="noopener">پرسش واتساپ</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
       });
-    });
+
+      // ضمیمه کردن ایونت دکمه‌ها بعد از رندر
+      document.querySelectorAll(".reserve").forEach(btn=>{
+        btn.addEventListener("click", ()=>openReserveModal(btn.dataset.id));
+      });
+    }
+
+    // اعمال فیلتر/مرتب‌سازی/جست‌وجو
+    function applyAll(){
+      let list = [...HOTELS];
+
+      // جست‌وجو
+      const q = (searchInput.value || "").trim().toLowerCase();
+      if(q){
+        list = list.filter(h => (h.name[CURRENT_LANG] || h.name.ur).toLowerCase().includes(q));
+      }
+
+      // فیلتر ستاره
+      const fs = filterSelect.value;
+      if(fs !== "all") list = list.filter(h => String(h.stars) === fs);
+
+      // مرتب سازی
+      const s = sortSelect.value;
+      if(s === "price-asc") list.sort((a,b)=>a.price - b.price);
+      else if(s === "price-desc") list.sort((a,b)=>b.price - a.price);
+      else if(s === "stars-desc") list.sort((a,b)=>b.stars - a.stars);
+
+      renderList(list);
+    }
+
+    // مودال
+    function openReserveModal(hotelId){
+      const hotel = HOTELS.find(h=>h.id===hotelId);
+      if(!hotel) return;
+      modalBack.classList.add("open"); modalBack.setAttribute("aria-hidden","false");
+      document.getElementById("modalTitle").textContent = `${TEXT[CURRENT_LANG].modal_title} — ${hotel.name[CURRENT_LANG] || hotel.name.ur}`;
+      document.getElementById("selectedHotel").value = hotel.id;
+      // پیش پر کردن نام هتل در فیلد ها اگر خواستید...
+    }
+    function closeModal(){
+      modalBack.classList.remove("open"); modalBack.setAttribute("aria-hidden","true");
+    }
+
+    // ارسال رزرو: این نسخه فرم را به واتس‌اپ می‌فرستد (پیام آماده)
+    function handleReserve(e){
+      e.preventDefault();
+      const hotelId = document.getElementById("selectedHotel").value;
+      const hotel = HOTELS.find(h=>h.id===hotelId);
+      const name = document.getElementById("resName").value.trim();
+      const phone = document.getElementById("resPhone").value.trim();
+      const checkIn = document.getElementById("resCheckIn").value;
+      const checkOut = document.getElementById("resCheckOut").value;
+      const guests = document.getElementById("resGuests").value;
+      const notes = document.getElementById("resNotes").value.trim();
+
+      if(!name || !phone || !checkIn || !checkOut){
+        alert("لطفاً تمام فیلدهای ضروری را پر کنید.");
+        return false;
+      }
+
+      const message = [
+        `رزرو جدید از وب‌سایت زیارت سرویس`,
+        `هتل: ${hotel.name[CURRENT_LANG] || hotel.name.ur}`,
+        `نام: ${name}`,
+        `شماره: ${phone}`,
+        `ورود: ${checkIn}`,
+        `خروج: ${checkOut}`,
+        `نفرات: ${guests}`,
+        `توضیحات: ${notes}`
+      ].join("\n");
+
+      // باز کردن واتساپ با پیام آماده
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url,"_blank");
+      showToast(TEXT[CURRENT_LANG].modal_sent);
+      closeModal();
+      return false;
+    }
+
+    // توست
+    function showToast(msg){
+      toast.textContent = msg; toast.style.display = "block";
+      setTimeout(()=>{ toast.style.display = "none"; }, 3200);
+    }
+
+    // ترجمه متن‌های موجود در صفحه ثابت (هدر/عنوان/زیرعنوان/کنترل‌ها/فوتر)
+    function applyLanguage(lang){
+      CURRENT_LANG = lang;
+      localStorage.setItem("zs_lang", lang);
+      // متن ثابت
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(TEXT[lang] && TEXT[lang][key]) el.textContent = TEXT[lang][key];
+      });
+      // آپدیت متن دکمه‌ها و رندر لیست مجدد
+      applyAll();
+    }
+
+    // ایونت‌ها
+    searchInput.addEventListener("input", ()=>applyAll());
+    sortSelect.addEventListener("change", ()=>applyAll());
+    filterSelect.addEventListener("change", ()=>applyAll());
+
+    // کلیدهای مودال
+    modalBack.addEventListener("click", (e)=>{ if(e.target===modalBack) closeModal(); });
+    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
+
+    // انتخاب زبان
+    langSelect.value = CURRENT_LANG;
+    langSelect.addEventListener("change",(e)=>applyLanguage(e.target.value));
+    // اعمال زبان اولیه
+    applyLanguage(CURRENT_LANG);
+
+    // رندر اولیه
+    applyAll();
+
   </script>
 </body>
 </html>
