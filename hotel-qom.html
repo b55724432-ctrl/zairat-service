@@ -1,76 +1,137 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="ur">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>هتل قم - زیارت سرویس</title>
+  <title>ہوٹل قم - زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
-
   <style>
-    /* فیلتر */
-    .filter-box {
-      margin: 20px 0;
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+    .lang-switch select {
+      padding: 4px;
+      border-radius: 4px;
+      border: none;
+    }
+    .hero {
+      padding: 10px 15px;
       text-align: center;
     }
-    .filter-box select {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 15px;
+    .hero-box h1 {
+      margin: 10px 0;
+      font-size: 22px;
     }
-
-    /* گرید هتل‌ها */
+    .hero-box p {
+      margin: 5px 0 15px;
+      font-size: 14px;
+    }
+    .filter {
+      margin-bottom: 15px;
+    }
+    .filter select {
+      padding: 6px;
+      border-radius: 6px;
+    }
     .hotels-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      padding: 40px 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      padding: 15px;
     }
     .hotel-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 16px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      padding: 10px;
       text-align: center;
-      padding: 20px;
-      color: #fff;
-      transition: transform 0.3s;
-    }
-    .hotel-card:hover {
-      transform: translateY(-5px);
     }
     .hotel-card img {
       width: 100%;
-      height: 180px;
+      height: 140px;
       object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
+      border-radius: 8px;
+      margin-bottom: 8px;
     }
     .hotel-card h3 {
-      margin-bottom: 10px;
-      color: #ffd700;
-    }
-    .hotel-card p {
       margin: 5px 0;
+      font-size: 16px;
+    }
+    .stars {
+      color: #f1c40f;
+      margin-bottom: 5px;
+    }
+    .price {
+      color: #27ae60;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #2980b9;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+    .btn:hover {
+      background: #3498db;
+    }
+    footer {
+      background: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      margin-top: 20px;
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
-  <!-- هدر -->
   <header>
-    <div class="logo">زیارت سرویس</div>
+    <div class="logo" data-i18n="logo">زیارت سروس</div>
+    <div class="lang-switch">
+      <select id="language">
+        <option value="ur" selected>اردو</option>
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+    </div>
   </header>
 
-  <!-- معرفی -->
   <section class="hero">
     <div class="hero-box">
-      <h1>هتل‌های برتر قم</h1>
-      <p>لیست 18 هتل معتبر نزدیک حرم با امکان رزرو مستقیم</p>
-
-      <!-- فیلتر -->
-      <div class="filter-box">
-        <label for="filter">فیلتر بر اساس ستاره:</label>
-        <select id="filter">
-          <option value="all">همه</option>
+      <h1 data-i18n="title">ہوٹل قم</h1>
+      <p data-i18n="subtitle">حرم کے نزدیک بہترین ہوٹل منتخب کریں</p>
+      <div class="filter">
+        <label for="stars" data-i18n="filter">ستاروں کے حساب سے فلٹر کریں:</label>
+        <select id="stars">
+          <option value="all" selected data-i18n="all">تمام</option>
           <option value="5">⭐⭐⭐⭐⭐</option>
           <option value="4">⭐⭐⭐⭐</option>
           <option value="3">⭐⭐⭐</option>
@@ -79,171 +140,71 @@
     </div>
   </section>
 
-  <!-- هتل‌ها -->
   <section class="hotels-grid" id="hotels">
-    <div class="hotel-card" data-stars="5">
-      <img src="https://i.postimg.cc/ZR8KXvG8/image.jpg" alt="هتل کریمه">
-      <h3>هتل کریمه</h3>
-      <p>⭐⭐⭐⭐⭐</p>
-      <p>هر شب: 2,500,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="5">
-      <img src="https://i.postimg.cc/vmGP5JQG/image.webp" alt="هتل بین‌المللی">
-      <h3>هتل بین‌المللی</h3>
-      <p>⭐⭐⭐⭐⭐</p>
-      <p>هر شب: 3,000,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="4">
-      <img src="https://i.postimg.cc/3Rcn5W2w/image.webp" alt="هتل سانا">
-      <h3>هتل سانا</h3>
-      <p>⭐⭐⭐⭐</p>
-      <p>هر شب: 1,800,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="4">
-      <img src="https://i.postimg.cc/FR88bTWG/image.webp" alt="هتل خورشید">
-      <h3>هتل خورشید</h3>
-      <p>⭐⭐⭐⭐</p>
-      <p>هر شب: 1,600,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="3">
-      <img src="https://i.postimg.cc/SRbVN3t0/image.jpg" alt="هتل اطلس">
-      <h3>هتل اطلس</h3>
-      <p>⭐⭐⭐</p>
-      <p>هر شب: 1,200,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="3">
-      <img src="https://i.postimg.cc/jqzbTJM9/image.jpg" alt="هتل شاه خراسان">
-      <h3>هتل شاه خراسان</h3>
-      <p>⭐⭐⭐</p>
-      <p>هر شب: 1,000,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="3">
-      <img src="https://i.postimg.cc/RVdx6x5L/image.webp" alt="هتل آبشار">
-      <h3>هتل آبشار</h3>
-      <p>⭐⭐⭐</p>
-      <p>هر شب: 950,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="4">
-      <img src="https://i.postimg.cc/hjVxgKCg/image.webp" alt="هتل سفیر">
-      <h3>هتل سفیر</h3>
-      <p>⭐⭐⭐⭐</p>
-      <p>هر شب: 1,700,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="4">
-      <img src="https://i.postimg.cc/xd3nS7Kh/image.jpg" alt="هتل تشریفات">
-      <h3>هتل تشریفات</h3>
-      <p>⭐⭐⭐⭐</p>
-      <p>هر شب: 1,900,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="5">
-      <img src="https://i.postimg.cc/1RjPPDqm/image.jpg" alt="هتل قصر نادری">
-      <h3>هتل قصر نادری</h3>
-      <p>⭐⭐⭐⭐⭐</p>
-      <p>هر شب: 2,800,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="3">
-      <img src="https://i.postimg.cc/d0wcnBzB/image.jpg" alt="هتل صادقیه">
-      <h3>هتل صادقیه</h3>
-      <p>⭐⭐⭐</p>
-      <p>هر شب: 1,100,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="4">
-      <img src="https://i.postimg.cc/xdJpvbdR/image.webp" alt="هتل المپیک">
-      <h3>هتل المپیک</h3>
-      <p>⭐⭐⭐⭐</p>
-      <p>هر شب: 1,600,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="4">
-      <img src="https://i.postimg.cc/mkRdWXyX/image.jpg" alt="هتل ایرانا">
-      <h3>هتل ایرانا</h3>
-      <p>⭐⭐⭐⭐</p>
-      <p>هر شب: 1,750,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="3">
-      <img src="https://i.postimg.cc/nrk3F4dH/image.jpg" alt="هتل ماهان">
-      <h3>هتل ماهان</h3>
-      <p>⭐⭐⭐</p>
-      <p>هر شب: 1,050,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="3">
-      <img src="https://i.postimg.cc/sDjnnLX1/image.webp" alt="هتل آریا">
-      <h3>هتل آریا</h3>
-      <p>⭐⭐⭐</p>
-      <p>هر شب: 1,000,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="3">
-      <img src="https://i.postimg.cc/JnCxj6vr/image.jpg" alt="هتل فیروزه">
-      <h3>هتل فیروزه</h3>
-      <p>⭐⭐⭐</p>
-      <p>هر شب: 1,100,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="2">
-      <img src="https://i.postimg.cc/QCXqyBjv/image.jpg" alt="مهمان‌پذیر وارش">
-      <h3>مهمان‌پذیر وارش</h3>
-      <p>⭐⭐</p>
-      <p>هر شب: 750,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
-
-    <div class="hotel-card" data-stars="3">
-      <img src="https://i.postimg.cc/L6QVx6w0/image.webp" alt="هتل ذوی‌القربی">
-      <h3>هتل ذوی‌القربی</h3>
-      <p>⭐⭐⭐</p>
-      <p>هر شب: 950,000 تومان</p>
-      <a href="#" class="btn btn-primary">رزرو</a>
-    </div>
+    <!-- هتل‌ها اینجا با جاوااسکریپت میاد -->
   </section>
 
-  <!-- فوتر -->
   <footer>
-    <p>© 2025 زیارت سرویس | تمامی حقوق محفوظ است</p>
+    <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
 
-  <!-- اسکریپت فیلتر -->
   <script>
-    const filter = document.getElementById("filter");
-    const hotels = document.querySelectorAll(".hotel-card");
+    const hotels = [
+      {name:"هتل کریمه",stars:5,price:"150$",img:"https://i.postimg.cc/ZR8KXvG8/image.jpg"},
+      {name:"هتل بین المللی",stars:5,price:"180$",img:"https://i.postimg.cc/vmGP5JQG/image.webp"},
+      {name:"هتل سانا",stars:4,price:"120$",img:"https://i.postimg.cc/3Rcn5W2w/image.webp"},
+      {name:"هتل خورشید",stars:4,price:"100$",img:"https://i.postimg.cc/FR88bTWG/image.webp"},
+      {name:"هتل اطلس",stars:3,price:"90$",img:"https://i.postimg.cc/SRbVN3t0/image.jpg"},
+      {name:"هتل شاه خراسان",stars:4,price:"110$",img:"https://i.postimg.cc/jqzbTJM9/image.jpg"},
+      {name:"هتل ابشار",stars:3,price:"85$",img:"https://i.postimg.cc/RVdx6x5L/image.webp"},
+      {name:"هتل سفیر",stars:4,price:"95$",img:"https://i.postimg.cc/hjVxgKCg/image.webp"},
+      {name:"هتل تشریفات",stars:3,price:"80$",img:"https://i.postimg.cc/xd3nS7Kh/image.jpg"},
+      {name:"هتل قصر نادری",stars:5,price:"170$",img:"https://i.postimg.cc/1RjPPDqm/image.jpg"},
+      {name:"هتل صادقیه",stars:3,price:"75$",img:"https://i.postimg.cc/d0wcnBzB/image.jpg"},
+      {name:"هتل المپیک",stars:4,price:"115$",img:"https://i.postimg.cc/xdJpvbdR/image.webp"},
+      {name:"هتل ایرانا",stars:3,price:"85$",img:"https://i.postimg.cc/mkRdWXyX/image.jpg"},
+      {name:"هتل ماهان",stars:3,price:"80$",img:"https://i.postimg.cc/nrk3F4dH/image.jpg"},
+      {name:"هتل آریا",stars:3,price:"70$",img:"https://i.postimg.cc/sDjnnLX1/image.webp"},
+      {name:"هتل فیروزه",stars:4,price:"95$",img:"https://i.postimg.cc/JnCxj6vr/image.jpg"},
+      {name:"مهمان پذیر وارش",stars:2,price:"50$",img:"https://i.postimg.cc/QCXqyBjv/image.jpg"},
+      {name:"هتل ذوی القربی",stars:4,price:"110$",img:"https://i.postimg.cc/L6QVx6w0/image.webp"}
+    ];
 
-    filter.addEventListener("change", (e) => {
-      const value = e.target.value;
-      hotels.forEach(hotel => {
-        if (value === "all" || hotel.dataset.stars === value) {
-          hotel.style.display = "block";
-        } else {
-          hotel.style.display = "none";
-        }
+    const hotelsContainer = document.getElementById("hotels");
+    const starsFilter = document.getElementById("stars");
+
+    function renderHotels(filter="all") {
+      hotelsContainer.innerHTML = "";
+      hotels
+        .filter(h => filter === "all" || h.stars == filter)
+        .forEach(hotel => {
+          hotelsContainer.innerHTML += `
+            <div class="hotel-card">
+              <img src="${hotel.img}" alt="${hotel.name}">
+              <h3>${hotel.name}</h3>
+              <div class="stars">${"⭐".repeat(hotel.stars)}</div>
+              <div class="price">${hotel.price} / شب</div>
+              <a href="#" class="btn">رزرو</a>
+            </div>`;
+        });
+    }
+
+    starsFilter.addEventListener("change", e => renderHotels(e.target.value));
+    renderHotels();
+
+    const translations = {
+      ur:{logo:"زیارت سروس",title:"ہوٹل قم",subtitle:"حرم کے نزدیک بہترین ہوٹل منتخب کریں",filter:"ستاروں کے حساب سے فلٹر کریں:",all:"تمام",footer:"© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"},
+      fa:{logo:"زیارت سرویس",title:"هتل‌های قم",subtitle:"بهترین هتل‌های نزدیک حرم را انتخاب کنید",filter:"فیلتر بر اساس ستاره:",all:"همه",footer:"© 2025 زیارت سرویس | تمامی حقوق محفوظ است"},
+      en:{logo:"Ziarat Service",title:"Qom Hotels",subtitle:"Choose the best hotels near the shrine",filter:"Filter by stars:",all:"All",footer:"© 2025 Ziarat Service | All Rights Reserved"}
+    };
+
+    const langSelect=document.getElementById("language");
+    const elements=document.querySelectorAll("[data-i18n]");
+    langSelect.addEventListener("change",e=>{
+      const lang=e.target.value;
+      elements.forEach(el=>{
+        const key=el.getAttribute("data-i18n");
+        el.innerText=translations[lang][key];
       });
     });
   </script>
