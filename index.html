@@ -4,86 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ہوٹل قم - زیارت سروس</title>
-  <!-- اضافه کردن Favicon -->
-  <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/XqH8STgK/favicon-ico.png">
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* استایل اصلی از index.html */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
-      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-      color: #fff;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
-      margin-bottom: 30px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #ffd700;
-    }
-    
-    .lang-switch {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-    }
-    
-    .lang-switch select {
-      padding: 5px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      background: rgba(255,255,255,0.1);
-      color: white;
-    }
-    
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .hero-box h1 {
-      font-size: 32px;
-      margin-bottom: 15px;
-      color: #ffd700;
-    }
-    
-    .hero-box > p {
-      margin-bottom: 30px;
-      font-size: 18px;
-      opacity: 0.9;
-    }
-    
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      padding: 20px;
-      border-top: 1px solid rgba(255,255,255,0.2);
-    }
-
-    /* استایل مخصوص صفحه هتل */
+    /* بخش هتل‌ها */
     .hotels {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
-    
     .hotel-card {
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.2);
@@ -93,11 +22,9 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
     }
-    
     .hotel-card:hover {
       transform: translateY(-5px);
     }
-    
     .hotel-card img {
       width: 100%;
       height: 180px;
@@ -105,24 +32,20 @@
       border-radius: 10px;
       margin-bottom: 10px;
     }
-    
     .hotel-card h3 {
       font-size: 18px;
       margin-bottom: 5px;
       color: #ffd700;
     }
-    
     .hotel-card p {
       font-size: 14px;
       margin-bottom: 10px;
       color: #eee;
     }
-    
     .stars {
       color: #ffd700;
       margin-bottom: 10px;
     }
-    
     .btn-reserve {
       display: inline-block;
       background: #ffd700;
@@ -133,38 +56,15 @@
       font-weight: bold;
       transition: 0.3s;
     }
-    
     .btn-reserve:hover {
       background: #e6c200;
-    }
-
-    /* رسپانسیو برای موبایل */
-    @media (max-width: 768px) {
-      .hotels {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      body {
-        padding: 15px;
-      }
-      
-      .hotels {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero-box h1 {
-        font-size: 28px;
-      }
     }
   </style>
 </head>
 <body>
   <!-- هدر -->
   <header>
-    <div class="logo" data-i18n="logo">زیارت سروس</div>
+    <div class="logo">زیارت سروس</div>
     <div class="lang-switch">
       <select id="language">
         <option value="ur" selected>اردو</option>
@@ -222,41 +122,7 @@
   </section>
 
   <footer>
-    <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
-
-  <script>
-    const translations = {
-      ur: {
-        logo: "زیارت سروس",
-        hotel_title: "ہوٹل قم",
-        hotel_desc: "حرم مطهر کے نزدیک بہترین ہوٹل منتخب کریں:",
-        footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
-      },
-      fa: {
-        logo: "زیارت سرویس",
-        hotel_title: "هتل قم",
-        hotel_desc: "بهترین هتل نزدیک حرم مطهر را انتخاب کنید:",
-        footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
-      },
-      en: {
-        logo: "Ziarat Service",
-        hotel_title: "Qom Hotels",
-        hotel_desc: "Choose the best hotels near the holy shrine:",
-        footer: "© 2025 Ziarat Service | All Rights Reserved"
-      }
-    };
-
-    const languageSelector = document.getElementById("language");
-    const elements = document.querySelectorAll("[data-i18n]");
-
-    languageSelector.addEventListener("change", (e) => {
-      const lang = e.target.value;
-      elements.forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        el.innerText = translations[lang][key];
-      });
-    });
-  </script>
 </body>
 </html>
