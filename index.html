@@ -1,20 +1,69 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>زیارت سروس</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <style>
-    .lang-switch {
-      position: absolute;
-      top: 15px;
-      right: 20px;
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      position: relative;
+      padding: 10px 20px;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
     }
     .lang-switch select {
       padding: 5px;
       border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .hero {
+      padding: 50px 20px;
+      background: #eaeaea;
+      text-align: center;
+    }
+    .hero-box h1 {
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+    .hero-box p {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .buttons a {
+      margin: 5px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f4f4f4;
+      font-size: 0.9rem;
+      margin-top: 50px;
     }
   </style>
 </head>
@@ -23,7 +72,7 @@
     <div class="logo" data-i18n="logo">زیارت سروس</div>
     <div class="lang-switch">
       <select id="language">
-        <option value="ur" selected>اردو</option>
+        <option value="ur">اردو</option>
         <option value="fa">فارسی</option>
         <option value="en">English</option>
       </select>
@@ -84,12 +133,30 @@
     const languageSelector = document.getElementById("language");
     const elements = document.querySelectorAll("[data-i18n]");
 
-    languageSelector.addEventListener("change", (e) => {
-      const lang = e.target.value;
+    function updateLanguage(lang) {
       elements.forEach(el => {
         const key = el.getAttribute("data-i18n");
         el.innerText = translations[lang][key];
       });
+      if (lang === "en") {
+        document.documentElement.dir = "ltr";
+        document.documentElement.lang = "en";
+      } else {
+        document.documentElement.dir = "rtl";
+        document.documentElement.lang = lang;
+      }
+    }
+
+    languageSelector.addEventListener("change", (e) => {
+      const lang = e.target.value;
+      localStorage.setItem("selectedLang", lang);
+      updateLanguage(lang);
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("selectedLang") || "ur";
+      languageSelector.value = savedLang;
+      updateLanguage(savedLang);
     });
   </script>
 </body>
