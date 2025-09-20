@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ویزای زیارتی ایران | زیارت سروس</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* قالب مشابه صفحه اصلی */
-    body { margin:0; font-family: sans-serif; background-color: #f9fafb; }
-    header { display:flex; justify-content: space-between; align-items:center; padding:1rem 2rem; background-color:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.05);}
-    .logo { font-weight:800; font-size:1.5rem; color:#4f46e5; }
-    .hero { padding:4rem 1rem; display:flex; justify-content:center; text-align:center; }
-    .hero-box { max-width:700px; width:100%; background-color:#fff; padding:2rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
-    .hero h1 { font-size:2.5rem; font-weight:800; margin-bottom:1rem; }
-    .hero p { font-size:1.125rem; line-height:1.6; margin-bottom:2rem; }
-    .form-container { display:flex; flex-direction:column; gap:1rem; text-align:right; }
-    .form-container input, .form-container textarea { padding:0.75rem; border:1px solid #d1d5db; border-radius:8px; width:100%; background-color:#f9fafb; }
-    .form-container button { padding:0.75rem 1.5rem; background-color:#4f46e5; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:600; transition:0.3s; }
-    .form-container button:hover { background-color:#4338ca; }
-    label { font-weight:600; display:block; text-align:right; color:#111827; }
-    footer { padding:1rem; text-align:center; background-color:#fff; margin-top:2rem; box-shadow:0 -2px 5px rgba(0,0,0,0.05); }
-    @media (min-width:640px){ .hero h1{font-size:3rem;} .hero p{font-size:1.25rem;} }
-    @media (min-width:1024px){ .hero h1{font-size:3.5rem;} .hero p{font-size:1.375rem;} }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ویزای زیارتی ایران | زیارت سروس</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+  /* قالب مشابه صفحه اصلی با رنگ سبز */
+  body { margin:0; font-family:sans-serif; background-color:#e6f4ea; }
+  header { display:flex; justify-content: space-between; align-items:center; padding:1rem 2rem; background-color:#1e7d34; color:#fff; }
+  .logo { font-weight:800; font-size:1.5rem; }
+  .lang-switch select { padding:5px; border-radius:6px; border:none; font-weight:bold; }
+  .hero { padding:4rem 1rem; display:flex; justify-content:center; text-align:center; }
+  .hero-box { max-width:700px; width:100%; background:linear-gradient(180deg, #38a169 0%, #68d391 100%); padding:2rem; border-radius:12px; color:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+  .hero h1 { font-size:2.5rem; font-weight:800; margin-bottom:1rem; }
+  .hero p { font-size:1.125rem; line-height:1.6; margin-bottom:2rem; }
+  .form-container { display:flex; flex-direction:column; gap:1rem; text-align:right; }
+  .form-container input, .form-container textarea {
+    padding:0.75rem; border:none; border-radius:8px; width:100%; font-size:1rem;
+  }
+  .form-container button {
+    padding:0.75rem 1.5rem; background-color:#14532d; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:600; transition:0.3s;
+  }
+  .form-container button:hover { background-color:#166534; }
+  label { font-weight:600; display:block; text-align:right; color:#fff; }
+  footer { padding:1rem; text-align:center; background-color:#14532d; color:#fff; margin-top:2rem; }
+  @media (min-width:640px){ .hero h1{font-size:3rem;} .hero p{font-size:1.25rem;} }
+  @media (min-width:1024px){ .hero h1{font-size:3.5rem;} .hero p{font-size:1.375rem;} }
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">زیارت سروس</div>
-    <div class="lang-switch">
-      <select id="language">
-        <option value="ur">اردو</option>
-        <option value="fa">فارسی</option>
-        <option value="en">English</option>
-      </select>
-    </div>
-  </header>
+<header>
+  <div class="logo">زیارت سروس</div>
+  <div class="lang-switch">
+    <select id="language">
+      <option value="ur">اردو</option>
+      <option value="fa">فارسی</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+</header>
 
-  <section class="hero">
-    <div class="hero-box">
-      <h1>ویزای زیارتی ایران</h1>
-      <p>برای دریافت ویزای زیارتی ایران، لطفاً مدارک و اطلاعات خود را آپلود کنید تا ما برای شما ویزا بگیریم.</p>
+<section class="hero">
+  <div class="hero-box">
+    <h1>ویزای زیارتی ایران</h1>
+    <p>برای دریافت ویزای زیارتی ایران، لطفاً مدارک و اطلاعات خود را آپلود کنید تا ما برای شما ویزا بگیریم.</p>
 
-      <form class="form-container" action="#" method="post" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="نام و نام خانوادگی" required>
-        <input type="email" name="email" placeholder="ایمیل" required>
-        <input type="tel" name="phone" placeholder="شماره تماس" required>
-        <textarea name="note" rows="3" placeholder="توضیح کوتاه (مثلاً تاریخ سفر یا تعداد افراد)" required></textarea>
+    <form class="form-container" action="#" method="post" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="نام و نام خانوادگی" required>
+      <input type="email" name="email" placeholder="ایمیل" required>
+      <input type="tel" name="phone" placeholder="شماره تماس" required>
+      <textarea name="note" rows="3" placeholder="توضیح کوتاه (مثلاً تاریخ سفر یا تعداد افراد)" required></textarea>
 
-        <label>آپلود پاسپورت:</label>
-        <input type="file" name="passport" accept=".jpg,.jpeg,.png,.pdf" required>
+      <label>آپلود پاسپورت:</label>
+      <input type="file" name="passport" accept=".jpg,.jpeg,.png,.pdf" required>
 
-        <label>آپلود عکس پرسنلی:</label>
-        <input type="file" name="photo" accept=".jpg,.jpeg,.png" required>
+      <label>آپلود عکس پرسنلی:</label>
+      <input type="file" name="photo" accept=".jpg,.jpeg,.png" required>
 
-        <label>آپلود سایر مدارک (در صورت نیاز):</label>
-        <input type="file" name="other_docs" accept=".jpg,.jpeg,.png,.pdf" multiple>
+      <label>آپلود سایر مدارک (در صورت نیاز):</label>
+      <input type="file" name="other_docs" accept=".jpg,.jpeg,.png,.pdf" multiple>
 
-        <button type="submit">ارسال مدارک</button>
-      </form>
-    </div>
-  </section>
+      <button type="submit">ارسال مدارک</button>
+    </form>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
-  </footer>
+<footer>
+  <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+</footer>
 </body>
 </html>
