@@ -3,8 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>عراق کا ویزا | زیارت سروس</title>
+  <title>ویزای زیارتی عراق | زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .hero {
+      padding: 4rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-box {
+      max-width: 700px;
+      width: 100%;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      text-align: right;
+    }
+    .form-container input, .form-container textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 1rem;
+    }
+    .form-container button {
+      padding: 0.75rem 1.5rem;
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 3rem; }
+      .hero p { font-size: 1.25rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 3.5rem; }
+      .hero p { font-size: 1.375rem; }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,12 +68,26 @@
 
   <section class="hero">
     <div class="hero-box">
-      <h1>عراق کا ویزا</h1>
-      <p>اگر آپ عراق کا ویزا لینا چاہتے ہیں تو نیچے بٹن پر کلک کریں اور ویزا لینے کی ضروریات کو پڑھ کر اپنی دستاویزات اپلوڈ کریں۔</p>
-      <div class="buttons">
-        <a href="visa-iraq-docs.html" class="btn btn-primary">📑 ضروریات دیکھیں</a>
-        <a href="visa.html" class="btn btn-secondary">↩️ واپس</a>
-      </div>
+      <h1>ویزای زیارتی عراق</h1>
+      <p>برای دریافت ویزای زیارتی عراق، لطفاً مدارک و اطلاعات خود را آپلود کنید تا ما برای شما ویزا بگیریم.</p>
+
+      <form class="form-container" action="#" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="نام و نام خانوادگی" required>
+        <input type="email" name="email" placeholder="ایمیل" required>
+        <input type="tel" name="phone" placeholder="شماره تماس" required>
+        <textarea name="note" rows="3" placeholder="توضیح کوتاه (مثلاً تاریخ سفر یا تعداد افراد)" required></textarea>
+
+        <label>آپلود پاسپورت:</label>
+        <input type="file" name="passport" accept=".jpg,.jpeg,.png,.pdf" required>
+
+        <label>آپلود عکس پرسنلی:</label>
+        <input type="file" name="photo" accept=".jpg,.jpeg,.png" required>
+
+        <label>آپلود سایر مدارک (در صورت نیاز):</label>
+        <input type="file" name="other_docs" accept=".jpg,.jpeg,.png,.pdf" multiple>
+
+        <button type="submit">ارسال مدارک</button>
+      </form>
     </div>
   </section>
 
