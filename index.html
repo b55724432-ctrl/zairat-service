@@ -6,118 +6,15 @@
   <title>زیارت سروس</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* --- Language Switch --- */
     .lang-switch {
       position: absolute;
       top: 15px;
       right: 20px;
-      z-index: 10;
     }
     .lang-switch select {
       padding: 5px;
       border-radius: 6px;
       border: 1px solid #ccc;
-    }
-
-    /* --- Hero Styles --- */
-    .hero {
-      padding: 4rem 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .hero-box {
-      max-width: 700px;
-      width: 100%;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-
-    .hero p {
-      font-size: 1.125rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-
-    .highlight {
-      color: #4f46e5; /* Indigo-600 */
-    }
-
-    .fade-up {
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeUp 0.6s ease forwards;
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* --- Buttons --- */
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .btn-primary {
-      background: linear-gradient(to right, #4f46e5, #6366f1);
-      color: #fff;
-    }
-
-    .btn-secondary {
-      background: #f3f4f6;
-      color: #111827;
-      border: 1px solid #d1d5db;
-    }
-
-    /* --- Footer --- */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.875rem;
-      color: #6b7280;
-    }
-
-    /* --- Responsive --- */
-    @media (min-width: 640px) {
-      .hero h1 {
-        font-size: 3rem;
-      }
-      .hero p {
-        font-size: 1.25rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .hero h1 {
-        font-size: 3.5rem;
-      }
-      .hero p {
-        font-size: 1.375rem;
-      }
     }
   </style>
 </head>
@@ -135,8 +32,8 @@
 
   <section class="hero">
     <div class="hero-box">
-      <h1 data-i18n="hero_title" class="fade-up">بہترین زیارتی خدمات — <span class="highlight">با پشتیبانی ۲۴/۷</span></h1>
-      <p data-i18n="hero_text" class="fade-up">ویزا، ہوٹل، ٹرانسپورٹ اور کھانے کی سہولت یکجا. مسیر زیارت شما را ساده و بی‌دردسر کنیم.</p>
+      <h1 data-i18n="hero_title">بہترین زیارتی خدمات</h1>
+      <p data-i18n="hero_text">ویزا، ہوٹل، ٹرانسپورٹ اور کھانے کی سہولت ایک جگہ پر۔</p>
       <div class="buttons">
         <a href="visa.html" class="btn btn-primary" data-i18n="visa_btn">📑 ویزا درخواست</a>
         <a href="hotel.html" class="btn btn-secondary" data-i18n="hotel_btn">🏨 ہوٹل بُک کریں</a>
@@ -154,8 +51,8 @@
     const translations = {
       ur: {
         logo: "زیارت سروس",
-        hero_title: "بہترین زیارتی خدمات — با پشتیبانی ۲۴/۷",
-        hero_text: "ویزا، ہوٹل، ٹرانسپورٹ اور کھانے کی سہولت یکجا. مسیر زیارت شما را ساده و بی‌دردسر کنیم.",
+        hero_title: "بہترین زیارتی خدمات",
+        hero_text: "ویزا، ہوٹل، ٹرانسپورٹ اور کھانے کی سہولت ایک جگہ پر۔",
         visa_btn: "📑 ویزا درخواست",
         hotel_btn: "🏨 ہوٹل بُک کریں",
         transport_btn: "🚌 ٹرانسپورٹ",
@@ -164,8 +61,8 @@
       },
       fa: {
         logo: "زیارت سرویس",
-        hero_title: "بهترین خدمات زیارتی — <span class='highlight'>با پشتیبانی ۲۴/۷</span>",
-        hero_text: "ویزا، هتل، ترانسپورت و غذا همه در یک‌جا. مسیر زیارت شما را ساده و بی‌دردسر کنیم.",
+        hero_title: "بهترین خدمات زیارتی",
+        hero_text: "ویزا، هتل، ترانسپورت و غذا همه در یک‌جا.",
         visa_btn: "📑 درخواست ویزا",
         hotel_btn: "🏨 رزرو هتل",
         transport_btn: "🚌 ترانسپورت",
@@ -174,8 +71,8 @@
       },
       en: {
         logo: "Ziarat Service",
-        hero_title: "Best Pilgrimage Services — <span class='highlight'>supported 24/7</span>",
-        hero_text: "Visa, Hotel, Transport, and Food all in one place. We make your pilgrimage simple and stress-free.",
+        hero_title: "Best Pilgrimage Services",
+        hero_text: "Visa, Hotel, Transport, and Food all in one place.",
         visa_btn: "📑 Apply for Visa",
         hotel_btn: "🏨 Book Hotel",
         transport_btn: "🚌 Transport",
@@ -191,7 +88,7 @@
       elements.forEach(el => {
         const key = el.getAttribute("data-i18n");
         if(translations[lang] && translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
+          el.innerText = translations[lang][key];
         }
       });
       if(lang === "en") {
@@ -201,18 +98,6 @@
         document.documentElement.dir = "rtl";
         document.documentElement.lang = lang;
       }
-
-      // فعال کردن مجدد انیمیشن fade-up پس از تغییر زبان
-      const fadeElements = document.querySelectorAll(".fade-up");
-      fadeElements.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = "translateY(10px)";
-        setTimeout(() => {
-          el.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-          el.style.opacity = 1;
-          el.style.transform = "translateY(0)";
-        }, 50);
-      });
     }
 
     languageSelector.addEventListener("change", (e) => {
