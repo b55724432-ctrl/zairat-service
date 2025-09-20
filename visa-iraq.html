@@ -6,51 +6,75 @@
   <title>ویزای زیارتی عراق | زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Hero Section */
     .hero {
-      padding: 4rem 1rem;
+      padding: 5rem 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      background-color: #f9fafb;
     }
     .hero-box {
       max-width: 700px;
       width: 100%;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     .hero h1 {
       font-size: 2.5rem;
       font-weight: 800;
-      line-height: 1.2;
       margin-bottom: 1rem;
+      color: #111827;
     }
     .hero p {
       font-size: 1.125rem;
       line-height: 1.6;
       margin-bottom: 2rem;
+      color: #4b5563;
     }
+
+    /* Form */
     .form-container {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      margin-top: 2rem;
       text-align: right;
     }
-    .form-container input, .form-container textarea {
+    .form-container input,
+    .form-container textarea {
       padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
       font-size: 1rem;
+      width: 100%;
+      background-color: #f9fafb;
     }
     .form-container button {
       padding: 0.75rem 1.5rem;
       background-color: #4f46e5;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      color: #fff;
       font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
+    .form-container button:hover {
+      background-color: #4338ca;
+    }
+    label {
+      font-weight: 600;
+      margin-top: 0.5rem;
+      display: block;
+      text-align: right;
+      color: #111827;
+    }
+
+    /* Responsive */
     @media (min-width: 640px) {
       .hero h1 { font-size: 3rem; }
       .hero p { font-size: 1.25rem; }
