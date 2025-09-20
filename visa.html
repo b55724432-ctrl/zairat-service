@@ -5,6 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ویزہ | زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* هماهنگ با صفحه اول */
+    .hero {
+      padding: 4rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-box {
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 3rem; }
+      .hero p { font-size: 1.25rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 3.5rem; }
+      .hero p { font-size: 1.375rem; }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -16,8 +60,8 @@
       <h1>ویزہ خدمات</h1>
       <p>براہ کرم اپنی مطلوبہ ویزہ منتخب کریں:</p>
       <div class="buttons">
-        <a href="visa-iran.html" class="btn btn-primary" data-i18n="visa_iran_btn">🇮🇷 ایران کا ویزا</a>
-        <a href="visa-iraq.html" class="btn btn-secondary" data-i18n="visa_iraq_btn">🇮🇶 عراق کا ویزا</a>
+        <a href="visa-iran.html" class="btn btn-primary">🇮🇷 ایران کا ویزا</a>
+        <a href="visa-iraq.html" class="btn btn-secondary">🇮🇶 عراق کا ویزا</a>
       </div>
     </div>
   </section>
