@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="page_title">ویزای ایران | زیارت سروس</title>
+  <title data-i18n="page_title">ویزا عراق | زیارت سروس</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .lang-switch {
@@ -18,34 +18,33 @@
     }
     .hero-box {
       background: #334d56;
-      padding: 40px;
+      padding: 2rem;
       border-radius: 12px;
-      text-align: right;
-      color: #fff;
       max-width: 700px;
       width: 100%;
+      color: #fff;
+      text-align: right;
     }
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 1rem;
+      margin-top: 1rem;
     }
-    input, select {
-      padding: 10px;
+    input, select, button {
+      padding: 0.8rem;
       border-radius: 6px;
       border: 1px solid #ccc;
-      font-size: 1rem;
+    }
+    input[type="file"] {
+      background: #fff;
     }
     button {
-      padding: 12px;
       background: #FFD700;
       color: #131d2b;
-      border: none;
-      border-radius: 8px;
       font-weight: bold;
-      font-size: 1rem;
       cursor: pointer;
-      transition: 0.3s;
+      border: none;
     }
     button:hover {
       opacity: 0.85;
@@ -72,7 +71,7 @@
       <div class="requirements">
         <h2 data-i18n="req_title">مدارک لازم:</h2>
         <ul>
-          <li data-i18n="req_passport">📘 پاسپورت با حداقل 6 ماه اعتبار</li>
+          <li data-i18n="req_passport">📘 پاسپورت با حداقل ۶ ماه اعتبار</li>
           <li data-i18n="req_photo">🖼️ عکس پرسنلی جدید (پس‌زمینه سفید)</li>
         </ul>
       </div>
@@ -80,39 +79,32 @@
       <form>
         <div>
           <label data-i18n="label_name">نام کامل:</label>
-          <input type="text" placeholder="نام و نام خانوادگی" required />
+          <input type="text" required />
         </div>
-
         <div>
           <label data-i18n="label_passport">شماره پاسپورت:</label>
-          <input type="text" placeholder="مثال: P1234567" required />
+          <input type="text" required />
         </div>
-
         <div>
           <label data-i18n="label_birth">تاریخ تولد:</label>
           <input type="date" required />
         </div>
-
         <div>
           <label data-i18n="label_country">کشور محل اقامت:</label>
-          <input type="text" placeholder="کشور محل اقامت" required />
+          <input type="text" required />
         </div>
-
         <div>
           <label data-i18n="label_contact">ایمیل یا شماره تماس:</label>
-          <input type="text" placeholder="مثال: email@example.com" required />
+          <input type="text" required />
         </div>
-
         <div>
           <label data-i18n="label_upload_passport">آپلود پاسپورت:</label>
           <input type="file" accept=".jpg,.jpeg,.png,.pdf" required />
         </div>
-
         <div>
           <label data-i18n="label_upload_photo">آپلود عکس پرسنلی:</label>
           <input type="file" accept=".jpg,.jpeg,.png,.pdf" required />
         </div>
-
         <button type="submit" data-i18n="submit_btn">ارسال درخواست</button>
       </form>
     </div>
@@ -125,12 +117,12 @@
   <script>
     const translations = {
       ur: {
-        page_title: "ویزای ایران | زیارت سروس",
+        page_title: "ویزا عراق | زیارت سروس",
         logo: "زیارت سروس",
         hero_title: "📑 درخواست ویزای ایران",
         hero_text: "برای دریافت ویزای زیارتی ایران لطفاً مدارک و اطلاعات لازم را تکمیل کنید.",
         req_title: "مدارک لازم:",
-        req_passport: "📘 پاسپورت با حداقل 6 ماه اعتبار",
+        req_passport: "📘 پاسپورت با حداقل ۶ ماه اعتبار",
         req_photo: "🖼️ عکس پرسنلی جدید (پس‌زمینه سفید)",
         label_name: "نام کامل:",
         label_passport: "شماره پاسپورت:",
@@ -143,7 +135,7 @@
         footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
       },
       fa: {
-        page_title: "ویزای ایران | زیارت سرویس",
+        page_title: "ویزای عراق | زیارت سرویس",
         logo: "زیارت سرویس",
         hero_title: "📑 درخواست ویزای ایران",
         hero_text: "برای دریافت ویزای زیارتی ایران لطفاً مدارک و اطلاعات را تکمیل کنید.",
@@ -161,7 +153,7 @@
         footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
       },
       en: {
-        page_title: "Iran Visa | Ziarat Service",
+        page_title: "Iraq Visa | Ziarat Service",
         logo: "Ziarat Service",
         hero_title: "📑 Apply for Iran Visa",
         hero_text: "Please complete the required documents and information for Iran pilgrimage visa.",
