@@ -1,162 +1,98 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="page_title">ویزا عراق | زیارت سروس</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ویزا عراق | زیارت سروس</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    .lang-switch {
-      position: absolute;
-      top: 15px;
-      right: 20px;
+    header {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      padding:1rem 2rem;
+      background-color:#131d2b;
+      color:#fff;
     }
-    .lang-switch select {
-      padding: 5px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+    header .logo {
+      font-weight:800;
+      font-size:1.5rem;
+      color:#FFD700; /* لوگو زرد مثل صفحه اصلی */
+    }
+    .hero {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:3rem 1rem;
     }
     .hero-box {
-      background: #334d56;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 600px;
-      width: 100%;
-      color: #fff;
-      text-align: center;
+      background:#334d56;
+      padding:2rem;
+      border-radius:12px;
+      max-width:600px;
+      width:100%;
+      color:#fff;
+      text-align:center;
+    }
+    .hero-box h1 {
+      margin-bottom:1rem;
     }
     form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1rem;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      margin-top:1rem;
     }
     input, button {
-      padding: 0.8rem;
-      border: none;
-      border-radius: 6px;
+      padding:0.8rem;
+      border:none;
+      border-radius:6px;
     }
     input {
-      background: #f9f9f9;
+      background:#f9f9f9;
     }
     button {
-      background: #2f855a;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
+      background:#2f855a;
+      color:#fff;
+      font-weight:bold;
+      cursor:pointer;
     }
     button:hover {
-      background: #276749;
+      background:#276749;
+    }
+    footer {
+      padding:1rem;
+      text-align:center;
+      background-color:#131d2b;
+      color:#fff;
+      margin-top:2rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo" data-i18n="logo">زیارت سروس</div>
-    <div class="lang-switch">
-      <select id="language">
-        <option value="ur">اردو</option>
-        <option value="fa">فارسی</option>
-        <option value="en">English</option>
-      </select>
-    </div>
+    <div class="logo">زیارت سروس</div>
   </header>
 
   <section class="hero">
     <div class="hero-box">
-      <h1 data-i18n="hero_title">مدارک لازم برای ویزای عراق</h1>
-      <p data-i18n="hero_text">برای درخواست ویزای زیارتی عراق، لطفاً مدارک زیر را بارگذاری کنید:</p>
+      <h1>مدارک لازم برای ویزای عراق</h1>
+      <p>برای درخواست ویزای زیارتی عراق، لطفاً مدارک زیر را بارگذاری کنید:</p>
       <ul style="text-align:right; margin:1rem 0;">
-        <li data-i18n="req_passport">📄 پاسپورت معتبر (حداقل ۶ ماه اعتبار)</li>
-        <li data-i18n="req_photo">🖼️ عکس پرسنلی جدید</li>
-        <li data-i18n="req_form">📑 فرم تکمیل شده اطلاعات شخصی</li>
+        <li>📄 پاسپورت معتبر (حداقل ۶ ماه اعتبار)</li>
+        <li>🖼️ عکس پرسنلی جدید</li>
+        <li>📑 فرم تکمیل شده اطلاعات شخصی</li>
       </ul>
       <form>
-        <input type="file" name="passport" required data-i18n-placeholder="input_passport" />
-        <input type="file" name="photo" required data-i18n-placeholder="input_photo" />
-        <button type="submit" data-i18n="submit_btn">📤 آپلود مدارک</button>
+        <input type="file" name="passport" required>
+        <input type="file" name="photo" required>
+        <button type="submit">📤 آپلود مدارک</button>
       </form>
     </div>
   </section>
 
   <footer>
-    <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
-
-  <script>
-    const translations = {
-      ur: {
-        page_title: "ویزا عراق | زیارت سروس",
-        logo: "زیارت سروس",
-        hero_title: "مدارک لازم برای ویزای عراق",
-        hero_text: "برای درخواست ویزای زیارتی عراق، لطفاً مدارک زیر را بارگذاری کنید:",
-        req_passport: "📄 پاسپورت معتبر (حداقل ۶ ماه اعتبار)",
-        req_photo: "🖼️ عکس پرسنلی جدید",
-        req_form: "📑 فرم تکمیل شده اطلاعات شخصی",
-        submit_btn: "📤 آپلود مدارک",
-        footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
-      },
-      fa: {
-        page_title: "ویزای عراق | زیارت سرویس",
-        logo: "زیارت سرویس",
-        hero_title: "مدارک لازم برای ویزای عراق",
-        hero_text: "برای درخواست ویزای زیارتی عراق، لطفاً مدارک زیر را بارگذاری کنید:",
-        req_passport: "📄 پاسپورت معتبر (حداقل ۶ ماه اعتبار)",
-        req_photo: "🖼️ عکس پرسنلی جدید",
-        req_form: "📑 فرم تکمیل شده اطلاعات شخصی",
-        submit_btn: "📤 بارگذاری مدارک",
-        footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
-      },
-      en: {
-        page_title: "Iraq Visa | Ziarat Service",
-        logo: "Ziarat Service",
-        hero_title: "Required Documents for Iraq Visa",
-        hero_text: "To apply for Iraq pilgrimage visa, please upload the following documents:",
-        req_passport: "📄 Valid passport (at least 6 months validity)",
-        req_photo: "🖼️ Recent personal photo",
-        req_form: "📑 Completed personal information form",
-        submit_btn: "📤 Upload Documents",
-        footer: "© 2025 Ziarat Service | All Rights Reserved"
-      }
-    };
-
-    const languageSelector = document.getElementById("language");
-    const elements = document.querySelectorAll("[data-i18n]");
-    const placeholders = document.querySelectorAll("[data-i18n-placeholder]");
-
-    function updateLanguage(lang) {
-      elements.forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if(translations[lang] && translations[lang][key]) {
-          el.innerText = translations[lang][key];
-        }
-      });
-      placeholders.forEach(el => {
-        const key = el.getAttribute("data-i18n-placeholder");
-        if(translations[lang] && translations[lang][key]) {
-          el.placeholder = translations[lang][key];
-        }
-      });
-      if(lang === "en") {
-        document.documentElement.dir = "ltr";
-        document.documentElement.lang = "en";
-      } else {
-        document.documentElement.dir = "rtl";
-        document.documentElement.lang = lang;
-      }
-    }
-
-    languageSelector.addEventListener("change", (e) => {
-      const lang = e.target.value;
-      localStorage.setItem("selectedLang", lang);
-      updateLanguage(lang);
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem("selectedLang") || "ur";
-      languageSelector.value = savedLang;
-      updateLanguage(savedLang);
-    });
-  </script>
 </body>
 </html>
