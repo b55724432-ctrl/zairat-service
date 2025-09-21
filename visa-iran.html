@@ -3,69 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ویزا ایران | زیارت سروس</title>
+  <title>ویزای ایران | زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f4f4f4;
+    }
+
     header {
-      display:flex;
+      background: #131d2b;
+      padding: 15px 20px;
+      display: flex;
       justify-content: space-between;
-      align-items:center;
-      padding:1rem 2rem;
-      background-color:#131d2b;
-      color:#fff;
+      align-items: center;
     }
-    header .logo {
-      font-weight:800;
-      font-size:1.5rem;
-      color:#FFD700; /* لوگو زرد مثل صفحه اصلی */
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #FFD700; /* زرد مثل صفحه اصلی */
     }
+
     .hero {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:3rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
     }
+
     .hero-box {
-      background:#334d56;
-      padding:2rem;
-      border-radius:12px;
-      max-width:600px;
-      width:100%;
-      color:#fff;
-      text-align:center;
+      background: #334d56;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: right;
+      color: #fff;
+      max-width: 700px;
+      width: 100%;
     }
+
     .hero-box h1 {
-      margin-bottom:1rem;
+      margin-bottom: 15px;
+      font-size: 2rem;
+      text-align: center;
     }
+
+    .hero-box p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .requirements {
+      background: #fff;
+      color: #131d2b;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .requirements h2 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
     form {
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
-      margin-top:1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
-    input, button {
-      padding:0.8rem;
-      border:none;
-      border-radius:6px;
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
     }
-    input {
-      background:#f9f9f9;
+
+    input, select {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
     }
+
+    input[type="file"] {
+      background: #fff;
+      color: #131d2b;
+    }
+
     button {
-      background:#2f855a;
-      color:#fff;
-      font-weight:bold;
-      cursor:pointer;
+      padding: 12px;
+      background: #FFD700;
+      color: #131d2b;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
     }
+
     button:hover {
-      background:#276749;
+      opacity: 0.85;
     }
+
     footer {
-      padding:1rem;
-      text-align:center;
-      background-color:#131d2b;
-      color:#fff;
-      margin-top:2rem;
+      background: #131d2b;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -76,17 +123,54 @@
 
   <section class="hero">
     <div class="hero-box">
-      <h1>مدارک لازم برای ویزای ایران</h1>
-      <p>برای درخواست ویزای زیارتی ایران، لطفاً مدارک زیر را بارگذاری کنید:</p>
-      <ul style="text-align:right; margin:1rem 0;">
-        <li>📄 پاسپورت معتبر (حداقل ۶ ماه اعتبار)</li>
-        <li>🖼️ عکس پرسنلی جدید</li>
-        <li>📑 فرم تکمیل شده اطلاعات شخصی</li>
-      </ul>
+      <h1>📑 درخواست ویزای ایران</h1>
+      <p>برای دریافت ویزای زیارتی ایران لطفاً مدارک و اطلاعات لازم را تکمیل کنید.</p>
+
+      <div class="requirements">
+        <h2>مدارک لازم:</h2>
+        <ul>
+          <li>📘 پاسپورت با حداقل 6 ماه اعتبار</li>
+          <li>🖼️ عکس پرسنلی جدید (پس‌زمینه سفید)</li>
+        </ul>
+      </div>
+
       <form>
-        <input type="file" name="passport" required>
-        <input type="file" name="photo" required>
-        <button type="submit">📤 آپلود مدارک</button>
+        <div>
+          <label>نام کامل:</label>
+          <input type="text" placeholder="نام و نام خانوادگی" required>
+        </div>
+
+        <div>
+          <label>شماره پاسپورت:</label>
+          <input type="text" placeholder="مثال: P1234567" required>
+        </div>
+
+        <div>
+          <label>تاریخ تولد:</label>
+          <input type="date" required>
+        </div>
+
+        <div>
+          <label>کشور محل اقامت:</label>
+          <input type="text" placeholder="کشور محل اقامت" required>
+        </div>
+
+        <div>
+          <label>ایمیل یا شماره تماس:</label>
+          <input type="text" placeholder="مثال: email@example.com" required>
+        </div>
+
+        <div>
+          <label>آپلود پاسپورت:</label>
+          <input type="file" accept=".jpg,.jpeg,.png,.pdf" required>
+        </div>
+
+        <div>
+          <label>آپلود عکس پرسنلی:</label>
+          <input type="file" accept=".jpg,.jpeg,.png,.pdf" required>
+        </div>
+
+        <button type="submit">ارسال درخواست</button>
       </form>
     </div>
   </section>
