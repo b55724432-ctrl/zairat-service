@@ -1,71 +1,98 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ویزای زیارتی عراق | زیارت سروس</title>
-<link rel="stylesheet" href="style.css">
-<style>
-  body { margin:0; font-family:sans-serif; background-color:#f0fff4; }
-  header { display:flex; justify-content: space-between; align-items:center; padding:1rem 2rem; background-color:#131d2b; color:#fff; }
-  .logo { font-weight:800; font-size:1.5rem; color:#fff; }
-  .lang-switch select { padding:5px; border-radius:6px; border:none; font-weight:bold; }
-  .hero { padding:4rem 1rem; display:flex; justify-content:center; text-align:center; }
-  .hero-box {
-    max-width:700px; width:100%;
-    background-color:#334d56;
-    padding:2rem; border-radius:12px;
-    color:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  }
-  .hero h1 { font-size:2.5rem; font-weight:800; margin-bottom:1rem; }
-  .hero p { font-size:1.125rem; line-height:1.6; margin-bottom:2rem; }
-  .form-container { display:flex; flex-direction:column; gap:1rem; text-align:right; }
-  .form-container input, .form-container textarea { padding:0.75rem; border:none; border-radius:8px; width:100%; font-size:1rem; }
-  .form-container button { padding:0.75rem 1.5rem; background-color:#22543d; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:600; transition:0.3s; }
-  .form-container button:hover { background-color:#1e4332; }
-  label { font-weight:600; display:block; text-align:right; color:#fff; }
-  footer { padding:1rem; text-align:center; background-color:#131d2b; color:#fff; margin-top:2rem; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ویزا عراق | زیارت سروس</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    header {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      padding:1rem 2rem;
+      background-color:#131d2b; /* پس‌زمینه هدر */
+      color:#fff;
+    }
+    header .logo {
+      font-weight:800;
+      font-size:1.5rem;
+      color:#fff; /* مثل صفحه اصلی */
+    }
+    .hero {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:3rem 1rem;
+    }
+    .hero-box {
+      background:#334d56; /* کانتینر فرم */
+      padding:2rem;
+      border-radius:12px;
+      max-width:600px;
+      width:100%;
+      color:#fff;
+      text-align:center;
+    }
+    .hero-box h1 {
+      margin-bottom:1rem;
+    }
+    form {
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      margin-top:1rem;
+    }
+    input, button {
+      padding:0.8rem;
+      border:none;
+      border-radius:6px;
+    }
+    input {
+      background:#f9f9f9;
+    }
+    button {
+      background:#2f855a;
+      color:#fff;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    button:hover {
+      background:#276749;
+    }
+    footer {
+      padding:1rem;
+      text-align:center;
+      background-color:#131d2b; /* رنگ پس‌زمینه فوتر */
+      color:#fff; /* متن سفید */
+      margin-top:2rem;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="logo">زیارت سروس</div>
-  <div class="lang-switch">
-    <select id="language">
-      <option value="ur">اردو</option>
-      <option value="fa">فارسی</option>
-      <option value="en">English</option>
-    </select>
-  </div>
-</header>
+  <header>
+    <div class="logo">زیارت سروس</div>
+  </header>
 
-<section class="hero">
-  <div class="hero-box">
-    <h1>ویزای زیارتی عراق</h1>
-    <p>برای دریافت ویزای زیارتی عراق، لطفاً مدارک و اطلاعات خود را آپلود کنید تا ما برای شما ویزا بگیریم.</p>
+  <section class="hero">
+    <div class="hero-box">
+      <h1>مدارک لازم برای ویزای عراق</h1>
+      <p>برای درخواست ویزای زیارتی عراق، لطفاً مدارک زیر را بارگذاری کنید:</p>
+      <ul style="text-align:right; margin:1rem 0;">
+        <li>📄 پاسپورت معتبر (حداقل ۶ ماه اعتبار)</li>
+        <li>🖼️ عکس پرسنلی جدید</li>
+        <li>📑 فرم تکمیل شده اطلاعات شخصی</li>
+      </ul>
+      <form>
+        <input type="file" name="passport" required>
+        <input type="file" name="photo" required>
+        <button type="submit">📤 آپلود مدارک</button>
+      </form>
+    </div>
+  </section>
 
-    <form class="form-container" action="#" method="post" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="نام و نام خانوادگی" required>
-      <input type="email" name="email" placeholder="ایمیل" required>
-      <input type="tel" name="phone" placeholder="شماره تماس" required>
-      <textarea name="note" rows="3" placeholder="توضیح کوتاه (مثلاً تاریخ سفر یا تعداد افراد)" required></textarea>
-
-      <label>آپلود پاسپورت:</label>
-      <input type="file" name="passport" accept=".jpg,.jpeg,.png,.pdf" required>
-
-      <label>آپلود عکس پرسنلی:</label>
-      <input type="file" name="photo" accept=".jpg,.jpeg,.png" required>
-
-      <label>آپلود سایر مدارک (در صورت نیاز):</label>
-      <input type="file" name="other_docs" accept=".jpg,.jpeg,.png,.pdf" multiple>
-
-      <button type="submit">ارسال مدارک</button>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
-</footer>
+  <footer>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+  </footer>
 </body>
 </html>
