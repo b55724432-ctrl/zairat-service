@@ -1,207 +1,98 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="page_title">ویزا عراق | زیارت سروس</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ویزا ایران | زیارت سروس</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    .lang-switch {
-      position: absolute;
-      top: 15px;
-      right: 20px;
+    header {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      padding:1rem 2rem;
+      background-color:#131d2b;
+      color:#fff;
     }
-    .lang-switch select {
-      padding: 5px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+    header .logo {
+      font-weight:800;
+      font-size:1.5rem;
+      color:#FFD700; /* لوگو زرد مثل صفحه اصلی */
+    }
+    .hero {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:3rem 1rem;
     }
     .hero-box {
-      background: #334d56;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 700px;
-      width: 100%;
-      color: #fff;
-      text-align: right;
+      background:#334d56;
+      padding:2rem;
+      border-radius:12px;
+      max-width:600px;
+      width:100%;
+      color:#fff;
+      text-align:center;
+    }
+    .hero-box h1 {
+      margin-bottom:1rem;
     }
     form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1rem;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      margin-top:1rem;
     }
-    input, select, button {
-      padding: 0.8rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+    input, button {
+      padding:0.8rem;
+      border:none;
+      border-radius:6px;
     }
-    input[type="file"] {
-      background: #fff;
+    input {
+      background:#f9f9f9;
     }
     button {
-      background: #FFD700;
-      color: #131d2b;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
+      background:#2f855a;
+      color:#fff;
+      font-weight:bold;
+      cursor:pointer;
     }
     button:hover {
-      opacity: 0.85;
+      background:#276749;
+    }
+    footer {
+      padding:1rem;
+      text-align:center;
+      background-color:#131d2b;
+      color:#fff;
+      margin-top:2rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo" data-i18n="logo">زیارت سروس</div>
-    <div class="lang-switch">
-      <select id="language">
-        <option value="ur">اردو</option>
-        <option value="fa">فارسی</option>
-        <option value="en">English</option>
-      </select>
-    </div>
+    <div class="logo">زیارت سروس</div>
   </header>
 
   <section class="hero">
     <div class="hero-box">
-      <h1 data-i18n="hero_title">📑 درخواست ویزای ایران</h1>
-      <p data-i18n="hero_text">برای دریافت ویزای زیارتی ایران لطفاً مدارک و اطلاعات لازم را تکمیل کنید.</p>
-
-      <div class="requirements">
-        <h2 data-i18n="req_title">مدارک لازم:</h2>
-        <ul>
-          <li data-i18n="req_passport">📘 پاسپورت با حداقل ۶ ماه اعتبار</li>
-          <li data-i18n="req_photo">🖼️ عکس پرسنلی جدید (پس‌زمینه سفید)</li>
-        </ul>
-      </div>
-
+      <h1>مدارک لازم برای ویزای ایران</h1>
+      <p>برای درخواست ویزای زیارتی ایران، لطفاً مدارک زیر را بارگذاری کنید:</p>
+      <ul style="text-align:right; margin:1rem 0;">
+        <li>📄 پاسپورت معتبر (حداقل ۶ ماه اعتبار)</li>
+        <li>🖼️ عکس پرسنلی جدید</li>
+        <li>📑 فرم تکمیل شده اطلاعات شخصی</li>
+      </ul>
       <form>
-        <div>
-          <label data-i18n="label_name">نام کامل:</label>
-          <input type="text" required />
-        </div>
-        <div>
-          <label data-i18n="label_passport">شماره پاسپورت:</label>
-          <input type="text" required />
-        </div>
-        <div>
-          <label data-i18n="label_birth">تاریخ تولد:</label>
-          <input type="date" required />
-        </div>
-        <div>
-          <label data-i18n="label_country">کشور محل اقامت:</label>
-          <input type="text" required />
-        </div>
-        <div>
-          <label data-i18n="label_contact">ایمیل یا شماره تماس:</label>
-          <input type="text" required />
-        </div>
-        <div>
-          <label data-i18n="label_upload_passport">آپلود پاسپورت:</label>
-          <input type="file" accept=".jpg,.jpeg,.png,.pdf" required />
-        </div>
-        <div>
-          <label data-i18n="label_upload_photo">آپلود عکس پرسنلی:</label>
-          <input type="file" accept=".jpg,.jpeg,.png,.pdf" required />
-        </div>
-        <button type="submit" data-i18n="submit_btn">ارسال درخواست</button>
+        <input type="file" name="passport" required>
+        <input type="file" name="photo" required>
+        <button type="submit">📤 آپلود مدارک</button>
       </form>
     </div>
   </section>
 
   <footer>
-    <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
-
-  <script>
-    const translations = {
-      ur: {
-        page_title: "ویزا عراق | زیارت سروس",
-        logo: "زیارت سروس",
-        hero_title: "📑 درخواست ویزای ایران",
-        hero_text: "برای دریافت ویزای زیارتی ایران لطفاً مدارک و اطلاعات لازم را تکمیل کنید.",
-        req_title: "مدارک لازم:",
-        req_passport: "📘 پاسپورت با حداقل ۶ ماه اعتبار",
-        req_photo: "🖼️ عکس پرسنلی جدید (پس‌زمینه سفید)",
-        label_name: "نام کامل:",
-        label_passport: "شماره پاسپورت:",
-        label_birth: "تاریخ تولد:",
-        label_country: "کشور محل اقامت:",
-        label_contact: "ایمیل یا شماره تماس:",
-        label_upload_passport: "آپلود پاسپورت:",
-        label_upload_photo: "آپلود عکس پرسنلی:",
-        submit_btn: "ارسال درخواست",
-        footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
-      },
-      fa: {
-        page_title: "ویزای عراق | زیارت سرویس",
-        logo: "زیارت سرویس",
-        hero_title: "📑 درخواست ویزای ایران",
-        hero_text: "برای دریافت ویزای زیارتی ایران لطفاً مدارک و اطلاعات را تکمیل کنید.",
-        req_title: "مدارک لازم:",
-        req_passport: "📘 پاسپورت با حداقل ۶ ماه اعتبار",
-        req_photo: "🖼️ عکس پرسنلی جدید (پس‌زمینه سفید)",
-        label_name: "نام کامل:",
-        label_passport: "شماره پاسپورت:",
-        label_birth: "تاریخ تولد:",
-        label_country: "کشور محل اقامت:",
-        label_contact: "ایمیل یا شماره تماس:",
-        label_upload_passport: "بارگذاری پاسپورت:",
-        label_upload_photo: "بارگذاری عکس پرسنلی:",
-        submit_btn: "ارسال درخواست",
-        footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
-      },
-      en: {
-        page_title: "Iraq Visa | Ziarat Service",
-        logo: "Ziarat Service",
-        hero_title: "📑 Apply for Iran Visa",
-        hero_text: "Please complete the required documents and information for Iran pilgrimage visa.",
-        req_title: "Required Documents:",
-        req_passport: "📘 Passport with at least 6 months validity",
-        req_photo: "🖼️ Recent personal photo (white background)",
-        label_name: "Full Name:",
-        label_passport: "Passport Number:",
-        label_birth: "Date of Birth:",
-        label_country: "Country of Residence:",
-        label_contact: "Email or Contact Number:",
-        label_upload_passport: "Upload Passport:",
-        label_upload_photo: "Upload Photo:",
-        submit_btn: "Submit Application",
-        footer: "© 2025 Ziarat Service | All Rights Reserved"
-      }
-    };
-
-    const languageSelector = document.getElementById("language");
-    const elements = document.querySelectorAll("[data-i18n]");
-
-    function updateLanguage(lang) {
-      elements.forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if(translations[lang] && translations[lang][key]) {
-          el.innerText = translations[lang][key];
-        }
-      });
-      if(lang === "en") {
-        document.documentElement.dir = "ltr";
-        document.documentElement.lang = "en";
-      } else {
-        document.documentElement.dir = "rtl";
-        document.documentElement.lang = lang;
-      }
-    }
-
-    languageSelector.addEventListener("change", (e) => {
-      const lang = e.target.value;
-      localStorage.setItem("selectedLang", lang);
-      updateLanguage(lang);
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem("selectedLang") || "ur";
-      languageSelector.value = savedLang;
-      updateLanguage(savedLang);
-    });
-  </script>
 </body>
 </html>
