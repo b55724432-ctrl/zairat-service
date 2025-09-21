@@ -3,79 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ویزای ایران | زیارت سروس</title>
+  <title>ویزا ایران | زیارت سروس</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin:0;
-      font-family:sans-serif;
-      background:#f4f4f4;
-    }
     header {
-      background:#131d2b;
-      padding:15px 20px;
       display:flex;
-      justify-content:space-between;
+      justify-content: space-between;
       align-items:center;
+      padding:1rem 2rem;
+      background-color:#131d2b;
+      color:#fff;
     }
-    .logo {
+    header .logo {
+      font-weight:800;
       font-size:1.5rem;
-      font-weight:bold;
-      color:#FFD700;
+      color:#FFD700; /* لوگو زرد مثل صفحه اصلی */
     }
     .hero {
       display:flex;
       justify-content:center;
       align-items:center;
-      padding:40px 20px;
+      padding:3rem 1rem;
     }
     .hero-box {
       background:#334d56;
-      padding:40px;
+      padding:2rem;
       border-radius:12px;
-      max-width:700px;
+      max-width:600px;
       width:100%;
       color:#fff;
-      text-align:right;
+      text-align:center;
     }
     .hero-box h1 {
-      text-align:center;
-      margin-bottom:20px;
-      font-size:2rem;
+      margin-bottom:1rem;
     }
-    .step {
-      display:none;
+    form {
+      display:flex;
       flex-direction:column;
-      gap:15px;
+      gap:1rem;
+      margin-top:1rem;
     }
-    .step.active { display:flex; }
-    label { font-weight:bold; margin-bottom:5px; }
-    input, select { padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1rem; }
-    button {
-      padding:12px;
-      background:#FFD700;
-      color:#131d2b;
+    input, button {
+      padding:0.8rem;
       border:none;
-      border-radius:8px;
+      border-radius:6px;
+    }
+    input {
+      background:#f9f9f9;
+    }
+    button {
+      background:#2f855a;
+      color:#fff;
       font-weight:bold;
       cursor:pointer;
-      transition:0.3s;
-      margin-top:10px;
     }
-    button:hover { opacity:0.85; }
-    .requirements {
-      background:#fff;
-      color:#131d2b;
-      padding:20px;
-      border-radius:8px;
-      margin-bottom:20px;
+    button:hover {
+      background:#276749;
     }
     footer {
-      background:#131d2b;
-      color:#fff;
+      padding:1rem;
       text-align:center;
-      padding:15px;
-      margin-top:40px;
+      background-color:#131d2b;
+      color:#fff;
+      margin-top:2rem;
     }
   </style>
 </head>
@@ -86,44 +76,17 @@
 
   <section class="hero">
     <div class="hero-box">
-      <h1>📑 درخواست ویزای ایران</h1>
-      <div class="requirements">
-        <h2>مدارک لازم:</h2>
-        <ul>
-          <li>📘 پاسپورت با حداقل 6 ماه اعتبار</li>
-          <li>🖼️ عکس پرسنلی جدید</li>
-        </ul>
-      </div>
-
-      <form id="visaForm">
-        <!-- مرحله 1: اطلاعات شخصی -->
-        <div class="step active" id="step1">
-          <label>نام کامل:</label>
-          <input type="text" placeholder="نام و نام خانوادگی">
-          <label>تاریخ تولد:</label>
-          <input type="date">
-          <button type="button" onclick="nextStep(1)">مرحله بعدی</button>
-        </div>
-
-        <!-- مرحله 2: اطلاعات پاسپورت -->
-        <div class="step" id="step2">
-          <label>شماره پاسپورت:</label>
-          <input type="text" placeholder="مثال: P1234567">
-          <label>کشور محل اقامت:</label>
-          <input type="text" placeholder="کشور محل اقامت">
-          <button type="button" onclick="nextStep(2)">مرحله بعدی</button>
-        </div>
-
-        <!-- مرحله 3: آپلود مدارک -->
-        <div class="step" id="step3">
-          <label>آپلود پاسپورت:</label>
-          <input type="file">
-          <label>آپلود عکس پرسنلی:</label>
-          <input type="file">
-          <label>ایمیل یا شماره تماس:</label>
-          <input type="text" placeholder="email@example.com">
-          <button type="submit">ارسال درخواست</button>
-        </div>
+      <h1>مدارک لازم برای ویزای ایران</h1>
+      <p>برای درخواست ویزای زیارتی ایران، لطفاً مدارک زیر را بارگذاری کنید:</p>
+      <ul style="text-align:right; margin:1rem 0;">
+        <li>📄 پاسپورت معتبر (حداقل ۶ ماه اعتبار)</li>
+        <li>🖼️ عکس پرسنلی جدید</li>
+        <li>📑 فرم تکمیل شده اطلاعات شخصی</li>
+      </ul>
+      <form>
+        <input type="file" name="passport" required>
+        <input type="file" name="photo" required>
+        <button type="submit">📤 آپلود مدارک</button>
       </form>
     </div>
   </section>
@@ -131,18 +94,5 @@
   <footer>
     <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
-
-  <script>
-    function nextStep(current) {
-      document.getElementById('step'+current).classList.remove('active');
-      document.getElementById('step'+(current+1)).classList.add('active');
-    }
-
-    const form = document.getElementById('visaForm');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      alert('درخواست شما ثبت شد! (در نسخه واقعی، به بک‌اند ارسال می‌شود)');
-    });
-  </script>
 </body>
 </html>
