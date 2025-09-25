@@ -1,30 +1,80 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ہوٹل قم - زیارت سروس</title>
-  <link rel="stylesheet" href="style.css">
   <style>
+    /* Reset ساده */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+      background-color: #111;
+    }
+
+    body {
+      padding: 20px;
+      direction: rtl;
+      background: #111;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    .lang-switch select {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hero-box h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ffd700;
+    }
+
+    .hero-box p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #ccc;
+    }
+
     /* بخش هتل‌ها */
     .hotels {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      margin-top: 20px;
     }
+
     .hotel-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
       padding: 15px;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
     }
+
     .hotel-card:hover {
       transform: translateY(-5px);
     }
+
     .hotel-card img {
       width: 100%;
       height: 180px;
@@ -32,20 +82,25 @@
       border-radius: 10px;
       margin-bottom: 10px;
     }
+
     .hotel-card h3 {
       font-size: 18px;
       margin-bottom: 5px;
       color: #ffd700;
     }
+
     .hotel-card p {
       font-size: 14px;
       margin-bottom: 10px;
       color: #eee;
     }
+
     .stars {
       color: #ffd700;
       margin-bottom: 10px;
+      font-size: 16px;
     }
+
     .btn-reserve {
       display: inline-block;
       background: #ffd700;
@@ -56,8 +111,108 @@
       font-weight: bold;
       transition: 0.3s;
     }
+
     .btn-reserve:hover {
       background: #e6c200;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* ==== ریسپانسیو ==== */
+
+    /* لپ‌تاپ‌های بزرگ‌تر */
+    @media (max-width: 1600px) {
+      .hotels {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+      .hotel-card img {
+        height: 160px;
+      }
+      .hotel-card h3 {
+        font-size: 17px;
+      }
+      .hotel-card p {
+        font-size: 13px;
+      }
+      .btn-reserve {
+        padding: 9px 18px;
+        font-size: 15px;
+      }
+    }
+
+    /* لپ‌تاپ معمولی */
+    @media (max-width: 1200px) {
+      .hotels {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      .hotel-card img {
+        height: 140px;
+      }
+      .hotel-card h3 {
+        font-size: 16px;
+      }
+      .hotel-card p {
+        font-size: 13px;
+      }
+      .btn-reserve {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+    }
+
+    /* تبلت */
+    @media (max-width: 992px) {
+      .hotels {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px;
+      }
+      .hotel-card img {
+        height: 130px;
+      }
+      .hotel-card h3 {
+        font-size: 15px;
+      }
+      .hotel-card p {
+        font-size: 12px;
+      }
+      .btn-reserve {
+        padding: 7px 14px;
+        font-size: 13px;
+      }
+    }
+
+    /* موبایل */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .hotels {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .hotel-card {
+        padding: 10px;
+      }
+      .hotel-card img {
+        height: 140px;
+      }
+      .hotel-card h3 {
+        font-size: 16px;
+      }
+      .hotel-card p {
+        font-size: 13px;
+      }
+      .btn-reserve {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -81,48 +236,131 @@
       <p data-i18n="hotel_desc">حرم مطهر کے نزدیک بہترین ہوٹل منتخب کریں:</p>
 
       <div class="hotels">
-        <!-- هتل‌ها -->
-        <div class="hotel-card"><img src="https://i.postimg.cc/ZR8KXvG8/image.jpg"><h3>هتل کریمه</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 2,500,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/ZR8KXvG8/image.jpg" alt="هتل کریمه" />
+          <h3>هتل کریمه</h3>
+          <div class="stars">⭐⭐⭐⭐</div>
+          <p>قیمت هر شب: 2,500,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/vmGP5JQG/image.webp"><h3>هتل بین‌المللی</h3><div class="stars">⭐⭐⭐⭐⭐</div><p>قیمت هر شب: 3,200,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/vmGP5JQG/image.webp" alt="هتل بین‌المللی" />
+          <h3>هتل بین‌المللی</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>قیمت هر شب: 3,200,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/3Rcn5W2w/image.webp"><h3>هتل سانا</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,800,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/3Rcn5W2w/image.webp" alt="هتل سانا" />
+          <h3>هتل سانا</h3>
+          <div class="stars">⭐⭐⭐</div>
+          <p>قیمت هر شب: 1,800,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/FR88bTWG/image.webp"><h3>هتل خورشید</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 2,200,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/FR88bTWG/image.webp" alt="هتل خورشید" />
+          <h3>هتل خورشید</h3>
+          <div class="stars">⭐⭐⭐⭐</div>
+          <p>قیمت هر شب: 2,200,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/SRbVN3t0/image.jpg"><h3>هتل اطلس</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,900,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/SRbVN3t0/image.jpg" alt="هتل اطلس" />
+          <h3>هتل اطلس</h3>
+          <div class="stars">⭐⭐⭐</div>
+          <p>قیمت هر شب: 1,900,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/jqzbTJM9/image.jpg"><h3>هتل شاه خراسان</h3><div class="stars">⭐⭐</div><p>قیمت هر شب: 1,500,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/jqzbTJM9/image.jpg" alt="هتل شاه خراسان" />
+          <h3>هتل شاه خراسان</h3>
+          <div class="stars">⭐⭐</div>
+          <p>قیمت هر شب: 1,500,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/RVdx6x5L/image.webp"><h3>هتل آبشار</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,700,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/RVdx6x5L/image.webp" alt="هتل آبشار" />
+          <h3>هتل آبشار</h3>
+          <div class="stars">⭐⭐⭐</div>
+          <p>قیمت هر شب: 1,700,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/hjVxgKCg/image.webp"><h3>هتل سفیر</h3><div class="stars">⭐⭐</div><p>قیمت هر شب: 1,200,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/hjVxgKCg/image.webp" alt="هتل سفیر" />
+          <h3>هتل سفیر</h3>
+          <div class="stars">⭐⭐</div>
+          <p>قیمت هر شب: 1,200,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/xd3nS7Kh/image.jpg"><h3>هتل تشریفات</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 2,400,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/xd3nS7Kh/image.jpg" alt="هتل تشریفات" />
+          <h3>هتل تشریفات</h3>
+          <div class="stars">⭐⭐⭐⭐</div>
+          <p>قیمت هر شب: 2,400,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/1RjPPDqm/image.jpg"><h3>هتل قصر نادری</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 2,000,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/1RjPPDqm/image.jpg" alt="هتل قصر نادری" />
+          <h3>هتل قصر نادری</h3>
+          <div class="stars">⭐⭐⭐</div>
+          <p>قیمت هر شب: 2,000,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/d0wcnBzB/image.jpg"><h3>هتل صادقیه</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,800,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/d0wcnBzB/image.jpg" alt="هتل صادقیه" />
+          <h3>هتل صادقیه</h3>
+          <div class="stars">⭐⭐⭐</div>
+          <p>قیمت هر شب: 1,800,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/xdJpvbdR/image.webp"><h3>هتل المپیک</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 2,600,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/xdJpvbdR/image.webp" alt="هتل المپیک" />
+          <h3>هتل المپیک</h3>
+          <div class="stars">⭐⭐⭐⭐</div>
+          <p>قیمت هر شب: 2,600,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/mkRdWXyX/image.jpg"><h3>هتل ایرانا</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,900,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/mkRdWXyX/image.jpg" alt="هتل ایرانا" />
+          <h3>هتل ایرانا</h3>
+          <div class="stars">⭐⭐⭐</div>
+          <p>قیمت هر شب: 1,900,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/nrk3F4dH/image.jpg"><h3>هتل ماهان</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 2,000,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/nrk3F4dH/image.jpg" alt="هتل ماهان" />
+          <h3>هتل ماهان</h3>
+          <div class="stars">⭐⭐⭐</div>
+          <p>قیمت هر شب: 2,000,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
 
-        <div class="hotel-card"><img src="https://i.postimg.cc/sDjnnLX1/image.webp"><h3>هتل آریا</h3><div class="stars">⭐⭐</div><p>قیمت هر شب: 1,400,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
-
-        <div class="hotel-card"><img src="https://i.postimg.cc/JnCxj6vr/image.jpg"><h3>هتل فیروزه</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,800,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
-
-        <div class="hotel-card"><img src="https://i.postimg.cc/QCXqyBjv/image.jpg"><h3>مهمانپذیر وارش</h3><div class="stars">⭐⭐</div><p>قیمت هر شب: 1,000,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
-
-        <div class="hotel-card"><img src="https://i.postimg.cc/L6QVx6w0/image.webp"><h3>هتل ذوی‌القربی</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,700,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card">
+          <img src="https://i.postimg.cc/kMGsFkqM/image.jpg" alt="هتل پارس" />
+          <h3>هتل پارس</h3>
+          <div class="stars">⭐⭐⭐⭐</div>
+          <p>قیمت هر شب: 2,300,000 ریال</p>
+          <a href="#" class="btn-reserve">رزرو</a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+    &copy; 2025 زیارت سروس - همه حقوق محفوظ است
   </footer>
 </body>
 </html>
