@@ -1,61 +1,103 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="ur" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>هتل‌های مشهد</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ہوٹل مشہد - زیارت سروس</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body { font-family: sans-serif; margin: 0; background: #f9f9f9; }
-    header, footer { text-align: center; padding: 20px; background: #4CAF50; color: white; }
-    h1 { margin: 0; }
-    main { padding: 20px; }
-    .hotel-list { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-      gap: 20px; 
-      margin-top: 20px; 
+    .hotels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
     }
-    .hotel-card { 
-      background: white; 
-      padding: 15px; 
-      border-radius: 10px; 
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
-      transition: 0.3s; 
+    .hotel-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
-    .hotel-card:hover { transform: translateY(-3px); }
-    .hotel-card h2 { margin-top: 0; font-size: 20px; color: #333; }
-    .hotel-card p { margin: 8px 0; font-size: 14px; color: #555; }
+    .hotel-card:hover { transform: translateY(-5px); }
+    .hotel-card img {
+      width: 100%; height: 180px; object-fit: cover;
+      border-radius: 10px; margin-bottom: 10px;
+    }
+    .hotel-card h3 { font-size: 18px; margin-bottom: 5px; color: #ffd700; }
+    .hotel-card p { font-size: 14px; margin-bottom: 10px; color: #eee; }
+    .stars { color: #ffd700; margin-bottom: 10px; }
+    .btn-reserve {
+      display: inline-block; background: #ffd700; color: #111;
+      padding: 10px 20px; border-radius: 8px; text-decoration: none;
+      font-weight: bold; transition: 0.3s;
+    }
+    .btn-reserve:hover { background: #e6c200; }
+    @media (max-width: 992px) { .hotel-card img { height: 160px; } }
+    @media (max-width: 768px) {
+      .hotels { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .hotel-card { padding: 12px; }
+      .hotel-card h3 { font-size: 16px; }
+      .hotel-card p { font-size: 13px; }
+    }
+    @media (max-width: 480px) {
+      .hotels { grid-template-columns: 1fr; gap: 12px; }
+      .hotel-card img { height: 150px; }
+      .btn-reserve { display: block; width: 100%; padding: 12px; font-size: 15px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- هدر -->
   <header>
-    <h1>هتل‌های نزدیک حرم امام رضا (ع) - مشهد</h1>
+    <div class="logo">زیارت سروس</div>
+    <div class="lang-switch">
+      <select id="language">
+        <option value="ur" selected>اردو</option>
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+    </div>
   </header>
 
-  <main>
-    <div class="hotel-list">
-      <div class="hotel-card"><h2>هتل درویشی</h2><p>۵ ستاره لوکس در فاصله کمتر از ۵ دقیقه از حرم.</p></div>
-      <div class="hotel-card"><h2>هتل الماس ۲</h2><p>۵ ستاره با امکانات مدرن و نمایی از حرم.</p></div>
-      <div class="hotel-card"><h2>هتل قصر طلایی</h2><p>بزرگ‌ترین هتل ۵ ستاره ایران، در نزدیکی حرم.</p></div>
-      <div class="hotel-card"><h2>هتل مدینه‌الرضا</h2><p>نزدیک‌ترین هتل ۵ ستاره به حرم.</p></div>
-      <div class="hotel-card"><h2>هتل هما ۱</h2><p>۵ ستاره باسابقه با دسترسی عالی.</p></div>
-      <div class="hotel-card"><h2>هتل بین‌المللی قصر</h2><p>۴ ستاره با امکانات رفاهی خوب.</p></div>
-      <div class="hotel-card"><h2>هتل پردیسان</h2><p>۵ ستاره با محیط آرام و خدمات ویژه.</p></div>
-      <div class="hotel-card"><h2>هتل کوثر ناب</h2><p>۵ ستاره مدرن با سوئیت‌های خانوادگی.</p></div>
-      <div class="hotel-card"><h2>هتل جواهر شرق</h2><p>۳ ستاره نزدیک صحن امام رضا (ع).</p></div>
-      <div class="hotel-card"><h2>هتل پارس مشهد</h2><p>۵ ستاره با فضای سبز و خدمات عالی.</p></div>
-      <div class="hotel-card"><h2>هتل اطلس</h2><p>۳ ستاره اقتصادی در فاصله چند قدمی حرم.</p></div>
-      <div class="hotel-card"><h2>هتل سحر</h2><p>۲ ستاره تمیز و مقرون‌به‌صرفه.</p></div>
-      <div class="hotel-card"><h2>هتل ضیافت‌الرضا</h2><p>۴ ستاره مناسب زائرین با امکانات متوسط.</p></div>
-      <div class="hotel-card"><h2>هتل پارسیس</h2><p>۵ ستاره تازه‌ساز با امکانات عالی.</p></div>
-      <div class="hotel-card"><h2>هتل هلیا</h2><p>۳ ستاره اقتصادی نزدیک حرم.</p></div>
-      <div class="hotel-card"><h2>هتل آدینه</h2><p>۲ ستاره ساده برای اقامت کوتاه.</p></div>
-      <div class="hotel-card"><h2>هتل عماد</h2><p>۴ ستاره با اتاق‌های رو به حرم.</p></div>
-      <div class="hotel-card"><h2>هتل تارا مشهد</h2><p>۴ ستاره با کیفیت خدمات خوب.</p></div>
-    </div>
-  </main>
+  <!-- بخش هتل‌ها -->
+  <section class="hero">
+    <div class="hero-box">
+      <h1>ہوٹل مشہد</h1>
+      <p>حرم مطهر امام رضا (ع) کے نزدیک بہترین ہوٹل منتخب کریں:</p>
+      <div class="hotels">
 
+        <!-- لیست ۱۸ هتل مشهد -->
+        <div class="hotel-card"><img src="https://i.postimg.cc/Rh3rY3k1/mashhad1.jpg"><h3>هتل درویشی</h3><div class="stars">⭐⭐⭐⭐⭐</div><p>قیمت هر شب: 4,500,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/N0g0MZcw/mashhad2.jpg"><h3>هتل قصر طلایی</h3><div class="stars">⭐⭐⭐⭐⭐</div><p>قیمت هر شب: 5,000,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/wTtNNRb8/mashhad3.jpg"><h3>هتل مدینه‌الرضا</h3><div class="stars">⭐⭐⭐⭐⭐</div><p>قیمت هر شب: 4,800,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/5yDRd2Kj/mashhad4.jpg"><h3>هتل الماس 2</h3><div class="stars">⭐⭐⭐⭐⭐</div><p>قیمت هر شب: 4,200,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/26MdpwcN/mashhad5.jpg"><h3>هتل بین‌المللی قصر</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 3,800,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/65kz9P3V/mashhad6.jpg"><h3>هتل آبان</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 2,200,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/s2FvGB6R/mashhad7.jpg"><h3>هتل جواهر شرق</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 2,800,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/t4WFF5Fz/mashhad8.jpg"><h3>هتل الماس نوین</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 3,200,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/BtGZSnYh/mashhad9.jpg"><h3>هتل تارا</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 2,000,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/nzWkFYqy/mashhad10.jpg"><h3>هتل کیانا</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 2,900,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/MGpQF3Fq/mashhad11.jpg"><h3>هتل سیمرغ</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,900,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/gJfY7Kzt/mashhad12.jpg"><h3>هتل پارس</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 3,500,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/PxjZBp4g/mashhad13.jpg"><h3>هتل ابریشم</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,700,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/Vvbb4twR/mashhad14.jpg"><h3>هتل حلما</h3><div class="stars">⭐⭐</div><p>قیمت هر شب: 1,400,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/4yb32njs/mashhad15.jpg"><h3>هتل سحاب</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,800,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/cH6MpYj5/mashhad16.jpg"><h3>هتل اطلس مشهد</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 2,000,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/fL0qT5j4/mashhad17.jpg"><h3>هتل اترک</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: 3,000,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/ry0ZycRk/mashhad18.jpg"><h3>هتل جم</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: 1,600,000 ریال</p><a href="#" class="btn-reserve">رزرو</a></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- فوتر -->
   <footer>
-    <p>© 2025 Zairat Service</p>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
+
 </body>
 </html>
