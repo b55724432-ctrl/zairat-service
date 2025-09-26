@@ -6,21 +6,22 @@
   <title>🍴 کھانا</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      text-align: center;
-      padding: 50px;
-      background: #f8f8f8;
-      font-family: Arial, sans-serif;
+    .lang-switch {
+      position: absolute;
+      top: 15px;
+      right: 20px;
     }
-    h1 {
-      margin-bottom: 30px;
+    .lang-switch select {
+      padding: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
     .food-buttons {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
       gap: 20px;
-      margin-top: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
     }
     .btn-food {
       background: #457b9d;
@@ -31,7 +32,6 @@
       font-size: 20px;
       cursor: pointer;
       transition: 0.3s;
-      width: 220px;
     }
     .btn-food:hover {
       background: #1d3557;
@@ -40,20 +40,99 @@
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="logo">زیارت سروس</div>
+    <div class="logo" data-i18n="logo">زیارت سروس</div>
+    <div class="lang-switch">
+      <select id="language">
+        <option value="ur">اردو</option>
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+    </div>
   </header>
 
-  <h1>🍲 کھانے کا انتخاب کریں</h1>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-box">
+      <h1 data-i18n="food_title">🍲 کھانے کا انتخاب کریں</h1>
+      <p data-i18n="food_text">مہربانی فرما کر اپنی مطلوبہ قسم منتخب کریں۔</p>
 
-  <div class="food-buttons">
-    <button class="btn-food">🍳 صبحانه</button>
-    <button class="btn-food">🍛 ناهار</button>
-    <button class="btn-food">🍲 شام</button>
-  </div>
+      <div class="food-buttons">
+        <a href="breakfast.html" class="btn-food" data-i18n="breakfast_btn">🍳 صبحانه</a>
+        <a href="lunch.html" class="btn-food" data-i18n="lunch_btn">🍛 ناهار</a>
+        <a href="dinner.html" class="btn-food" data-i18n="dinner_btn">🍲 شام</a>
+      </div>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+    <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
+
+  <!-- Translation Script (همون کدی که در index هست) -->
+  <script>
+    const translations = {
+      ur: {
+        logo: "زیارت سروس",
+        food_title: "🍲 کھانے کا انتخاب کریں",
+        food_text: "مہربانی فرما کر اپنی مطلوبہ قسم منتخب کریں۔",
+        breakfast_btn: "🍳 صبحانه",
+        lunch_btn: "🍛 ناهار",
+        dinner_btn: "🍲 شام",
+        footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
+      },
+      fa: {
+        logo: "زیارت سرویس",
+        food_title: "🍲 انتخاب غذا",
+        food_text: "لطفاً نوع مورد نظر خود را انتخاب کنید.",
+        breakfast_btn: "🍳 صبحانه",
+        lunch_btn: "🍛 ناهار",
+        dinner_btn: "🍲 شام",
+        footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
+      },
+      en: {
+        logo: "Ziarat Service",
+        food_title: "🍲 Choose Your Meal",
+        food_text: "Please select your preferred type.",
+        breakfast_btn: "🍳 Breakfast",
+        lunch_btn: "🍛 Lunch",
+        dinner_btn: "🍲 Dinner",
+        footer: "© 2025 Ziarat Service | All Rights Reserved"
+      }
+    };
+
+    const languageSelector = document.getElementById("language");
+    const elements = document.querySelectorAll("[data-i18n]");
+
+    function updateLanguage(lang) {
+      elements.forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.innerText = translations[lang][key];
+        }
+      });
+      if (lang === "en") {
+        document.documentElement.dir = "ltr";
+        document.documentElement.lang = "en";
+      } else {
+        document.documentElement.dir = "rtl";
+        document.documentElement.lang = lang;
+      }
+    }
+
+    languageSelector.addEventListener("change", (e) => {
+      const lang = e.target.value;
+      localStorage.setItem("selectedLang", lang);
+      updateLanguage(lang);
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("selectedLang") || "ur";
+      languageSelector.value = savedLang;
+      updateLanguage(savedLang);
+    });
+  </script>
 </body>
 </html>
