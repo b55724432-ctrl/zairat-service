@@ -16,32 +16,9 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
-    .menu-box {
-      background: #fff;
-      padding: 30px;
-      margin: 40px auto;
-      max-width: 600px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: right;
-    }
-    .menu-box h2 {
-      margin-bottom: 20px;
+    .hero {
       text-align: center;
-    }
-    .menu-box ul {
-      list-style: none;
-      padding: 0;
-    }
-    .menu-box li {
-      padding: 12px;
-      border-bottom: 1px solid #ddd;
-      font-size: 18px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .menu-box li:last-child {
-      border-bottom: none;
+      padding: 100px 20px;
     }
   </style>
 </head>
@@ -58,22 +35,9 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (وسط خالی) -->
   <section class="hero">
-    <div class="hero-box">
-      <h1 data-i18n="breakfast_title">🍳 صبحانه</h1>
-      <p data-i18n="breakfast_text">مہربانی فرما کر اپنی پسند کا ناشتہ منتخب کریں۔</p>
-
-      <div class="menu-box">
-        <h2 data-i18n="menu">منوی صبحانه</h2>
-        <ul>
-          <li><span>چائے + پراٹھا</span> <span>150 Rs</span></li>
-          <li><span>انڈہ + پراٹھا</span> <span>200 Rs</span></li>
-          <li><span>چنے + نان</span> <span>180 Rs</span></li>
-          <li><span>حلوہ پوری</span> <span>250 Rs</span></li>
-        </ul>
-      </div>
-    </div>
+    <!--故 این بخش خالیه تا بعداً هرچی بخوای اضافه کنی -->
   </section>
 
   <!-- Footer -->
@@ -86,23 +50,14 @@
     const translations = {
       ur: {
         logo: "زیارت سروس",
-        breakfast_title: "🍳 صبحانه",
-        breakfast_text: "مہربانی فرما کر اپنی پسند کا ناشتہ منتخب کریں۔",
-        menu: "منوی صبحانه",
         footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
       },
       fa: {
         logo: "زیارت سرویس",
-        breakfast_title: "🍳 صبحانه",
-        breakfast_text: "لطفاً صبحانه مورد نظر خود را انتخاب کنید.",
-        menu: "منوی صبحانه",
         footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
       },
       en: {
         logo: "Ziarat Service",
-        breakfast_title: "🍳 Breakfast",
-        breakfast_text: "Please select your preferred breakfast.",
-        menu: "Breakfast Menu",
         footer: "© 2025 Ziarat Service | All Rights Reserved"
       }
     };
