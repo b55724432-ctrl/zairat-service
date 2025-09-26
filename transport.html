@@ -16,43 +16,11 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-    }
-    .transport-box {
-      background: #f8f9fa;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      padding: 40px 30px;
-      max-width: 500px;
-      margin: auto;
-    }
-    .transport-box h1 {
-      margin-bottom: 30px;
-      font-size: 26px;
-      color: #1d3557;
-    }
     .transport-buttons {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-    }
-    .btn-transport {
-      background: #457b9d;
-      color: #fff;
-      padding: 15px 40px;
-      border: none;
-      border-radius: 12px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: 0.3s;
-      text-decoration: none;
-      text-align: center;
-    }
-    .btn-transport:hover {
-      background: #1d3557;
-      transform: scale(1.05);
+      gap: 15px;
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -71,13 +39,13 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="transport-box">
+    <div class="hero-box">
       <h1>🚍 اپنی ٹرانسپورٹ منتخب کریں</h1>
       <div class="transport-buttons">
-        <a href="taxi.html" class="btn-transport">🚕 ٹیکسی خصوصی</a>
-        <a href="van.html" class="btn-transport">🚐 وین خانوادگی</a>
-        <a href="minibus.html" class="btn-transport">🚌 منی‌باس / کوسٹر</a>
-        <a href="bus.html" class="btn-transport">🚌 بس بزرگ</a>
+        <a href="taxi.html" class="btn btn-primary">🚕 ٹیکسی خصوصی</a>
+        <a href="van.html" class="btn btn-secondary">🚐 وین خانوادگی</a>
+        <a href="minibus.html" class="btn btn-secondary">🚌 منی‌باس / کوسٹر</a>
+        <a href="bus.html" class="btn btn-secondary">🚌 بس بزرگ</a>
       </div>
     </div>
   </section>
