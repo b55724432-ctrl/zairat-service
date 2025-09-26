@@ -23,19 +23,10 @@
       margin-top: 30px;
       flex-wrap: wrap;
     }
-    .btn-food {
-      background: #457b9d;
-      color: #fff;
-      padding: 15px 40px;
-      border: none;
-      border-radius: 12px;
+    /* فقط برای سایز بزرگتر دکمه‌ها */
+    .food-buttons .btn {
       font-size: 20px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .btn-food:hover {
-      background: #1d3557;
-      transform: scale(1.05);
+      padding: 15px 40px;
     }
   </style>
 </head>
@@ -59,9 +50,9 @@
       <p data-i18n="food_text">مہربانی فرما کر اپنی مطلوبہ قسم منتخب کریں۔</p>
 
       <div class="food-buttons">
-        <a href="breakfast.html" class="btn-food" data-i18n="breakfast_btn">🍳 صبحانه</a>
-        <a href="lunch.html" class="btn-food" data-i18n="lunch_btn">🍛 ناهار</a>
-        <a href="dinner.html" class="btn-food" data-i18n="dinner_btn">🍲 شام</a>
+        <a href="breakfast.html" class="btn btn-primary" data-i18n="breakfast_btn">🍳 صبحانه</a>
+        <a href="lunch.html" class="btn btn-secondary" data-i18n="lunch_btn">🍛 ناهار</a>
+        <a href="dinner.html" class="btn btn-secondary" data-i18n="dinner_btn">🍲 شام</a>
       </div>
     </div>
   </section>
@@ -71,7 +62,7 @@
     <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
 
-  <!-- Translation Script (همون کدی که در index هست) -->
+  <!-- Translation Script -->
   <script>
     const translations = {
       ur: {
