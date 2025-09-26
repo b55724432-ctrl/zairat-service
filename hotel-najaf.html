@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ہوٹل نجف - زیارت سروس</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hotels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .hotel-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .hotel-card:hover { transform: translateY(-5px); }
+    .hotel-card img {
+      width: 100%; height: 180px; object-fit: cover;
+      border-radius: 10px; margin-bottom: 10px;
+    }
+    .hotel-card h3 { font-size: 18px; margin-bottom: 5px; color: #ffd700; }
+    .hotel-card p { font-size: 14px; margin-bottom: 10px; color: #eee; }
+    .stars { color: #ffd700; margin-bottom: 10px; }
+    .btn-reserve {
+      display: inline-block; background: #ffd700; color: #111;
+      padding: 10px 20px; border-radius: 8px; text-decoration: none;
+      font-weight: bold; transition: 0.3s;
+    }
+    .btn-reserve:hover { background: #e6c200; }
+    @media (max-width: 992px) { .hotel-card img { height: 160px; } }
+    @media (max-width: 768px) {
+      .hotels { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .hotel-card { padding: 12px; }
+      .hotel-card h3 { font-size: 16px; }
+      .hotel-card p { font-size: 13px; }
+    }
+    @media (max-width: 480px) {
+      .hotels { grid-template-columns: 1fr; gap: 12px; }
+      .hotel-card img { height: 150px; }
+      .btn-reserve { display: block; width: 100%; padding: 12px; font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">زیارت سروس</div>
+    <div class="lang-switch">
+      <select id="language">
+        <option value="ur" selected>اردو</option>
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-box">
+      <h1>ہوٹل نجف</h1>
+      <p>حرم مطہر امام علی (ع) کے نزدیک بہترین ہوٹل منتخب کریں:</p>
+      <div class="hotels">
+        <!-- لیست ۱۸ هتل پیشنهادی نزدیک حرم نجف -->
+        <div class="hotel-card"><img src="https://i.postimg.cc/8PBcmsTy/Mashhad-Darvishi-44.jpg"><h3>هتل الرویة السیاحی</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/JzFLNWH6/Mashhad-Qasr-talaee-23.jpg"><h3>هتل قصر الدور</h3><div class="stars">⭐⭐⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/26w9x4Xk/Mashhad-Madineh-alreza-12.jpg"><h3>هتل المدينة</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/rpvRYb3g/678e0f067e75320ec9080461.webp"><h3>هتل البراق</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/mgKrb9jg/Mashhad-Qasr-almas-16.jpg"><h3>هتل النجف انترناشونال</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/0Ng8gs56/Mashhad-Aban-01.jpg"><h3>هتل الرشید</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class class="hotel-card"><img src="https://i.postimg.cc/kG5CNMsH/68412.webp"><h3>هتل العقیق</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/Y9dKSK7z/Mashhad-Almas-Novin-99.jpg"><h3>هتل الزهراء</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/0QQXc6g7/Mashhad-Tara-85.jpg"><h3>هتل القسورا</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/tJnSGL4T/Mashhad-Kiana-27.jpg"><h3>هتل الامیر</h3><div class="stars">⭐⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/g0kPb2F2/Mashhad-Simorq-32.jpg"><h3>هتل الرضا</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/VsbP8hTn/Mashhad-Pars-28.jpg"><h3>هتل الکفیل</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/J4NwykRh/mashhad-abrisham-34.jpg"><h3>هتل الولید</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/MGrgk0m9/Mashhad-Helma-11.jpg"><h3>هتل البیت</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/FFS8qLdx/Mashhad-Sahab-20.jpg"><h3>هتل الکبری</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/mZp82Zv5/Mashhad-Atlas-21.jpg"><h3>هتل السلام</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/zDwpKSH4/Mashhad-Atrak-20.jpg"><h3>هتل الرضوان</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+        <div class="hotel-card"><img src="https://i.postimg.cc/bJ9bDgVT/Mashhad-Jam-44.jpg"><h3>هتل النعمانی</h3><div class="stars">⭐⭐⭐</div><p>قیمت هر شب: —</p><a href="#" class="btn-reserve">رزرو</a></div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+  </footer>
+
+</body>
+</html>
