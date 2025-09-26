@@ -1,29 +1,59 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="ur">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>غذا | زیارت سروس</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍴 کھانا</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      text-align: center;
+      padding: 50px;
+      background: #f8f8f8;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .food-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .btn-food {
+      background: #457b9d;
+      color: #fff;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 12px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 220px;
+    }
+    .btn-food:hover {
+      background: #1d3557;
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="logo">زیارت سروس</div>
   </header>
 
-  <section class="hero">
-    <div class="hero-box">
-      <h1>سفارش غذا</h1>
-      <p>غذاهای سالم و متنوع ویژه زائرین در سفرهای زیارتی.</p>
-      <div class="buttons">
-        <a href="index.html" class="btn btn-secondary">🏠 صفحه اصلی</a>
-        <a href="transport.html" class="btn btn-secondary">🚌 ترانسپورت</a>
-      </div>
-    </div>
-  </section>
+  <h1>🍲 کھانے کا انتخاب کریں</h1>
+
+  <div class="food-buttons">
+    <button class="btn-food">🍳 صبحانه</button>
+    <button class="btn-food">🍛 ناهار</button>
+    <button class="btn-food">🍲 شام</button>
+  </div>
 
   <footer>
-    <p>© 2025 زیارت سروس | تمام حقوق محفوظ است</p>
+    <p>© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
   </footer>
 </body>
 </html>
