@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍲 شام</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .lang-switch {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+    .lang-switch select {
+      padding: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo" data-i18n="logo">زیارت سروس</div>
+    <div class="lang-switch">
+      <select id="language">
+        <option value="ur">اردو</option>
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hero Section (وسط خالی) -->
+  <section class="hero"></section>
+
+  <!-- Footer -->
+  <footer>
+    <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+  </footer>
+
+  <!-- Translation Script -->
+  <script>
+    const translations = {
+      ur: {
+        logo: "زیارت سروس",
+        footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں"
+      },
+      fa: {
+        logo: "زیارت سرویس",
+        footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است"
+      },
+      en: {
+        logo: "Ziarat Service",
+        footer: "© 2025 Ziarat Service | All Rights Reserved"
+      }
+    };
+
+    const languageSelector = document.getElementById("language");
+    const elements = document.querySelectorAll("[data-i18n]");
+
+    function updateLanguage(lang) {
+      elements.forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.innerText = translations[lang][key];
+        }
+      });
+      if (lang === "en") {
+        document.documentElement.dir = "ltr";
+        document.documentElement.lang = "en";
+      } else {
+        document.documentElement.dir = "rtl";
+        document.documentElement.lang = lang;
+      }
+    }
+
+    languageSelector.addEventListener("change", (e) => {
+      const lang = e.target.value;
+      localStorage.setItem("selectedLang", lang);
+      updateLanguage(lang);
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("selectedLang") || "ur";
+      languageSelector.value = savedLang;
+      updateLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>
