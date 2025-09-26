@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚐 وین خانوادگی</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .lang-switch { position: absolute; top: 15px; right: 20px; }
+    .lang-switch select { padding: 5px; border-radius: 6px; border: 1px solid #ccc; }
+    .hero { text-align: center; padding: 100px 20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" data-i18n="logo">زیارت سروس</div>
+    <div class="lang-switch">
+      <select id="language">
+        <option value="ur">اردو</option>
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </header>
+
+  <section class="hero"></section>
+
+  <footer>
+    <p data-i18n="footer">© 2025 زیارت سروس | تمام حقوق محفوظ ہیں</p>
+  </footer>
+
+  <script>
+    const translations = {
+      ur: { logo: "زیارت سروس", footer: "© 2025 زیارت سروس | تمام حقوق محفوظ ہیں" },
+      fa: { logo: "زیارت سرویس", footer: "© 2025 زیارت سرویس | تمامی حقوق محفوظ است" },
+      en: { logo: "Ziarat Service", footer: "© 2025 Ziarat Service | All Rights Reserved" }
+    };
+    const languageSelector = document.getElementById("language");
+    const elements = document.querySelectorAll("[data-i18n]");
+    function updateLanguage(lang) {
+      elements.forEach(el => { const key = el.getAttribute("data-i18n"); if (translations[lang] && translations[lang][key]) el.innerText = translations[lang][key]; });
+      document.documentElement.dir = (lang === "en") ? "ltr" : "rtl";
+      document.documentElement.lang = lang;
+    }
+    languageSelector.addEventListener("change", e => { localStorage.setItem("selectedLang", e.target.value); updateLanguage(e.target.value); });
+    window.addEventListener("DOMContentLoaded", () => { const saved = localStorage.getItem("selectedLang") || "ur"; languageSelector.value = saved; updateLanguage(saved); });
+  </script>
+</body>
+</html>
