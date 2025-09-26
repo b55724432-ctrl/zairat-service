@@ -2,13 +2,26 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>هتل‌های مشهد نزدیک حرم</title>
+  <title>هتل‌های مشهد</title>
   <style>
-    body { font-family: sans-serif; margin: 20px; background: #f9f9f9; }
+    body { font-family: sans-serif; margin: 0; background: #f9f9f9; }
     header, footer { text-align: center; padding: 20px; background: #4CAF50; color: white; }
     h1 { margin: 0; }
-    .hotel-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-    .hotel-card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    main { padding: 20px; }
+    .hotel-list { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+      gap: 20px; 
+      margin-top: 20px; 
+    }
+    .hotel-card { 
+      background: white; 
+      padding: 15px; 
+      border-radius: 10px; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+      transition: 0.3s; 
+    }
+    .hotel-card:hover { transform: translateY(-3px); }
     .hotel-card h2 { margin-top: 0; font-size: 20px; color: #333; }
     .hotel-card p { margin: 8px 0; font-size: 14px; color: #555; }
   </style>
@@ -20,78 +33,24 @@
 
   <main>
     <div class="hotel-list">
-      <div class="hotel-card">
-        <h2>هتل درویشی</h2>
-        <p>۵ ستاره لوکس در فاصله کمتر از ۵ دقیقه از حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل الماس ۲</h2>
-        <p>۵ ستاره با امکانات مدرن و نمایی از حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل قصر طلایی</h2>
-        <p>بزرگ‌ترین هتل ۵ ستاره ایران، در نزدیکی حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل مدینه‌الرضا</h2>
-        <p>نزدیک‌ترین هتل ۵ ستاره به حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل هما ۱ مشهد</h2>
-        <p>۵ ستاره قدیمی و با کیفیت با دسترسی عالی.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل بین‌المللی قصر</h2>
-        <p>۴ ستاره با امکانات رفاهی خوب و نزدیک حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل پردیسان</h2>
-        <p>۵ ستاره با محیط آرام و دسترسی مناسب.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل کوثر ناب</h2>
-        <p>۵ ستاره مدرن با سوئیت‌های خانوادگی.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل جواهر شرق</h2>
-        <p>۳ ستاره نزدیک صحن امام رضا (ع).</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل پارس مشهد</h2>
-        <p>۵ ستاره با فضای سبز و خدمات ویژه.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل اطلس</h2>
-        <p>۳ ستاره اقتصادی در فاصله چند قدمی حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل سحر</h2>
-        <p>۲ ستاره تمیز و مقرون به صرفه نزدیک حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل ضیافت‌الرضا</h2>
-        <p>۴ ستاره مناسب زائرین با امکانات متوسط.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل پارسیس</h2>
-        <p>۵ ستاره تازه‌ساز با امکانات عالی.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل هلیا</h2>
-        <p>۳ ستاره اقتصادی در نزدیکی حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل آدینه</h2>
-        <p>۲ ستاره ساده و مناسب برای اقامت کوتاه.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل عماد</h2>
-        <p>۴ ستاره با اتاق‌های رو به حرم.</p>
-      </div>
-      <div class="hotel-card">
-        <h2>هتل تارا مشهد</h2>
-        <p>۴ ستاره با کیفیت خوب و خدمات ویژه.</p>
-      </div>
+      <div class="hotel-card"><h2>هتل درویشی</h2><p>۵ ستاره لوکس در فاصله کمتر از ۵ دقیقه از حرم.</p></div>
+      <div class="hotel-card"><h2>هتل الماس ۲</h2><p>۵ ستاره با امکانات مدرن و نمایی از حرم.</p></div>
+      <div class="hotel-card"><h2>هتل قصر طلایی</h2><p>بزرگ‌ترین هتل ۵ ستاره ایران، در نزدیکی حرم.</p></div>
+      <div class="hotel-card"><h2>هتل مدینه‌الرضا</h2><p>نزدیک‌ترین هتل ۵ ستاره به حرم.</p></div>
+      <div class="hotel-card"><h2>هتل هما ۱</h2><p>۵ ستاره باسابقه با دسترسی عالی.</p></div>
+      <div class="hotel-card"><h2>هتل بین‌المللی قصر</h2><p>۴ ستاره با امکانات رفاهی خوب.</p></div>
+      <div class="hotel-card"><h2>هتل پردیسان</h2><p>۵ ستاره با محیط آرام و خدمات ویژه.</p></div>
+      <div class="hotel-card"><h2>هتل کوثر ناب</h2><p>۵ ستاره مدرن با سوئیت‌های خانوادگی.</p></div>
+      <div class="hotel-card"><h2>هتل جواهر شرق</h2><p>۳ ستاره نزدیک صحن امام رضا (ع).</p></div>
+      <div class="hotel-card"><h2>هتل پارس مشهد</h2><p>۵ ستاره با فضای سبز و خدمات عالی.</p></div>
+      <div class="hotel-card"><h2>هتل اطلس</h2><p>۳ ستاره اقتصادی در فاصله چند قدمی حرم.</p></div>
+      <div class="hotel-card"><h2>هتل سحر</h2><p>۲ ستاره تمیز و مقرون‌به‌صرفه.</p></div>
+      <div class="hotel-card"><h2>هتل ضیافت‌الرضا</h2><p>۴ ستاره مناسب زائرین با امکانات متوسط.</p></div>
+      <div class="hotel-card"><h2>هتل پارسیس</h2><p>۵ ستاره تازه‌ساز با امکانات عالی.</p></div>
+      <div class="hotel-card"><h2>هتل هلیا</h2><p>۳ ستاره اقتصادی نزدیک حرم.</p></div>
+      <div class="hotel-card"><h2>هتل آدینه</h2><p>۲ ستاره ساده برای اقامت کوتاه.</p></div>
+      <div class="hotel-card"><h2>هتل عماد</h2><p>۴ ستاره با اتاق‌های رو به حرم.</p></div>
+      <div class="hotel-card"><h2>هتل تارا مشهد</h2><p>۴ ستاره با کیفیت خدمات خوب.</p></div>
     </div>
   </main>
 
